@@ -1,16 +1,13 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<title>Verdant Foods — Product Plan v1.0</title>
-<link rel="stylesheet" href="styles.css"></head><body>
-
-<!-- COVER -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Verdant_Foods_Product_Architecture_UX_Planning_Website_v1</title><link rel="stylesheet" href="styles.css"></head><body>
 <section class="page night" data-nofoot style="padding:0">
   <div style="position:absolute;inset:0;display:grid;grid-template-columns:7fr 5fr">
     <div style="padding:64px 0 0 64px;display:flex;flex-direction:column">
       <img src="assets/logo-cream.png" style="width:190px">
-      <div style="margin-top:auto;margin-bottom:80px">
-        <div style="font:800 92px/.9 Bricolage;letter-spacing:-.035em">One system<br>from soil<br>to plate.</div>
-        <p style="font-size:19px;line-height:1.5;color:#C6D8D1;margin-top:28px;max-width:500px">The product plan for Verdant Foods: who it serves, how it works, how it should look, and how we build it.</p>
+      <div style="margin-top:auto;margin-bottom:72px">
+        <div style="font:600 18px Inter;color:var(--lime)">Verdant Foods Digital Platform · Phase 1</div>
+        <div style="font:800 70px/.95 Bricolage;letter-spacing:-.03em;margin-top:18px">Product Architecture<br>&amp; UX Planning</div>
+        <div style="font:700 34px/1.1 Bricolage;color:var(--lime);margin-top:18px">Website</div>
+        <p style="font-size:16px;line-height:1.55;color:#C6D8D1;margin-top:24px;max-width:540px">The Verdant Foods Corporate Website, AgTech Marketplace, B2B Procurement Engine, Admin Interface and Traceability Matrix QR Journey Page.</p>
       </div>
     </div>
     <div style="background:var(--deep);padding:64px 56px 0 48px;display:flex;flex-direction:column">
@@ -26,60 +23,21 @@
       </svg>
       <div style="margin-top:auto;margin-bottom:64px;font-size:15px;line-height:1.7;color:#C6D8D1">
         <div style="color:var(--cream);font-weight:600">Version 1.0 · October 2026</div>
+        <div>Reference: INV-NKL-00704</div>
         <div>Based on the Verdant Foods Business Plan<br>and Product Requirements (June 2026)</div>
         <div class="mt16">Prepared by NEXKOOMSON</div>
       </div>
     </div>
   </div>
-  <div class="strip" style="position:absolute;left:0;right:0;bottom:0">
-    <span style="background:var(--deep)"></span><span style="background:var(--leaf)"></span><span style="background:var(--lime)"></span><span style="background:var(--sun)"></span><span style="background:var(--orange)"></span><span style="background:var(--tomato)"></span><span style="background:var(--blush)"></span><span style="background:var(--plum)"></span>
-  </div>
+  <div class="strip" style="position:absolute;left:0;right:0;bottom:0"><span style="background:var(--deep)"></span><span style="background:var(--leaf)"></span><span style="background:var(--lime)"></span><span style="background:var(--sun)"></span><span style="background:var(--orange)"></span><span style="background:var(--tomato)"></span><span style="background:var(--blush)"></span><span style="background:var(--plum)"></span></div>
 </section>
-
-<!-- CONTENTS -->
 <section class="page paper">
   <div class="g c-4-8 gap48">
-    <div>
-      <div class="title" style="font-size:64px">Contents</div>
-      <p class="intro">Written in plain language for Verdant, our design team and the developers who will build it.</p>
-    </div>
-    <div class="g c2 gap48" style="align-items:start">
-      <table>
-        <tr><th colspan="2">The plan</th></tr>
-        <tr><td>Verdant in one page</td><td class="right m">3</td></tr>
-        <tr><td>The problem and the plan</td><td class="right m">4</td></tr>
-        <tr><td>How it all connects</td><td class="right m">5</td></tr>
-        <tr><td>Who uses Verdant</td><td class="right m">6</td></tr>
-        <tr><td>How the platform is built</td><td class="right m">8</td></tr>
-        <tr><td>Website and shop</td><td class="right m">9</td></tr>
-        <tr><td>Customer account and checkout</td><td class="right m">10</td></tr>
-        <tr><td>Business buyers</td><td class="right m">11</td></tr>
-        <tr><td>Farmer app</td><td class="right m">12</td></tr>
-        <tr><td>Savings groups (VSLA)</td><td class="right m">13</td></tr>
-        <tr><td>Verdant team tools</td><td class="right m">14</td></tr>
-      </table>
-      <table>
-        <tr><th colspan="2">How it works and how we build it</th></tr>
-        <tr><td>Tracing food from farm to plate</td><td class="right m">15</td></tr>
-        <tr><td>Key journeys</td><td class="right m">17</td></tr>
-        <tr><td>How screens should behave</td><td class="right m">19</td></tr>
-        <tr><td>Our recommendations</td><td class="right m">20</td></tr>
-        <tr><td>Look and feel</td><td class="right m">21</td></tr>
-        <tr><td>Phones, tablets and computers</td><td class="right m">25</td></tr>
-        <tr><td>Languages and payments</td><td class="right m">26</td></tr>
-        <tr><td>Roadmap</td><td class="right m">27</td></tr>
-        <tr><td>Who builds what</td><td class="right m">28</td></tr>
-        <tr><td>What we need from the backend</td><td class="right m">29</td></tr>
-        <tr><td>How we work and what's next</td><td class="right m">30</td></tr>
-        <tr><td>Decisions made</td><td class="right m">31</td></tr>
-      </table>
-    </div>
+    <div><div class="title" style="font-size:64px">Contents</div><p class="intro">Planning for the Verdant Foods website, written in plain language for Verdant, our design team and the developers who will build it.</p></div>
+    <div class="g c2 gap48" style="align-items:start"><table><tr><td>Verdant in one page</td><td class="right m">3</td></tr><tr><td>The problem and the plan</td><td class="right m">4</td></tr><tr><td>How it all connects</td><td class="right m">5</td></tr><tr><td>What the website includes</td><td class="right m">6</td></tr><tr><td>Who uses the website</td><td class="right m">7</td></tr><tr><td>How the platform is built</td><td class="right m">8</td></tr><tr><td>Verdant Foods Corporate Website</td><td class="right m">9</td></tr><tr><td>AgTech Marketplace and Consumer Accounts</td><td class="right m">10</td></tr><tr><td>B2B Procurement Engine</td><td class="right m">11</td></tr><tr><td>Admin Interface</td><td class="right m">12</td></tr><tr><td>Traceability Matrix: QR Journey Page</td><td class="right m">13</td></tr></table><table><tr><td>Key journeys</td><td class="right m">15</td></tr><tr><td>How screens should behave</td><td class="right m">16</td></tr><tr><td>How we keep the website simple</td><td class="right m">17</td></tr><tr><td>Look and feel</td><td class="right m">18</td></tr><tr><td>Phones, tablets and computers</td><td class="right m">22</td></tr><tr><td>Payments on the website</td><td class="right m">23</td></tr><tr><td>Roadmap</td><td class="right m">24</td></tr><tr><td>Who builds what</td><td class="right m">25</td></tr><tr><td>What we need from the backend</td><td class="right m">26</td></tr><tr><td>How we work and what's next</td><td class="right m">27</td></tr><tr><td>Decisions made</td><td class="right m">28</td></tr></table></div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-
-<!-- SUMMARY -->
 <section class="page paper">
   <div class="g c-5-7 gap48" style="height:600px">
     <div style="display:flex;flex-direction:column">
@@ -94,10 +52,8 @@
       <div class="b plum"><h3>Savings groups on a phone</h3><p class="m">The paper ledger of village savings groups, made safe and clear.</p></div>
     </div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- PROBLEM + PLAN -->
 <section class="page">
   <div class="sec">The problem and the plan</div>
   <div class="title">Three problems, two answers.</div>
@@ -116,10 +72,8 @@
       <ul class="l mt16"><li>Village savings groups move from paper to phone</li><li>Fast payouts to farmers by Mobile Money</li><li>Later: crop insurance and small investments</li></ul>
     </div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- ECOSYSTEM -->
 <section class="page paper">
   <div class="sec">How it all connects</div>
   <div class="title">Food moves one way. Money comes back.</div>
@@ -160,51 +114,48 @@
     <span style="display:flex;gap:10px;align-items:center"><span style="width:28px;height:3px;background:var(--deep)"></span>Food and information</span>
     <span style="display:flex;gap:10px;align-items:center"><span style="width:28px;height:3px;background:var(--plum)"></span>Payments back to farmers and savings</span>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- ROLES -->
-<section class="page">
-  <div class="sec">Who uses Verdant</div>
-  <div class="title">Eight kinds of user, each with a different need</div>
+<section class="page paper">
+  <div class="sec">What the website includes</div>
+  <div class="title">Six parts, one website.</div><p class="intro">Everything here is built in React / Next.js and previewed on Vercel. The farmer and savings app is planned in a separate document.</p>
+  
+  <div class="g c3 gap16 mt32">
+    <div class="b deep"><h3>Verdant Foods Corporate Website</h3><p class="m s">The brand home: about Verdant, for business, for farmers and impact.</p></div>
+    <div class="b lime"><h3>AgTech Marketplace</h3><p class="s" style="color:#2D5A3A">The shop: categories, products, farms, cart and checkout through the Unified Payment Gateway.</p></div>
+    <div class="b sun"><h3>AgTech Marketplace: Consumer Accounts</h3><p class="s">Orders, saved items, addresses and payment methods for shoppers.</p></div>
+    <div class="b orange"><h3>B2B Procurement Engine</h3><p class="s" style="color:#4A2400">Live farm inventory, filters, wholesale bids, repeat supply and invoices for businesses.</p></div>
+    <div class="b night"><h3>Admin Interface</h3><p class="m s">Verdant's control room: farm checks, products, orders, deliveries, payments and VSLA oversight.</p></div>
+    <div class="b plum"><h3>Traceability Matrix: QR Journey Page</h3><p class="m s">The public page a QR code opens, showing an order's journey from farm to door.</p></div>
+  </div>
+  <p class="s m mt24">Names follow Verdant's Business Plan and Product Requirements. The Corporate Website is our addition, as the document does not name one.</p>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
+</section>
+<section class="page ">
+  <div class="sec">Who uses the website</div>
+  <div class="title">Four kinds of website user</div>
+  
   <div class="g c4 gap16 mt32">
     <div class="b white"><h3>Visitor</h3><p class="m s">Browses the site and shop without signing in. Can check out as a guest.</p></div>
-    <div class="b white"><h3>Shopper</h3><p class="m s">Buys quickly and tracks orders. Account tools stay light.</p></div>
-    <div class="b white"><h3>Business buyer</h3><p class="m s">Restaurants, hotels and shops. Needs stock, bids, deliveries and invoices.</p></div>
-    <div class="b lime"><h3>Farmer</h3><p class="s" style="color:#2D5A3A">Uses a phone, often with weak signal. Needs few steps and clear words.</p></div>
-    <div class="b plum"><h3>Savings member</h3><p class="m s">Sees their own savings, shares and loans.</p></div>
-    <div class="b plum"><h3>Savings admin</h3><p class="m s">Records meetings, members and group rules for the whole group.</p></div>
-    <div class="b deep"><h3>Extension officer</h3><p class="m s">Signs up farmers and savings groups in the field. Sends farms for checking.</p></div>
+    <div class="b lime"><h3>Shopper</h3><p class="s" style="color:#2D5A3A">Buys quickly and tracks orders. Account tools stay light.</p></div>
+    <div class="b orange"><h3>Business buyer</h3><p class="s" style="color:#4A2400">Restaurants, hotels and shops. Needs stock, bids, deliveries and invoices.</p></div>
     <div class="b deep"><h3>Verdant team</h3><p class="m s">Checks farms, runs orders, deliveries and payments, and oversees everything.</p></div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
-</section>
-
-<!-- MATRIX -->
-<section class="page paper">
-  <div class="sec">Who uses Verdant</div>
-  <div class="title s">Who can use which part</div>
-  <table class="mx mt32" style="font-size:14px">
-    <tr><th style="width:170px">User</th><th>Website</th><th>Shop</th><th>Checkout</th><th>Account</th><th>Business tools</th><th>Farmer app</th><th>Savings</th><th>Verdant team</th><th>Trace page</th></tr>
-    <tr><td class="k">Visitor</td><td><i class="dot f"></i></td><td><i class="dot f"></i></td><td><i class="dot f"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot l"></i></td></tr>
-    <tr><td class="k">Shopper</td><td><i class="dot f"></i></td><td><i class="dot f"></i></td><td><i class="dot f"></i></td><td><i class="dot f"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot l"></i></td></tr>
-    <tr><td class="k">Business buyer</td><td><i class="dot f"></i></td><td><i class="dot p"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot f"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot l"></i></td></tr>
-    <tr><td class="k">Farmer</td><td><i class="dot f"></i></td><td><i class="dot p"></i></td><td><i class="dot p"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot f"></i></td><td><i class="dot p"></i></td><td><i class="dot n"></i></td><td><i class="dot l"></i></td></tr>
-    <tr><td class="k">Savings member</td><td><i class="dot f"></i></td><td><i class="dot p"></i></td><td><i class="dot p"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot p"></i></td><td><i class="dot n"></i></td><td><i class="dot l"></i></td></tr>
-    <tr><td class="k">Savings admin</td><td><i class="dot f"></i></td><td><i class="dot p"></i></td><td><i class="dot p"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot f"></i></td><td><i class="dot n"></i></td><td><i class="dot l"></i></td></tr>
-    <tr><td class="k">Extension officer</td><td><i class="dot f"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot p"></i></td><td><i class="dot p"></i></td><td><i class="dot p"></i></td><td><i class="dot l"></i></td></tr>
-    <tr><td class="k">Verdant team</td><td><i class="dot f"></i></td><td><i class="dot p"></i></td><td><i class="dot n"></i></td><td><i class="dot p"></i></td><td><i class="dot p"></i></td><td><i class="dot p"></i></td><td><i class="dot p"></i></td><td><i class="dot f"></i></td><td><i class="dot l"></i></td></tr>
+  <table class="mx mt48" style="font-size:14px">
+    <tr><th style="width:170px">User</th><th>Corporate Website</th><th>Marketplace</th><th>Consumer Accounts</th><th>B2B Procurement</th><th>Admin Interface</th><th>QR Journey Page</th></tr>
+    <tr><td class="k">Visitor</td><td><i class="dot f"></i></td><td><i class="dot f"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot l"></i></td></tr>
+    <tr><td class="k">Shopper</td><td><i class="dot f"></i></td><td><i class="dot f"></i></td><td><i class="dot f"></i></td><td><i class="dot n"></i></td><td><i class="dot n"></i></td><td><i class="dot l"></i></td></tr>
+    <tr><td class="k">Business buyer</td><td><i class="dot f"></i></td><td><i class="dot p"></i></td><td><i class="dot n"></i></td><td><i class="dot f"></i></td><td><i class="dot n"></i></td><td><i class="dot l"></i></td></tr>
+    <tr><td class="k">Verdant team</td><td><i class="dot f"></i></td><td><i class="dot p"></i></td><td><i class="dot p"></i></td><td><i class="dot p"></i></td><td><i class="dot f"></i></td><td><i class="dot l"></i></td></tr>
   </table>
-  <div style="display:flex;gap:36px;margin-top:28px" class="s">
+  <div style="display:flex;gap:36px;margin-top:20px" class="s">
     <span style="display:flex;gap:8px;align-items:center"><i class="dot f"></i>Full use</span>
-    <span style="display:flex;gap:8px;align-items:center"><i class="dot p"></i>Limited, or their own records only</span>
+    <span style="display:flex;gap:8px;align-items:center"><i class="dot p"></i>Limited or view only</span>
     <span style="display:flex;gap:8px;align-items:center"><i class="dot l"></i>Comes in Phase 2</span>
     <span style="display:flex;gap:8px;align-items:center"><i class="dot n"></i>No access</span>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- PLATFORM -->
 <section class="page">
   <div class="sec">How the platform is built</div>
   <div class="title s">Four layers. The backend belongs to Verdant's developer.</div>
@@ -219,14 +170,12 @@
     <div class="b" style="padding:16px 18px;background:var(--stone)"><h4>Built and run by Verdant's backend developer</h4><p class="s m">Accounts and roles, stock, orders and bids, harvest records and QR codes, savings ledger, payments, messages</p></div>
   </div>
   <p class="s m mt24" style="max-width:820px">Outside services: Mobile Money and bank payments from Phase 1, cold-chain delivery partners from Phase 2, weather data for crop insurance in Phase 3.</p>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- WEBSITE + SHOP -->
 <section class="page deep">
   <div class="g c-5-7 gap48">
     <div>
-      <div class="sec">Website and shop</div>
+      <div class="sec">Verdant Foods Corporate Website</div>
       <div class="title" style="font-size:40px">Where the brand is loudest and buying is quickest.</div>
       <p class="intro" style="font-size:16px">The website has one job: get people into the shop, or to the right tool if they are a business or a farmer.</p>
       <div class="mt32" style="font-size:14px">
@@ -252,12 +201,10 @@
       </div>
     </div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- CUSTOMER -->
 <section class="page">
-  <div class="sec">Customer account and checkout</div>
+  <div class="sec">AgTech Marketplace and Consumer Accounts</div>
   <div class="title">Buying comes first. The account is just a place to find your orders.</div>
   <div class="g c-7-5 gap48 mt32">
     <div>
@@ -282,12 +229,10 @@
       <p class="s m mt24">Keep the farming story to one line in the buying path. The full story is one tap away.</p>
     </div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- BUSINESS -->
 <section class="page paper">
-  <div class="sec">Business buyers</div>
+  <div class="sec">B2B Procurement Engine</div>
   <div class="title">A working tool for kitchens and shops that can't run out.</div>
   <p class="intro">Restaurants, hotels and supermarkets see live farm stock, filter by soil health and carbon data, place bids and set up repeat deliveries.</p>
   <div class="nav mt32" style="font-size:13.5px;gap:18px"><span class="on">Overview</span><span>Find produce</span><span>Bids</span><span>Orders and deliveries</span><span>Repeat deliveries</span><span>Invoices</span><span>Suppliers</span></div>
@@ -305,70 +250,10 @@
       <div class="b deep"><h4>Speed over decoration</h4><p class="s m">Dense lists, good filters, quick decisions. The brand shows in type and colour.</p></div>
     </div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- FARMER -->
-<section class="page">
-  <div class="g gap48" style="grid-template-columns:1fr 250px">
-    <div>
-      <div class="sec">Farmer app</div>
-      <div class="title" style="font-size:40px">One thumb, weak signal, one clear next step.</div>
-      <p class="intro" style="font-size:16px">An Android app that works offline and stays under 15MB. Everything saves on the phone first and sends when signal returns. It is available in English, Twi, Dagbani and Dagaare from launch.</p>
-      <table class="mt24">
-        <tr><th style="width:150px">Tab</th><th>What the farmer does</th></tr>
-        <tr><td class="k">Home</td><td>Sees today's orders, collections and money due</td></tr>
-        <tr><td class="k">Log harvest</td><td>Records a harvest in five steps and gets its trace number at once</td></tr>
-        <tr><td class="k">Stock</td><td>Sees each harvest, what is left and its price</td></tr>
-        <tr><td class="k">Orders</td><td>Accepts orders and hands them over at collection</td></tr>
-        <tr><td class="k">Money</td><td>Payments due and paid to MoMo or bank</td></tr>
-      </table>
-      <p class="s m mt16">Farm profile and the savings group sit under the farmer's name at the top.</p>
-    </div>
-    <div style="padding-top:8px">
-      <div class="phone"><div class="scr" style="height:520px">
-        <div style="background:var(--deep);color:var(--cream);padding:18px 16px 20px">
-          <div style="display:flex;justify-content:space-between;font-size:10px;opacity:.8"><span>9:41</span><span>3G</span></div>
-          <div style="font-size:11px;color:var(--lime);margin-top:14px">2 entries saved, will send when online</div>
-          <div style="font:700 20px/1.15 Bricolage;margin-top:8px">Good morning, Kwabena</div>
-        </div>
-        <div style="padding:12px;display:grid;gap:10px">
-          <div style="background:var(--lime);border-radius:12px;padding:12px"><div style="font-size:11px;color:#2D5A3A">Next</div><div style="font:600 14px/1.3 Inter">Hand over 120kg tomatoes</div><div style="font-size:11px;color:#2D5A3A">Aburi collection point, 11:30</div></div>
-          <div style="background:#fff;border-radius:12px;padding:12px"><div style="font-size:11px;color:var(--muted)">Money due Thursday</div><div style="font:800 24px/1.1 Bricolage;margin-top:4px">GH₵ 2,160</div><div style="font-size:11px;color:var(--muted)">To MTN MoMo</div></div>
-          <div style="background:#fff;border-radius:12px;padding:12px"><div style="font-size:11px;color:var(--muted)">Latest harvest</div><div style="font:600 14px/1.3 Inter">Roma tomatoes, 340kg</div><div class="id" style="font-size:11px;color:var(--deep);margin-top:2px">VF-TOM-00042</div></div>
-        </div>
-        <div style="position:absolute;left:0;right:0;bottom:0;background:#fff;display:grid;grid-template-columns:repeat(5,1fr);align-items:center;padding:10px 4px 14px;font-size:10px;text-align:center;color:var(--muted)">
-          <span style="color:var(--deep);font-weight:600">Home</span><span>Stock</span><span><span style="display:inline-flex;width:40px;height:40px;border-radius:50%;background:var(--deep);color:var(--lime);align-items:center;justify-content:center;font-size:22px;margin-top:-22px">+</span></span><span>Orders</span><span>Money</span>
-        </div>
-      </div></div>
-    </div>
-  </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
-</section>
-
-<!-- VSLA -->
-<section class="page plum">
-  <div class="sec">Savings groups (VSLA)</div>
-  <div class="title">The group's paper ledger, now safe on a phone.</div>
-  <p class="intro">Members, group rules, weekly savings, loans and the cash box, recorded in one pass at the meeting, even with no signal.</p>
-  <div class="g c3 gap16 mt32">
-    <div class="b blush" style="color:var(--plum)"><h3>Overview</h3><p class="s">Group savings, members, loans out, cash in the box, next meeting</p></div>
-    <div class="b glass"><h3>Meeting</h3><p class="s m">Record each member's shares and repayments in one go</p></div>
-    <div class="b glass"><h3>Members</h3><p class="s m">Add members, see each person's balance</p></div>
-    <div class="b glass"><h3>Loans</h3><p class="s m">Amount, interest rate, schedule, what's been repaid</p></div>
-    <div class="b glass"><h3>Ledger</h3><p class="s m">Every transaction in order. Nothing can be quietly changed.</p></div>
-    <div class="b lime"><h3>Group rules</h3><p class="s" style="color:#2D5A3A">Share price, loan interest rate, cycle length</p></div>
-  </div>
-  <div class="g c2 gap48 mt32">
-    <div><h4>Phase 1 starts with 20 savings groups</h4><p class="s m mt8">Savings and payouts move by MTN MoMo, Telecel Cash or AT Money. Balances are shown large and clear, with the time they were last updated.</p></div>
-    <div><h4>Comes later</h4><p class="s m mt8">Credit scores, crop insurance and small investments, from Phase 3.</p></div>
-  </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
-</section>
-
-<!-- ADMIN -->
 <section class="page paper">
-  <div class="sec">Verdant team tools</div>
+  <div class="sec">Admin Interface</div>
   <div class="title">The control room. Learn it once, use it all day.</div>
   <div class="g c-4-8 gap48 mt32">
     <div style="background:var(--night);color:var(--cream);border-radius:14px;padding:22px;font-size:14px;line-height:1.5">
@@ -391,12 +276,10 @@
       <p class="s m mt16">The menu is grouped under five headings so the team finds things fast. Every area uses the same filters, tables and status names.</p>
     </div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- TRACE 1 -->
 <section class="page night">
-  <div class="sec">Tracing food from farm to plate</div>
+  <div class="sec">Traceability Matrix: QR Journey Page</div>
   <div class="title">From harvest record to a story buyers can trust.</div>
   <p class="intro">Phase 1 records every harvest. Phase 2 lets anyone scan the order's QR code and see the journey.</p>
   <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:36px">
@@ -419,10 +302,8 @@
       <div><h4>One QR code per order</h4><p class="s mt8" style="color:var(--muted)">Printed on the delivery label and receipt. It opens a page showing every harvest in the order. Business deliveries also get one per crate.</p></div>
     </div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- TRACE 2 -->
 <section class="page paper">
   <div class="g gap48" style="grid-template-columns:270px 1fr">
     <div class="phone"><div class="scr" style="height:620px;background:var(--paper)">
@@ -440,7 +321,7 @@
       </div>
     </div></div>
     <div>
-      <div class="sec">Tracing food from farm to plate</div>
+      <div class="sec">Traceability Matrix: QR Journey Page</div>
       <div class="title s">What the trace page shows, in the order buyers ask</div>
       <table class="mt32">
         <tr><th style="width:210px">Part of the page</th><th>What it shows</th></tr>
@@ -454,10 +335,8 @@
       <p class="s m mt24">Farm and harvest photos on this page are real photos taken by the farmer, never stock or staged images.</p>
     </div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- JOURNEYS 1 -->
 <section class="page">
   <div class="sec">Key journeys</div>
   <div class="title s">The paths that must feel effortless</div>
@@ -482,37 +361,8 @@
     <div class="st deep"><div class="n">6</div><h4>Pay invoice</h4><p>Bank transfer or card</p></div>
   </div>
   <p class="s m mt16">Goal: see stock, quantity and source at a glance, then act.</p>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- JOURNEYS 2 -->
-<section class="page">
-  <h3 style="color:var(--leaf)">Farmer</h3>
-  <div class="jr mt16" style="grid-template-columns:repeat(8,1fr)">
-    <div class="st"><div class="n">1</div><h4>Sign up</h4><p>Phone and PIN, with help</p></div>
-    <div class="st"><div class="n">2</div><h4>Farm checked</h4><p>Methods approved</p></div>
-    <div class="st"><div class="n">3</div><h4>Add farm</h4><p>Location and size</p></div>
-    <div class="st lime"><div class="n">4</div><h4>Log harvest</h4><p>Gets a trace number</p></div>
-    <div class="st"><div class="n">5</div><h4>Set price</h4><p>Goes on sale</p></div>
-    <div class="st"><div class="n">6</div><h4>Get order</h4><p>Accept or decline</p></div>
-    <div class="st"><div class="n">7</div><h4>Hand over</h4><p>At collection point</p></div>
-    <div class="st deep"><div class="n">8</div><h4>Get paid</h4><p>To MoMo or bank</p></div>
-  </div>
-  <p class="s m mt16">Goal: log a harvest in under two minutes, with or without signal.</p>
-  <h3 class="mt48" style="color:var(--plum)">Savings group meeting</h3>
-  <div class="jr mt16" style="grid-template-columns:repeat(6,1fr)">
-    <div class="st"><div class="n">1</div><h4>Set up group</h4><p>Members and rules</p></div>
-    <div class="st"><div class="n">2</div><h4>Open meeting</h4><p>Works offline</p></div>
-    <div class="st lime"><div class="n">3</div><h4>Record savings</h4><p>Each member in one pass</p></div>
-    <div class="st"><div class="n">4</div><h4>Loans</h4><p>Give out or repay</p></div>
-    <div class="st"><div class="n">5</div><h4>Close meeting</h4><p>Group agrees the totals</p></div>
-    <div class="st plum"><div class="n">6</div><h4>Ledger updated</h4><p>Cash box balance saved</p></div>
-  </div>
-  <p class="s m mt16">Goal: as fast as the paper book, and the totals match the cash counted.</p>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
-</section>
-
-<!-- BEHAVIOUR -->
 <section class="page paper">
   <div class="sec">How screens should behave</div>
   <div class="title s">Good design shows in the small moments</div>
@@ -532,27 +382,23 @@
     <div><h4 class="m">Buying</h4><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px"><span class="st-pill err">Out of stock</span><span class="st-pill warn">Waiting for payment</span><span class="st-pill ok">Order confirmed</span><span class="st-pill info">On the way</span><span class="st-pill warn">Delayed</span></div></div>
     <div><h4 class="m">Operations</h4><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px"><span class="st-pill neu">Draft</span><span class="st-pill warn">Waiting for check</span><span class="st-pill ok">Approved</span><span class="st-pill err">Rejected</span><span class="st-pill info">Counter-offer</span></div></div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- RECOMMENDATIONS -->
-<section class="page">
-  <div class="sec">Our recommendations</div>
-  <div class="title s">How we keep Verdant simple to use</div>
+<section class="page ">
+  <div class="sec">How we keep the website simple</div>
+  <div class="title">Our recommendations</div>
+  
   <table class="mt32">
     <tr><th style="width:300px">Question</th><th>Our answer</th></tr>
-    <tr><td class="k">Are the menus too long?</td><td>No. Team tools use 5 groups, business tools 7 items, and the farmer app 4 tabs plus a "Log harvest" button.</td></tr>
-    <tr><td class="k">Is the farmer app simple enough?</td><td>Yes. One main action, works offline, local languages and voice prompts.</td></tr>
-    <tr><td class="k">Do business tools have the right focus?</td><td>Yes. Built for speed, with bids as the official plan describes.</td></tr>
+    <tr><td class="k">Are the menus too long?</td><td>No. The Admin Interface uses 5 groups and the B2B Procurement Engine 7 items.</td></tr>
+    <tr><td class="k">Does B2B have the right focus?</td><td>Yes. Built for speed, with bids as Verdant's document describes.</td></tr>
     <tr><td class="k">Is the shopper account too busy?</td><td>No. Orders first, "Buy again", and no charts.</td></tr>
-    <tr><td class="k">Are the team tools well organised?</td><td>Yes. Grouped by Sales, People, Trust, Money and Settings, with a queue for farm checks.</td></tr>
-    <tr><td class="k">Is the savings group scope right?</td><td>Yes. Group rules added. Credit, insurance and investment wait for Phase 3.</td></tr>
-    <tr><td class="k">Is tracing pitched right for Phase 1?</td><td>Yes. Record every harvest in Phase 1; the public QR page follows in Phase 2.</td></tr>
+    <tr><td class="k">Is the Admin Interface well organised?</td><td>Yes. Grouped by Sales, People, Trust, Money and Settings, with a queue for farm checks.</td></tr>
+    <tr><td class="k">Is tracing pitched right for Phase 1?</td><td>Yes. Products show farm and harvest date in Phase 1; the public QR Journey Page goes live in Phase 2.</td></tr>
+    <tr><td class="k">Can guests buy without an account?</td><td>Yes. Name, phone and address, with updates by SMS.</td></tr>
   </table>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- COLOUR -->
 <section class="page paper">
   <div class="sec">Look and feel</div>
   <div class="title">Verdant owns green. The food brings the colour.</div>
@@ -581,10 +427,8 @@
     <p><b>Business and team tools</b> stay calm: mostly cream and green, with colour only in charts and status.</p>
     <p><b>Farmer app</b> is green and lime. <b>Plum</b> marks the savings group space.</p>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- TYPE -->
 <section class="page">
   <div class="g c-7-5 gap48">
     <div>
@@ -607,10 +451,8 @@
       </div>
     </div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- COMPONENTS -->
 <section class="page paper">
   <div class="sec">Look and feel</div>
   <div class="title s">The building blocks every screen is made from</div>
@@ -650,10 +492,8 @@
       <div><h4 class="m">Empty screen</h4><div class="b white mt8" style="display:flex;gap:14px;align-items:center;padding:16px 18px"><svg width="52" height="52" viewBox="0 0 52 52" style="flex:none"><path d="M26 6c10 0 20 12 20 24s-8 18-20 18S6 42 6 30 16 6 26 6z" fill="#F7C33C"/><path d="M26 8c-2-5 0-8 4-9-1 4-2 7-4 9z" fill="#5F9F0D"/></svg><div><h4>No harvests yet</h4><p class="s m">Log your first harvest to start selling.</p></div></div></div>
     </div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- REFERENCES -->
 <section class="page">
   <div class="g gap48" style="grid-template-columns:420px 1fr">
     <img src="assets/ref-selection.png" style="width:100%;height:600px;object-fit:cover;object-position:top;border-radius:14px">
@@ -676,10 +516,8 @@
       </div>
     </div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- DEVICES -->
 <section class="page paper">
   <div class="sec">Phones, tablets and computers</div>
   <div class="title">Designed for each screen, not shrunk to fit it.</div>
@@ -690,92 +528,47 @@
   </div>
   <table class="mt32">
     <tr><th style="width:200px">Example</th><th>Computer</th><th>Tablet</th><th>Phone</th></tr>
-    <tr><td class="k">Farmer stock</td><td>Table</td><td>Shorter table</td><td>Cards</td></tr>
+    <tr><td class="k">B2B inventory</td><td>Table</td><td>Shorter table</td><td>Cards</td></tr>
     <tr><td class="k">Menu</td><td>Top or side menu</td><td>Icon menu</td><td>Bottom menu</td></tr>
     <tr><td class="k">Filters</td><td>Always visible</td><td>Fold away</td><td>Opens from the bottom</td></tr>
     <tr><td class="k">Checkout</td><td>Two columns</td><td>Two columns</td><td>Steps, with a fixed pay button</td></tr>
   </table>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- LANGUAGES + PAYMENTS -->
-<section class="page">
-  <div class="sec">Languages and payments</div>
-  <div class="title">Speak the farmer's language. Pay the way Ghana pays.</div>
-  <div class="g c2 gap48 mt32">
-    <div>
-      <h3>Languages in the farmer and savings app</h3>
-      <table class="mt16">
-        <tr><th>Language</th><th>Where it's spoken most</th><th class="right">Available</th></tr>
-        <tr><td class="k">English</td><td>Nationwide</td><td class="right">At launch</td></tr>
-        <tr><td class="k">Twi</td><td>Ashanti, Eastern and more</td><td class="right">At launch</td></tr>
-        <tr><td class="k">Dagbani</td><td>Northern Region</td><td class="right">At launch</td></tr>
-        <tr><td class="k">Dagaare</td><td>Upper West Region</td><td class="right">At launch</td></tr>
-        <tr><td class="k">Gonja</td><td>Northern and Savannah</td><td class="right">Pilot year</td></tr>
-        <tr><td class="k">Waale</td><td>Upper West Region</td><td class="right">Pilot year</td></tr>
-        <tr><td class="k">Ewe</td><td>Volta Region</td><td class="right">Pilot year</td></tr>
-        <tr><td class="k">Ga</td><td>Greater Accra</td><td class="right">Pilot year</td></tr>
-      </table>
-      <p class="s m mt16">Translated by native speakers. Key steps also have voice prompts.</p>
-    </div>
-    <div>
-      <h3>Ways to pay and get paid</h3>
-      <div class="g c3 gap16 mt16">
-        <div class="b sun" style="padding:18px"><h4>MTN MoMo</h4></div>
-        <div class="b tomato" style="padding:18px"><h4>Telecel Cash</h4></div>
-        <div class="b blush" style="padding:18px"><h4>AT Money</h4></div>
-        <div class="b deep" style="padding:18px"><h4>Visa</h4></div>
-        <div class="b deep" style="padding:18px"><h4>Mastercard</h4></div>
-        <div class="b" style="padding:18px"><h4>Ghanaian banks</h4></div>
-      </div>
-      <table class="mt24">
-        <tr><td class="k" style="width:150px">Shoppers</td><td>MoMo (all three networks) or card</td></tr>
-        <tr><td class="k">Businesses</td><td>Bank transfer or company card</td></tr>
-        <tr><td class="k">Farmers</td><td>Paid to MoMo or a bank account</td></tr>
-        <tr><td class="k">Savings groups</td><td>Deposits and payouts by MoMo</td></tr>
-      </table>
-    </div>
-  </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
-</section>
-
-<!-- ROADMAP -->
 <section class="page paper">
+  <div class="sec">Payments on the website</div>
+  <div class="title">Pay the way Ghana pays.</div>
+  
+  <div class="g c6 gap16 mt32" style="grid-template-columns:repeat(6,1fr)">
+    <div class="b sun" style="padding:18px"><h4>MTN MoMo</h4></div><div class="b tomato" style="padding:18px"><h4>Telecel Cash</h4></div>
+    <div class="b blush" style="padding:18px"><h4>AT Money</h4></div><div class="b deep" style="padding:18px"><h4>Visa</h4></div>
+    <div class="b deep" style="padding:18px"><h4>Mastercard</h4></div><div class="b" style="padding:18px"><h4>Ghanaian banks</h4></div>
+  </div>
+  <table class="mt32">
+    <tr><th style="width:220px">Who</th><th>How they pay</th><th>Where</th></tr>
+    <tr><td class="k">Shoppers and guests</td><td>MoMo on all three networks, or Visa / Mastercard</td><td>AgTech Marketplace checkout</td></tr>
+    <tr><td class="k">Business buyers</td><td>Bank transfer or company card against invoices</td><td>B2B Procurement Engine</td></tr>
+    <tr><td class="k">Verdant team</td><td>Sees every payment in and every payout out</td><td>Admin Interface</td></tr>
+  </table>
+  <p class="s m mt24">Every payment screen shows a clear "Waiting for payment" state until the payment provider confirms.</p>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
+</section>
+<section class="page ">
   <div class="sec">Roadmap</div>
   <div class="title">Build the base, then trust, then finance.</div>
+  
   <div style="display:grid;grid-template-columns:6fr 12fr 8fr;margin-top:32px;font:600 14px Inter">
     <div style="background:var(--deep);color:var(--lime);padding:12px 16px;border-radius:10px 0 0 10px">Months 1 to 6</div>
     <div style="background:var(--orange);padding:12px 16px">Months 7 to 18</div>
     <div style="background:var(--plum);color:var(--blush);padding:12px 16px;border-radius:0 10px 10px 0">Month 19 onward</div>
   </div>
   <div class="g c3 gap32 mt24">
-    <div>
-      <h3>Phase 1: pilot</h3>
-      <p class="s m mt8">20 savings groups and 5 restaurant partners</p>
-      <ul class="l mt16 s">
-        <li>Website, shop and checkout</li><li>Shopper account</li><li>Business tools with bids and repeat deliveries</li><li>Farmer app with harvest records</li><li>Savings groups</li><li>Verdant team tools and farm checks</li><li>Farm and harvest date on every product</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Phase 2: tracing and delivery</h3>
-      <p class="s m mt8">The full QR tracing system and cold-chain partners</p>
-      <ul class="l mt16 s">
-        <li>QR code on every order</li><li>Public trace page</li><li>Collection and delivery tracking</li><li>Cold-chain delivery partners</li><li>Soil and carbon filters fully live</li><li>Better reports</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Phase 3: finance</h3>
-      <p class="s m mt8">Money tools for farmers</p>
-      <ul class="l mt16 s">
-        <li>Weather-based crop insurance</li><li>Rewards for carbon stored in soil</li><li>Credit scores from savings and sales</li><li>Small investments</li><li>Invoice financing for businesses</li>
-      </ul>
-    </div>
+    <div><h3>Phase 1: pilot</h3><ul class="l mt16 s"><li>Verdant Foods Corporate Website</li><li>AgTech Marketplace with checkout</li><li>Consumer Accounts</li><li>B2B Procurement Engine with bids and repeat supply</li><li>Admin Interface with farm checks</li><li>Farm and harvest date on every product</li></ul></div>
+    <div><h3>Phase 2: tracing and delivery</h3><ul class="l mt16 s"><li>QR Journey Page goes public</li><li>QR code on every order</li><li>Collection and delivery tracking</li><li>Soil and carbon filters fully live</li><li>Better reports</li></ul></div>
+    <div><h3>Phase 3: finance</h3><ul class="l mt16 s"><li>Invoice financing for businesses</li><li>Carbon rewards shown on farm profiles</li></ul></div>
   </div>
-  <p class="mt32" style="font:700 20px/1.3 Bricolage;color:var(--deep);max-width:820px">Later features stay hidden until they are ready. The harvest records kept from day one are what make Phases 2 and 3 possible.</p>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- WHO BUILDS WHAT -->
 <section class="page">
   <div class="sec">Who builds what</div>
   <div class="title s">Clear lines, so connecting the backend needs no redesign</div>
@@ -786,7 +579,7 @@
     <tr><td class="k">Sign-in</td><td>Login screens and who sees what</td><td>Accounts and permissions</td><td>The list of roles</td></tr>
     <tr><td class="k">Tracing</td><td>Harvest and trace page screens</td><td>Trace numbers and QR codes</td><td>Number format and journey steps</td></tr>
     <tr><td class="k">Payments</td><td>Checkout and payout screens</td><td>MoMo, card and bank connections</td><td>Payment status names</td></tr>
-    <tr><td class="k">Offline</td><td>Saving on the phone and "sending" messages</td><td>Receiving and merging offline entries</td><td>How phones and server sync</td></tr>
+    
     <tr><td class="k">Hosting</td><td>Website code on GitHub, previews on Vercel</td><td>Backend servers</td><td>Test and live addresses</td></tr>
   </table>
   <div class="g c3 gap16 mt32">
@@ -794,10 +587,8 @@
     <div class="b"><h4>2. Agree each connection</h4><p class="s m">The backend developer confirms fields and messages.</p></div>
     <div class="b deep"><h4>3. Switch to live</h4><p class="s m">One area at a time, tested on a preview link first.</p></div>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- BACKEND NEEDS -->
 <section class="page paper">
   <div class="sec">What we need from the backend</div>
   <div class="title s">Ten things that make connecting smooth</div>
@@ -812,7 +603,7 @@
     <table>
       <tr><td class="k" style="width:36px">6</td><td><b>Sample responses and test logins</b></td></tr>
       <tr><td class="k">7</td><td><b>Photo upload rules</b> for farms, products and receipts</td></tr>
-      <tr><td class="k">8</td><td><b>How offline entries are synced</b></td></tr>
+      <tr><td class="k">8</td><td><b>Payment provider details</b> for checkout and invoices</td></tr>
       <tr><td class="k">9</td><td><b>How trace numbers and QR codes are made</b></td></tr>
       <tr><td class="k">10</td><td><b>Test and live addresses</b></td></tr>
     </table>
@@ -820,70 +611,57 @@
   <div class="b deep mt48" style="padding:26px 28px">
     <p style="font:700 20px/1.35 Bricolage">Already set by Verdant's plan: secure connections, encrypted data, identity checks for wallets, and a modular backend. We build around these and don't redesign the backend.</p>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- HOW WE WORK -->
-<section class="page">
+<section class="page ">
   <div class="sec">How we work and what's next</div>
   <div class="title">Figma first. Test three screens, then build the rest.</div>
+  
   <div class="jr mt32" style="grid-template-columns:repeat(4,1fr)">
-    <div class="st deep"><div class="n">1</div><h4>Plan and colours</h4><p>Done: this document</p></div>
+    <div class="st deep"><div class="n">1</div><h4>Plan</h4><p>Done: this document</p></div>
     <div class="st lime"><div class="n">2</div><h4>Design Lab</h4><p>Colours, type and building blocks in Figma</p></div>
-    <div class="st lime"><div class="n">3</div><h4>Three test screens</h4><p>Homepage, Shop, Farmer dashboard</p></div>
-    <div class="st"><div class="n">4</div><h4>Review</h4><p>Do they feel like one family?</p></div>
+    <div class="st lime"><div class="n">3</div><h4>Three test screens</h4><p>Homepage, Marketplace, Admin dashboard</p></div>
+    <div class="st"><div class="n">4</div><h4>Review</h4><p>Approve the look before building more</p></div>
   </div>
   <div class="jr mt8" style="grid-template-columns:repeat(4,1fr)">
-    <div class="st"><div class="n">5</div><h4>All screens</h4><p>Account, business, savings, team, tracing</p></div>
-    <div class="st"><div class="n">6</div><h4>Every device</h4><p>Phone, tablet, computer and all states</p></div>
-    <div class="st"><div class="n">7</div><h4>Build</h4><p>Website code from the approved designs</p></div>
-    <div class="st deep"><div class="n">8</div><h4>Go live</h4><p>Preview, connect backend, launch</p></div>
+    <div class="st"><div class="n">5</div><h4>All screens</h4><p>Accounts, B2B, Admin, QR Journey Page</p></div>
+    <div class="st"><div class="n">6</div><h4>Figma prototype</h4><p>Clickable, for Verdant to test</p></div>
+    <div class="st"><div class="n">7</div><h4>Build</h4><p>React / Next.js from the approved designs</p></div>
+    <div class="st deep"><div class="n">8</div><h4>Preview and hand over</h4><p>On Vercel, then connect the backend</p></div>
   </div>
-  <div class="g c4 gap16 mt32">
-    <div class="b deep" style="padding:18px 20px"><h4>Next: Design Lab</h4><p class="s m">Colours, type, components</p></div>
-    <div class="b lime" style="padding:18px 20px"><h4>Homepage</h4><p class="s" style="color:#2D5A3A">Computer and phone</p></div>
-    <div class="b orange" style="padding:18px 20px"><h4>Shop</h4><p class="s" style="color:#4A2400">Computer and phone</p></div>
-    <div class="b plum" style="padding:18px 20px"><h4>Farmer dashboard</h4><p class="s m">Computer and phone</p></div>
-  </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <p class="mt32" style="font:700 20px/1.35 Bricolage;color:var(--deep);max-width:820px">Estimated delivery: 4 to 5 weeks, with planning, design and build overlapping where practical.</p>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- DECISIONS MADE -->
 <section class="page paper">
   <div class="sec">Decisions made</div>
-  <div class="title s">Ten key decisions</div>
+  <div class="title">Key decisions for the website</div>
+  
   <div class="g c2 gap48 mt32">
     <table style="font-size:15px;line-height:1.5">
-      <tr><td class="k" style="width:150px">Farmer app</td><td>One Android-first app, works offline, under 15MB, with a savings group space inside</td></tr>
+      <tr><td class="k" style="width:150px">Guest checkout</td><td>Yes. Name, phone and address; updates by SMS</td></tr>
       <tr><td class="k">Stock-up packs</td><td>Yes, as ready-made bundles. No shopper subscriptions in Phase 1.</td></tr>
-      <tr><td class="k">Guest checkout</td><td>Yes. Name, phone and address; updates by SMS</td></tr>
-      <tr><td class="k">Extension officers</td><td>Yes, from Phase 1</td></tr>
       <tr><td class="k">Bids</td><td>Farmer accepts, declines or counters once. 48 hours to reply.</td></tr>
+      <tr><td class="k">QR codes</td><td>One per order. Business deliveries also get one per crate.</td></tr>
     </table>
     <table style="font-size:15px;line-height:1.5">
-      <tr><td class="k" style="width:150px">QR codes</td><td>One per order. Business deliveries also get one per crate.</td></tr>
-      <tr><td class="k">Trace numbers</td><td>VF-TOM-00042. Made by the backend, with spare numbers kept on the phone.</td></tr>
+      <tr><td class="k" style="width:150px">Trace numbers</td><td>VF-TOM-00042, made by the backend</td></tr>
       <tr><td class="k">Payments</td><td>MTN MoMo, Telecel Cash, AT Money, Visa, Mastercard, Ghanaian banks</td></tr>
       <tr><td class="k">Photography</td><td>Art-directed photography and video for marketing; real farmer photos on records</td></tr>
-      <tr><td class="k">Languages</td><td>English, Twi, Dagbani, Dagaare at launch; Gonja, Waale, Ewe, Ga in the pilot year</td></tr>
+      <tr><td class="k">Hosting</td><td>Previews on Vercel; Verdant's own account for launch</td></tr>
     </table>
   </div>
-  <div class="foot"><span>Verdant Foods · Product plan</span><span class="pn"></span></div>
+  <div class="foot"><span>Verdant Foods · Product Architecture &amp; UX Planning · Website</span><span class="pn"></span></div>
 </section>
-
-<!-- BACK -->
 <section class="page night" data-nofoot style="padding:0">
   <div style="position:absolute;inset:64px;display:flex;flex-direction:column">
     <img src="assets/logo-cream.png" style="width:160px">
     <div style="margin-top:auto">
-      <p style="font-size:16px;line-height:1.6;max-width:640px;color:#C6D8D1">Based on the Verdant Foods Business Plan and Product Requirements (June 2026), the Verdant logo and the reference images chosen by NEXKOOMSON. Where this plan adds ideas beyond Verdant's document, they are shown as our recommendations.</p>
-      <p style="font-size:14px;color:#9FC0B6;margin-top:24px">Version 1.0 · October 2026 · NEXKOOMSON for Verdant Foods</p>
+      <div style="font:700 26px/1.2 Bricolage">Product Architecture &amp; UX Planning · Website</div>
+      <p style="font-size:16px;line-height:1.6;max-width:680px;color:#C6D8D1;margin-top:16px">Based on the Verdant Foods Business Plan and Product Requirements (June 2026), the Verdant logo and the reference images chosen by NEXKOOMSON. Where this plan adds ideas beyond Verdant's document, they are shown as our recommendations.</p>
+      <p style="font-size:14px;color:#9FC0B6;margin-top:24px">Version 1.0 · October 2026 · INV-NKL-00704 · NEXKOOMSON for Verdant Foods</p>
     </div>
   </div>
-  <div class="strip" style="position:absolute;left:0;right:0;bottom:0">
-    <span style="background:var(--deep)"></span><span style="background:var(--leaf)"></span><span style="background:var(--lime)"></span><span style="background:var(--sun)"></span><span style="background:var(--orange)"></span><span style="background:var(--tomato)"></span><span style="background:var(--blush)"></span><span style="background:var(--plum)"></span>
-  </div>
+  <div class="strip" style="position:absolute;left:0;right:0;bottom:0"><span style="background:var(--deep)"></span><span style="background:var(--leaf)"></span><span style="background:var(--lime)"></span><span style="background:var(--sun)"></span><span style="background:var(--orange)"></span><span style="background:var(--tomato)"></span><span style="background:var(--blush)"></span><span style="background:var(--plum)"></span></div>
 </section>
-
 <script>document.querySelectorAll('.page').forEach((p,i)=>{const n=p.querySelector('.pn');if(n)n.textContent=String(i+1).padStart(2,'0')+' / '+document.querySelectorAll('.page').length;});</script>
 </body></html>

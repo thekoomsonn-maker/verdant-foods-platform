@@ -50,7 +50,7 @@ fs.writeFileSync(path.join(dir, 'index.html'), html);
     if (only && !only.includes(i + 1)) continue;
     await pages[i].screenshot({ path: path.join(dir, 'preview', `p${String(i + 1).padStart(2, '0')}.png`) });
   }
-  await pg.pdf({ path: path.join(dir, 'Verdant_Foods_Product_Plan_v1.pdf'), width: '297mm', height: '210mm', printBackground: true, preferCSSPageSize: true });
+  await pg.pdf({ path: path.join(dir, 'Verdant_Foods_Product_Architecture_UX_Planning_Website_v1.pdf'), width: '297mm', height: '210mm', printBackground: true, preferCSSPageSize: true });
   console.log('pages:', pages.length);
   await b.close();
 })();
