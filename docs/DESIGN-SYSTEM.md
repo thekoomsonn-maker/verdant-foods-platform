@@ -45,10 +45,13 @@ Source of truth: Figma file `gVlIXT1BH4YD5NR5wC97An`, page **00 · Design System
   - B2B Procurement Engine (6)
   - Admin Interface (9)
   - Traceability Matrix: QR Journey Page (1)
-- **Client Application — All screens:** one section, *Android 360* (Flutter), with three rows:
-  - Getting started, offline and languages (5)
-  - Farm space (10)
-  - Savings group space (8)
+- The website file has one page per part (W1–W6), each with Desktop 1440, Tablet 834 and Mobile 390 sections.
+- **Client Application** now has its own Figma file, `mJEq4xwX3X2lhYSTiG2vUU`, with its own App Design System page and one page per space. Every section is *Android 360* (Flutter):
+  - A1 · Getting started, offline and languages: screens 01–08
+  - A2 · Farm space: screens 09–20
+  - A3 · Savings group space (VSLA): screens 21–29
+  - A4 · Field officer: screens 30–36
+- The old combined app board was moved to the website file's Archive page.
 
 ## 6. Imagery
 - **Marketing scenes:** art-directed photographs of Ghanaian farms, people, the packhouse and deliveries.
