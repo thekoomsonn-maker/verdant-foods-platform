@@ -47,7 +47,7 @@ export function HomeTrace() {
             <form onSubmit={(e) => { e.preventDefault(); router.push(R.trace(code.trim() || JOURNEY.code)); }} className="glass-dark flex max-w-[560px] items-center gap-2 rounded-full p-1.5 pl-5">
               <Icon name="qr-code" size={20} className="text-lime" />
               <input value={code} onChange={(e) => setCode(e.target.value)} placeholder="Enter a code, e.g. VF-TOM-00048" aria-label="Trace code" className="min-w-0 flex-1 bg-transparent text-[16px] outline-none placeholder:text-white/60" />
-              <button className="h-10 rounded-full bg-lime px-5 text-[14px] font-semibold text-night transition-colors hover:bg-leaf-light">Trace</button>
+              <button className="h-10 rounded-full bg-lime px-5 text-[14px] font-semibold text-night transition-[background-color,scale,box-shadow] duration-300 hover:scale-[1.04] hover:bg-[#CDF28F] hover:shadow-[0_10px_26px_-8px_rgb(187_234_112/0.7)] active:scale-95">Trace</button>
             </form>
           </Reveal>
         </div>
@@ -65,8 +65,8 @@ export function HomeTrace() {
             active={String(step)} onPin={(id) => setStep(Number(id))} />
           <div className="flex flex-col">
             {s.slice(0, 4).map((x, i) => (
-              <button key={x.title} onClick={() => setStep(i)} className={cx("flex items-center gap-3 rounded-xl px-2 py-2 text-left transition-colors", step === i ? "bg-white/10" : "hover:bg-white/5")}>
-                <span className={cx("flex h-8 w-8 items-center justify-center rounded-full", step === i ? "bg-lime text-night" : "bg-forest text-lime")}><Icon name={x.icon} size={15} /></span>
+              <button key={x.title} onClick={() => setStep(i)} className={cx("group/js flex items-center gap-3 rounded-xl px-2 py-2 text-left transition-[background-color,translate] duration-300 ease-[var(--ease-out)]", step === i ? "bg-white/10" : "hover:translate-x-1 hover:bg-white/5")}>
+                <span className={cx("flex h-8 w-8 items-center justify-center rounded-full transition-[background-color,color,scale] duration-300 group-hover/js:scale-110", step === i ? "bg-lime text-night" : "bg-forest text-lime")}><Icon name={x.icon} size={15} /></span>
                 <span className="flex-1"><span className="block text-[14px] font-semibold">{x.title}: {x.place.split(" · ")[0]}</span><span className="block text-[12px] text-white/65">{x.time}{x.kg && ` · ${x.kg}`}</span></span>
               </button>
             ))}

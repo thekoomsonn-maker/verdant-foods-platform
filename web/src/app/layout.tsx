@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { BagProvider } from "@/components/site/bag";
-import { SmoothScroll } from "@/components/motion";
+import { Cursor, SmoothScroll } from "@/components/motion";
 import { ToastProvider } from "@/components/toast";
 
 const jakarta = localFont({ src: "./fonts/plus-jakarta-sans-latin-wght-normal.woff2", variable: "--font-jakarta", weight: "200 800", display: "swap" });
@@ -21,6 +21,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <ToastProvider>
           <BagProvider>
             <SmoothScroll />
+            <Cursor />
             {children}
           </BagProvider>
         </ToastProvider>

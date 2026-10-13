@@ -49,6 +49,7 @@
   --animate-shimmer: shimmer 1.2s linear infinite;
   --animate-scan: scan 1.8s var(--ease-in-out) infinite;
   --animate-dash: dash 1.2s linear infinite;
+  --animate-cue: cue 2s var(--ease-in-out) infinite;
 
   @keyframes pulse-ring {
     0% { transform: scale(0.8); opacity: 0.7; }
@@ -69,6 +70,10 @@
   }
   @keyframes dash {
     to { stroke-dashoffset: -24; }
+  }
+  @keyframes cue {
+    0% { transform: translateY(-100%); }
+    60%, 100% { transform: translateY(260%); }
   }
 }
 
@@ -155,3 +160,70 @@ html.lenis, html.lenis body { height: auto; }
 
 /* Grid items may shrink below their content (prevents phone overflow from scroll rows, maps and tables). */
 :where(.grid) > * { min-width: 0; }
+
+/* =========================================================================
+ * v2 motion (see docs/MOTION-AND-INTERACTION.md, "v2 motion")
+ * Kept in the components layer so Tailwind utilities on the same element still win,
+ * except where !important is needed to keep scroll-driven transforms un-transitioned.
+ * ========================================================================= */
+@layer components {
+  /* Media frames (ClipReveal, MediaFrame): a direct <img>/<video> child is driven by CSS variables
+     written every frame by useMediaFX (parallax --vf-y, pointer pan --vf-mx/--vf-my, settle --vf-s).
+     The 1.1 base scale gives 5% slack on every side, so parallax and pan never show an edge. */
+  .vf-media > :is(img, video) {
+    transform: translate3d(var(--vf-mx, 0%), calc(var(--vf-y, 0%) + var(--vf-my, 0%)), 0) scale(calc(1.1 * var(--vf-s, 1)));
+    transition-property: scale, opacity, filter !important;
+    transition-duration: 900ms;
+    transition-timing-function: var(--ease-out);
+  }
+  @media (hover: hover) {
+    .vf-media:hover > :is(img, video) { scale: 1.06; }
+  }
+
+  /* Tile image: zoom and pan toward the pointer (vars from spotlight()). */
+  .vf-tile-img {
+    transform: translate3d(var(--px-on, 0%), var(--py-on, 0%), 0) scale(var(--z, 1));
+    transition: transform 900ms var(--ease-out);
+  }
+  @media (hover: hover) {
+    .vf-tile:hover .vf-tile-img { --z: 1.08; --px-on: var(--px, 0%); --py-on: var(--py, 0%); }
+    .vf-tile:hover .vf-tile-img.vf-art { --z: 1.05; }
+  }
+
+  /* Pointer-following sheen. Put `.vf-spot` on a positioned element and feed it with spotlight(). */
+  .vf-spot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), rgb(255 255 255 / 0.42), transparent 55%);
+    opacity: 0;
+    transition: opacity 500ms var(--ease-out);
+  }
+  .vf-spot.vf-spot-dark::after { background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), rgb(187 234 112 / 0.16), transparent 55%); }
+  @media (hover: hover) { .vf-spot:hover::after { opacity: 1; } }
+
+  /* Animated underline for text links: `.u-draw` on the text span (or the link itself). */
+  .u-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1.5px;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    transition: background-size 450ms var(--ease-out);
+    padding-bottom: 2px;
+  }
+  :is(a, button):hover .u-draw, a.u-draw:hover, .group:hover .u-draw { background-size: 100% 1.5px; background-position: 0% 100%; }
+
+  /* Marquee */
+  .vf-marquee-track { animation: vf-marquee linear infinite; will-change: transform; }
+  .vf-marquee-pause:hover .vf-marquee-track { animation-play-state: paused; }
+}
+@keyframes vf-marquee { to { transform: translate3d(-100%, 0, 0); } }
+
+/* Custom cursor: hide the native arrow on non-text surfaces only while the follower is mounted. */
+html.has-cursor body,
+html.has-cursor :is(a, button, [role=button], [role=switch], [role=tab], summary, label, [data-cursor]) { cursor: none; }
+html.has-cursor :is(input, textarea, select, [contenteditable=true]) { cursor: text; }
+html.has-cursor .maplibregl-map, html.has-cursor .maplibregl-map * { cursor: auto; }
+html.has-cursor .maplibregl-canvas-container.maplibregl-interactive { cursor: grab; }
