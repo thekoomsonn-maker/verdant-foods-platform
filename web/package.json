@@ -14,7 +14,7 @@
     "lucide-react": "^0.544.0",
     "maplibre-gl": "^5.7.1",
     "motion": "^12.23.12",
-    "next": "15.5.4",
+    "next": "^15.5.27",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-map-gl": "^8.0.4"
@@ -26,7 +26,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.5.4",
+    "eslint-config-next": "^15.5.27",
     "playwright": "^1.55.0",
     "tailwindcss": "^4",
     "typescript": "^5"
