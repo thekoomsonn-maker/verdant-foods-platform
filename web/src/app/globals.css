@@ -152,3 +152,6 @@ html.lenis, html.lenis body { height: auto; }
     scroll-behavior: auto !important;
   }
 }
+
+/* Grid items may shrink below their content (prevents phone overflow from scroll rows, maps and tables). */
+:where(.grid) > * { min-width: 0; }

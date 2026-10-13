@@ -8,6 +8,7 @@ import { Icon, type IconName } from "../icon";
 import { ClipReveal, CountUp, ParallaxImage, Reveal, SplitWords, Stagger, Tilt, EASE } from "../motion";
 import { Button, Chip, Container, Crumbs, cx, Eyebrow, GlassChip, GlassStat, Head, Section, T } from "../ui";
 import { useBag } from "./bag";
+import { useToast } from "../toast";
 
 const SHADE = "linear-gradient(180deg, rgb(1 31 26 / .5) 0%, rgb(1 31 26 / .1) 35%, rgb(1 26 20 / .88) 100%)";
 
@@ -269,11 +270,12 @@ export function NumCard({ n, l, bg = "bg-mist" }: { n: string; l: string; bg?: s
 
 /* ---------- Newsletter band ---------- */
 export function NewsBand({ title, sub }: { title: string; sub: string }) {
+  const toast = useToast();
   return (
     <Section bg="bg-deep" className="flex flex-col gap-6 text-white lg:flex-row lg:items-center lg:justify-between">
       <Reveal className="flex flex-col gap-2"><h2 className={T.h2}>{title}</h2><p className="text-[18px] text-white/75">{sub}</p></Reveal>
       <Reveal delay={0.1} className="w-full lg:w-[520px]">
-        <form className="flex items-center gap-2 rounded-full bg-white p-1.5 pl-5"><input type="email" placeholder="Your email address" aria-label="Email" className="min-w-0 flex-1 text-[16px] text-ink outline-none placeholder:text-muted" /><Button size="M" type="submit">Subscribe</Button></form>
+        <form onSubmit={(e) => { e.preventDefault(); toast("You are on the list. First story arrives Friday."); e.currentTarget.reset(); }} className="flex items-center gap-2 rounded-full bg-white p-1.5 pl-5"><input type="email" required placeholder="Your email address" aria-label="Email" className="min-w-0 flex-1 text-[16px] text-ink outline-none placeholder:text-muted" /><Button size="M" type="submit">Subscribe</Button></form>
       </Reveal>
     </Section>
   );

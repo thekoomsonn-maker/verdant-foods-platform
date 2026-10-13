@@ -11,7 +11,7 @@ export type PinKind = "farm" | "handover" | "van" | "problem" | "buyer" | "home"
 export type Pin = { id: string; lat: number; lng: number; label?: string; kind: PinKind; icon?: IconName; sub?: string };
 export type Plot = { id: string; name?: string; coords: [number, number][]; color?: string };
 export type RouteLine = { id: string; coords: [number, number][]; color?: string; dashed?: boolean };
-export type Van = { id: string; label?: string; route: [number, number][]; speed?: number; offset?: number };
+export type Van = { id: string; label?: string; route: [number, number][]; speed?: number; offset?: number; loop?: boolean };
 
 const KIND: Record<PinKind, { bg: string; fg: string; icon: IconName }> = {
   farm: { bg: "bg-lime", fg: "text-night", icon: "sprout" },
@@ -47,10 +47,10 @@ export type LiveMapProps = {
   focus: { lat: number; lng: number; zoom: number }; intro?: boolean;
   plots?: Plot[]; routes?: RouteLine[]; pins?: Pin[]; vans?: Van[];
   live?: string; legend?: [string, string][]; controls?: boolean; layers?: string[];
-  active?: string; onPin?: (id: string) => void; rounded?: string; interactive?: boolean;
+  active?: string; onPin?: (id: string) => void; rounded?: string; interactive?: boolean; labels?: "hover" | "always";
 };
 
-export default function LiveMap({ className, styleName = "satellite", focus, intro = true, plots = [], routes = [], pins = [], vans = [], live, legend, controls = true, layers, active, onPin, rounded = "rounded-3xl", interactive = true }: LiveMapProps) {
+export default function LiveMap({ className, styleName = "satellite", focus, intro = true, plots = [], routes = [], pins = [], vans = [], live, legend, controls = true, layers, active, onPin, rounded = "rounded-3xl", interactive = true, labels = "hover" }: LiveMapProps) {
   const ref = useRef<MapRef>(null);
   const [loaded, setLoaded] = useState(false);
   const [hover, setHover] = useState<string | null>(null);
@@ -81,8 +81,6 @@ export default function LiveMap({ className, styleName = "satellite", focus, int
   useEffect(() => {
     if (!loaded) return;
     const map = ref.current?.getMap(); if (!map) return;
-    if (map.getLayer("plots-fill")) map.setPaintProperty("plots-fill", "fill-opacity", 0.24);
-    if (map.getLayer("plots-line")) map.setPaintProperty("plots-line", "line-opacity", 1);
     if (reduce) return;
     const seq = [[0, 4, 3], [0.5, 4, 2.5], [1, 4, 2], [1.5, 4, 1.5], [2, 4, 1], [2.5, 4, 0.5], [3, 4, 0], [0, 0.5, 3, 3.5], [0, 1, 3, 3], [0, 1.5, 3, 2.5], [0, 2, 3, 2], [0, 2.5, 3, 1.5], [0, 3, 3, 1], [0, 3.5, 3, 0.5]];
     let step = -1, id = 0, last = 0;
@@ -95,16 +93,18 @@ export default function LiveMap({ className, styleName = "satellite", focus, int
   }, [loaded, reduce]);
 
   // Vans move along their routes.
+  const vanKey = vans.map((v) => v.id + v.route.length).join("|");
   useEffect(() => {
     if (!vans.length) return;
     let id = 0, last = 0; const t0 = performance.now();
     const tick = (ts: number) => {
-      if (ts - last > 33) { last = ts; const out: Record<string, [number, number]> = {}; for (const v of vans) out[v.id] = along(v.route, reduce ? (v.offset ?? 0.4) : (v.offset ?? 0) + ((ts - t0) / 1000) * (v.speed ?? 0.02)); setVanPos(out); }
+      if (ts - last > 33) { last = ts; const out: Record<string, [number, number]> = {}; for (const v of vans) { const t = reduce ? (v.offset ?? 0.4) : (v.offset ?? 0) + ((ts - t0) / 1000) * (v.speed ?? 0.02); out[v.id] = along(v.route, v.loop === false ? Math.min(t, 0.9999) : t); } setVanPos(out); }
       id = requestAnimationFrame(tick);
     };
     id = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(id);
-  }, [vans, reduce]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [vanKey, reduce]);
 
   const visible = (k: PinKind) => !layers || on[k === "farm" ? "Farms" : k === "handover" ? "Collection points" : k === "van" ? "Vans" : k === "problem" ? "Problems" : "Buyers"] !== false;
 
@@ -124,8 +124,8 @@ export default function LiveMap({ className, styleName = "satellite", focus, int
       >
         {plots.length > 0 && (!layers || on["Plots"] !== false) && (
           <Source id="plots" type="geojson" data={plotsGeo}>
-            <Layer id="plots-fill" type="fill" paint={{ "fill-color": ["get", "color"], "fill-opacity": 0, ...({ "fill-opacity-transition": { duration: 900, delay: 400 } } as object) }} />
-            <Layer id="plots-line" type="line" paint={{ "line-color": ["get", "color"], "line-width": 2.5, "line-opacity": 0, ...({ "line-opacity-transition": { duration: 600, delay: 200 } } as object) }} />
+            <Layer id="plots-fill" type="fill" paint={{ "fill-color": ["get", "color"], "fill-opacity": loaded ? 0.24 : 0, ...({ "fill-opacity-transition": { duration: 900, delay: 400 } } as object) }} />
+            <Layer id="plots-line" type="line" paint={{ "line-color": ["get", "color"], "line-width": 2.5, "line-opacity": loaded ? 1 : 0, ...({ "line-opacity-transition": { duration: 600, delay: 200 } } as object) }} />
           </Source>
         )}
         {routes.length > 0 && (
@@ -147,7 +147,7 @@ export default function LiveMap({ className, styleName = "satellite", focus, int
                 {p.kind === "problem" && <span className="absolute left-0 top-0 h-9 w-9 animate-pulse-ring rounded-full bg-tomato" />}
                 <span className={cx("relative flex h-9 w-9 items-center justify-center rounded-full shadow-[0_6px_18px_rgb(0_0_0/.35)] ring-[3px] ring-white", k.bg, k.fg)}><Icon name={p.icon ?? k.icon} size={17} /></span>
                 <AnimatePresence>
-                  {p.label && (isOn || !onPin) && (
+                  {p.label && (isOn || !onPin || labels === "always") && (
                     <motion.span initial={{ opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -6 }} className="pointer-events-none whitespace-nowrap rounded-full bg-white/95 px-3 py-1.5 text-left text-[13px] font-semibold text-ink shadow-[var(--shadow-1)]">
                       {p.label}{p.sub && <span className="ml-1.5 font-normal text-muted">{p.sub}</span>}
                     </motion.span>

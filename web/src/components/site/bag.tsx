@@ -8,7 +8,7 @@ import { Button } from "../ui";
 import { R } from "@/lib/routes";
 
 type Line = { p: Product; qty: number };
-type Ctx = { lines: Line[]; count: number; add: (p: Product, from?: HTMLElement | null) => void; open: boolean; setOpen: (b: boolean) => void; bump: number };
+type Ctx = { lines: Line[]; count: number; add: (p: Product, from?: HTMLElement | null) => void; setQty: (slug: string, n: number) => void; remove: (slug: string) => void; open: boolean; setOpen: (b: boolean) => void; bump: number };
 const BagCtx = createContext<Ctx | null>(null);
 export const useBag = () => useContext(BagCtx)!;
 
@@ -42,9 +42,11 @@ export function BagProvider({ children }: { children: ReactNode }) {
     );
     anim.onfinish = () => { img.remove(); done(); };
   }, []);
+  const setQty = useCallback((slug: string, n: number) => setLines((ls) => (n <= 0 ? ls.filter((l) => l.p.slug !== slug) : ls.map((l) => (l.p.slug === slug ? { ...l, qty: n } : l)))), []);
+  const remove = useCallback((slug: string) => setLines((ls) => ls.filter((l) => l.p.slug !== slug)), []);
   const count = lines.reduce((a, l) => a + l.qty, 0);
   return (
-    <BagCtx.Provider value={{ lines, count, add, open, setOpen, bump }}>
+    <BagCtx.Provider value={{ lines, count, add, setQty, remove, open, setOpen, bump }}>
       {children}
       <BagDrawer />
     </BagCtx.Provider>

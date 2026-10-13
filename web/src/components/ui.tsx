@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { motion, LayoutGroup } from "motion/react";
-import { useState, type ReactNode } from "react";
+import { useEffect, useId, useState, type ReactNode } from "react";
 import { Icon, type IconName } from "./icon";
 import { PROOF, type Proof } from "@/lib/data";
 import { CountUp } from "./motion";
@@ -107,7 +107,8 @@ export function ProofChip({ level }: { level: Proof }) {
 /* ---------- Pills with sliding indicator ---------- */
 export function Pills({ items, value, onChange, className, light, size = "M" }: { items: string[]; value?: string; onChange?: (v: string) => void; className?: string; light?: boolean; size?: "M" | "S" }) {
   const [v, setV] = useState(value ?? items[0]);
-  const id = useState(() => Math.random().toString(36).slice(2))[0];
+  useEffect(() => { if (value !== undefined) setV(value); }, [value]);
+  const id = useId();
   return (
     <LayoutGroup id={id}>
       <div className={cx("no-scrollbar flex gap-2 overflow-x-auto", className)}>
@@ -128,7 +129,8 @@ export function Pills({ items, value, onChange, className, light, size = "M" }: 
 /* ---------- Underline tabs ---------- */
 export function Tabs({ items, value, onChange, className }: { items: string[]; value?: string; onChange?: (v: string) => void; className?: string }) {
   const [v, setV] = useState(value ?? items[0]);
-  const id = useState(() => Math.random().toString(36).slice(2))[0];
+  useEffect(() => { if (value !== undefined) setV(value); }, [value]);
+  const id = useId();
   return (
     <LayoutGroup id={id}>
       <div className={cx("no-scrollbar flex gap-6 overflow-x-auto border-b border-line md:gap-8", className)}>
@@ -180,10 +182,11 @@ export function Field({ label, placeholder, value, icon, trail, area, className,
     </label>
   );
 }
-export function Toggle({ on: init = false, label }: { on?: boolean; label?: string }) {
+export function Toggle({ on: init = false, label, onChange }: { on?: boolean; label?: string; onChange?: (on: boolean) => void }) {
   const [on, setOn] = useState(init);
+  useEffect(() => { setOn(init); }, [init]);
   return (
-    <button role="switch" aria-checked={on} aria-label={label} onClick={() => setOn(!on)} className={cx("relative inline-flex h-[26px] w-[46px] shrink-0 items-center rounded-full p-[3px] transition-colors duration-200", on ? "bg-deep" : "bg-line")}>
+    <button role="switch" aria-checked={on} aria-label={label} onClick={() => { setOn(!on); onChange?.(!on); }} className={cx("relative inline-flex h-[26px] w-[46px] shrink-0 items-center rounded-full p-[3px] transition-colors duration-200", on ? "bg-deep" : "bg-line")}>
       <motion.span layout transition={{ type: "spring", stiffness: 500, damping: 34 }} className={cx("h-5 w-5 rounded-full bg-white shadow", on && "ml-auto")} />
     </button>
   );

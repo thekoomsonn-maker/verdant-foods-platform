@@ -52,12 +52,12 @@ export function Stagger({ children, className, gap = 0.06, y = 20 }: { children:
 }
 
 /** Hero headline: words rise inside a mask, staggered 40 ms. */
-export function SplitWords({ text, className, delay = 0.15, as = "h1" }: { text: string; className?: string; delay?: number; as?: "h1" | "h2" | "p" }) {
+export function SplitWords({ text, className, delay = 0.15, as = "h1", inView }: { text: string; className?: string; delay?: number; as?: "h1" | "h2" | "p"; inView?: boolean }) {
   const reduce = useReducedMotion();
   const C = motion[as] as typeof motion.h1;
   const words = text.split(" ");
   return (
-    <C className={className} initial="hidden" animate="show" aria-label={text}>
+    <C className={className} initial="hidden" {...(inView ?? as !== "h1" ? { whileInView: "show", viewport: { once: true, amount: 0.5 } } : { animate: "show" })} aria-label={text}>
       {words.map((w, i) => (
         <Fragment key={i}>
         {i > 0 && " "}
@@ -82,16 +82,18 @@ export function CountUp({ value, className, duration = 1.2 }: { value: string; c
   const reduce = useReducedMotion();
   const m = value.match(/^([^\d-]*)(-?[\d,.]+)(.*)$/);
   const [out, setOut] = useState(m ? m[1] + "0" + m[3] : value);
+  const prev = useRef(0);
   useEffect(() => {
     if (!m) return;
     const target = parseFloat(m[2].replace(/,/g, ""));
     const decimals = (m[2].split(".")[1] || "").length;
     if (!inView) return;
     if (reduce) { setOut(value); return; }
-    const c = animate(0, target, { duration, ease: EASE, onUpdate: (v) => setOut(m[1] + v.toLocaleString("en-GH", { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + m[3]) });
+    const from = prev.current; prev.current = target;
+    const c = animate(from, target, { duration: from ? 0.5 : duration, ease: EASE, onUpdate: (v) => setOut(m[1] + v.toLocaleString("en-GH", { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + m[3]) });
     return () => c.stop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inView]);
+  }, [inView, value]);
   return <span ref={ref} className={`tabular ${className ?? ""}`}>{out}</span>;
 }
 
@@ -112,12 +114,18 @@ export function ParallaxImage({ src, alt = "", speed = 0.2, className, overlay, 
   );
 }
 
-/** Image reveal: clip-path wipe from the bottom. */
+/** Image reveal: clip-path wipe from the bottom. The observer sits on an unclipped wrapper (a clipped target never intersects). */
 export function ClipReveal({ children, className }: { children: ReactNode; className?: string }) {
   const reduce = useReducedMotion();
   return (
-    <motion.div className={className} initial={reduce ? { opacity: 0 } : { clipPath: "inset(100% 0% 0% 0%)" }} whileInView={reduce ? { opacity: 1 } : { clipPath: "inset(0% 0% 0% 0%)" }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.9, ease: EASE }}>
-      {children}
+    <motion.div className={className} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} style={{ display: undefined }}>
+      <motion.div
+        className="h-full w-full [display:inherit] [flex-direction:inherit] [align-items:inherit] [justify-content:inherit] [gap:inherit]"
+        variants={{ hidden: reduce ? { opacity: 0 } : { clipPath: "inset(100% 0% 0% 0%)" }, show: reduce ? { opacity: 1 } : { clipPath: "inset(0% 0% 0% 0%)" } }}
+        transition={{ duration: 0.9, ease: EASE }}
+      >
+        {children}
+      </motion.div>
     </motion.div>
   );
 }
