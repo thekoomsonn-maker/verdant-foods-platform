@@ -36,5 +36,5 @@ Profit (fiscal viability) · People (rural asset creation, financial equity) · 
 - Do not invent features beyond the PRS. Items in the master brief not found in the PRS are marked *proposed* in PRODUCT-ARCHITECTURE.md.
 
 ## Working process
-1. Docs (this folder) → 2. Figma: Design Lab → 3. Figma: Homepage, Marketplace, Farmer Dashboard → **review checkpoint** → 4. expand (Customer, B2B, Admin, VSLA, Trace) → responsive pass per module → UX polish → code build in this repo (Next.js) → Vercel preview.
+1. Planning (done) → 2. Figma Design Lab → 3. Figma test screens (website: Homepage, Marketplace, Admin dashboard; app: Farm and Savings spaces) → review → all screens and prototype → website build (Next.js, Vercel) and app build (Flutter) → handover.
 Design is done **Figma-first**; code implements approved Figma.

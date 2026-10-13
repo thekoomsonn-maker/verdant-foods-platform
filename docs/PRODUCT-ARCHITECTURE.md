@@ -15,7 +15,7 @@ One ecosystem, eight experiences. Shared design system, shared entities, separat
 | 07 | Admin / Operations | Verdant staff | Web (Next.js) | 1 |
 | 08 | Public traceability page | Anyone scanning a QR | Web, lightweight | 2 |
 
-> **Decision needed:** the PRS specifies farmer & VSLA clients as native/cross-platform apps (<15MB Android, SQLite offline cache). This repo builds them as responsive web for design validation. The production native app is a separate track.
+> **Decided:** the Client Application (Farmers & VSLAs) is a separate Flutter Android app (INV-NKL-00705). This repo is the website only (INV-NKL-00704). Consumers shop on the website in Phase 1.
 
 ### Routes (web)
 ```
@@ -31,8 +31,6 @@ One ecosystem, eight experiences. Shared design system, shared entities, separat
 /about
 /account/*                Customer: orders, saved, addresses, payment methods, profile (consumer subscriptions = future, not PRS)
 /b2b/*                    overview, source, bids, orders (+deliveries), agreements, invoices, suppliers
-/farmer/*                 overview, farm, crops, harvests, harvests/new, inventory, orders, deliveries, payments, traceability, vsla
-/vsla/*                   overview, members, savings, contributions, loans, transactions, bylaws
 /admin/*                  dashboard, marketplace, products, farmers, farms, harvests, buyers, orders, procurement, deliveries, payments, traceability, vslas, reports, users, settings
 /design-system            Internal style lab
 ```
@@ -46,8 +44,7 @@ One ecosystem, eight experiences. Shared design system, shared entities, separat
 | FR-1.3 | Ecological indicators per batch: soil organic matter, tCO₂ sequestered, GPS | Batch detail, trace page (verified only) |
 | FR-1.4 | Dynamic QR, print-ready + digital, chronological journey page | Admin/farmer traceability, `/trace/[batchId]` |
 | FR-1.5 | B2B: browse live inventory, filter by soil-health/carbon, wholesale bids, recurring agreements | `/b2b/marketplace`, `/b2b/rfqs`, `/b2b/contracts` |
-| FR-2.1 | VSLA: member registration, bylaws (share price, lending rate), weekly contributions ledger, cash position | `/vsla/*` |
-| FR-2.2 | Alternative credit score (VSLA + sales history) | Phase 3 — farmer finance card, admin |
+| FR-2.1 | VSLA: member registration, bylaws (share price, lending rate), weekly contributions ledger, cash position | `| FR-2.2 | Alternative credit score (VSLA + sales history) | Phase 3 — farmer finance card, admin |
 | FR-2.3 | Weather-indexed micro-insurance | Phase 3 |
 | FR-2.4 | Payments: B2B wires/cards/invoice financing; B2C cards/wallets; MoMo payouts | Checkout, `/b2b/invoices`, `/farmer/payments` |
 | NFR-1.1 | Offline-first farmer/VSLA, background sync | SyncStatus component, optimistic saves |
@@ -80,4 +77,4 @@ Types live in `/types`; realistic Ghana mock data in `/data`; a thin `/lib/api` 
 Guest · Consumer · B2B Buyer · Farmer/Producer · VSLA Member · VSLA Admin · Verdant Admin · Extension Officer (to confirm). Full access matrix: PDF §04.
 
 ## 7. Checkpoint 1 scope
-Design Lab · Homepage · Marketplace · Farmer Dashboard — desktop 1440 + mobile 390. Stop for review.
+Website: Design Lab · Homepage · Marketplace · Admin dashboard (desktop 1440 + mobile 390). App: Farm space and Savings space screens. Stop for review.

@@ -124,7 +124,7 @@ W('Who uses the website', page('', 'Who uses the website', 'Four kinds of websit
     <span style="display:flex;gap:8px;align-items:center"><i class="dot l"></i>Comes in Phase 2</span>
     <span style="display:flex;gap:8px;align-items:center"><i class="dot n"></i>No access</span>
   </div>'''))
-W('How the platform is built', sec('PLATFORM'))
+W('How the platform is built', sec('PLATFORM', ('<p class="s m">Web and shopper app</p></div><div class="b" style="padding:16px 18px;background:var(--orange-s)">','<p class="s m">Web</p></div><div class="b" style="padding:16px 18px;background:var(--orange-s)">'), ('<h4>Checkout and account</h4><p class="s m">Web and shopper app</p>','<h4>Checkout and account</h4><p class="s m">Web</p>'), ('<h4>Savings groups</h4><p class="s" style="color:#2D5A3A">Inside the farmer app</p>','<h4>Savings groups</h4><p class="s" style="color:#2D5A3A">Inside the farmer app (separate plan)</p>')))
 W('Verdant Foods Corporate Website', sec('WEBSITE + SHOP', ('<div class="sec">Website and shop</div>', '<div class="sec">Verdant Foods Corporate Website</div>')))
 W('AgTech Marketplace and Consumer Accounts', sec('CUSTOMER', ('<div class="sec">Customer account and checkout</div>', '<div class="sec">AgTech Marketplace and Consumer Accounts</div>')))
 W('B2B Procurement Engine', sec('BUSINESS', ('<div class="sec">Business buyers</div>', '<div class="sec">B2B Procurement Engine</div>')))
@@ -132,7 +132,7 @@ W('Admin Interface', sec('ADMIN', ('<div class="sec">Verdant team tools</div>', 
 W('Traceability Matrix: QR Journey Page', sec('TRACE 1', ('<div class="sec">Tracing food from farm to plate</div>', '<div class="sec">Traceability Matrix: QR Journey Page</div>')))
 W(None, sec('TRACE 2', ('<div class="sec">Tracing food from farm to plate</div>', '<div class="sec">Traceability Matrix: QR Journey Page</div>')))
 W('Key journeys', sec('JOURNEYS 1'))
-W('How screens should behave', sec('BEHAVIOUR'))
+W('How screens should behave', sec('BEHAVIOUR', ('<h4>Offline is normal</h4><p class="s m">Save on the phone, show when it\'s sent.</p>','<h4>Clear payment status</h4><p class="s m">Never leave a buyer guessing.</p>'), ('<p class="s m">Strong contrast, clear labels, voice prompts.</p>','<p class="s m">Strong contrast, clear labels, keyboard friendly.</p>'), ('<span class="st-pill warn">Saved offline</span>','<span class="st-pill warn">Saved as draft</span>')))
 W('How we keep the website simple', page('', 'How we keep the website simple', 'Our recommendations', '''
   <table class="mt32">
     <tr><th style="width:300px">Question</th><th>Our answer</th></tr>
