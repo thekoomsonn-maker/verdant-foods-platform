@@ -7,8 +7,9 @@ import { useEffect, useRef, useState } from "react";
 import { MAIN_NAV, R } from "@/lib/routes";
 import { CATEGORIES, PRODUCTS, productImg } from "@/lib/data";
 import { Icon } from "../icon";
-import { Button, cx, Pills } from "../ui";
+import { Button, cx } from "../ui";
 import { BagCount, useBag } from "./bag";
+import { LangList, LangPicker, ProductGrid, ProductSwitcher } from "./switcher";
 
 export function Nav({ theme = "overlay" }: { theme?: "overlay" | "light" }) {
   const path = usePathname();
@@ -58,19 +59,21 @@ export function Nav({ theme = "overlay" }: { theme?: "overlay" | "light" }) {
                   key={n.label}
                   href={n.href}
                   onMouseEnter={() => { clearTimeout(timer.current); if (n.label === "Shop") timer.current = setTimeout(() => setMega(true), 120); else setMega(false); }}
-                  className={cx("group/nl relative rounded-full px-4 py-2 text-[15px] font-medium transition-colors", fg, solid ? "hover:bg-mist" : "hover:bg-white/10")}
+                  className={cx("group/nl relative whitespace-nowrap rounded-full px-3 py-2 text-[15px] xl:px-4 font-medium transition-colors", fg, solid ? "hover:bg-mist" : "hover:bg-white/10")}
                 >
                   {n.label}
-                  <span className={cx("absolute inset-x-4 bottom-1 h-[2px] origin-left rounded-full transition-transform duration-300 ease-[var(--ease-out)]", solid ? "bg-deep" : "bg-lime", active ? "scale-x-100" : "scale-x-0 group-hover/nl:scale-x-100")} />
+                  <span className={cx("absolute inset-x-3 bottom-1 h-[2px] xl:inset-x-4 origin-left rounded-full transition-transform duration-300 ease-[var(--ease-out)]", solid ? "bg-deep" : "bg-lime", active ? "scale-x-100" : "scale-x-0 group-hover/nl:scale-x-100")} />
                 </Link>
               );
             })}
           </nav>
           <div className="flex items-center gap-1.5 md:gap-2">
+            <div className="hidden items-center gap-0.5 lg:flex"><span className="hidden xl:block"><LangPicker solid={solid} /></span><ProductSwitcher solid={solid} onOpen={() => { clearTimeout(timer.current); setMega(false); }} /></div>
+            <span className={cx("mx-1 hidden h-5 w-px lg:block", solid ? "bg-line" : "bg-white/25")} aria-hidden />
             <Link href={R.search()} aria-label="Search" className={cx("hidden h-11 w-11 items-center justify-center rounded-full transition-colors md:flex", fg, solid ? "hover:bg-mist" : "hover:bg-white/10")}><Icon name="search" /></Link>
             <Link href={R.signIn} aria-label="Account" className={cx("hidden h-11 w-11 items-center justify-center rounded-full transition-colors md:flex", fg, solid ? "hover:bg-mist" : "hover:bg-white/10")}><Icon name="user" /></Link>
             <button data-bag-target onClick={() => setOpen(true)} aria-label="Open bag" className={cx("relative flex h-11 w-11 items-center justify-center rounded-full transition-colors", fg, solid ? "hover:bg-mist" : "hover:bg-white/10")}><Icon name="shopping-bag" /><BagCount /></button>
-            <Button href={R.shop} size="M" variant={solid ? "primary" : "light"} className="ml-2 hidden lg:inline-flex">Shop fresh</Button>
+            <span className="ml-2 hidden xl:inline-flex"><Button href={R.shop} size="M" variant={solid ? "primary" : "light"} className="whitespace-nowrap">Shop fresh</Button></span>
             <button onClick={() => setSheet(true)} aria-label="Open menu" className={cx("flex h-11 w-11 items-center justify-center rounded-full lg:hidden", fg)}><Icon name="menu" size={24} /></button>
           </div>
         </div>
@@ -120,7 +123,8 @@ export function Nav({ theme = "overlay" }: { theme?: "overlay" | "light" }) {
               <div className="relative h-9 w-[104px]"><Image src="/brand/logo-cream.png" alt="Verdant Foods" fill className="object-contain object-left" /></div>
               <button onClick={() => setSheet(false)} aria-label="Close menu" className="flex h-11 w-11 items-center justify-center rounded-full bg-forest"><Icon name="x" /></button>
             </div>
-            <nav className="relative mt-8 flex flex-col">
+            <div className="relative mt-6"><ProductGrid /></div>
+            <nav className="relative mt-6 flex flex-col">
               {[...MAIN_NAV, { label: "Stories", href: R.stories }, { label: "Help centre", href: R.help }].map((n, i) => (
                 <motion.div key={n.label} initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.12 + i * 0.05, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}>
                   <Link href={n.href} className="flex items-center justify-between border-b border-forest py-4 text-[26px] font-medium tracking-[-0.02em] md:text-[32px]">
@@ -132,7 +136,7 @@ export function Nav({ theme = "overlay" }: { theme?: "overlay" | "light" }) {
             <motion.div className="relative mt-auto flex flex-col gap-4 pt-8" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.45 }}>
               <div className="glass-dark rounded-3xl p-5">
                 <div className="mb-3 text-[13px] text-white/70">Language</div>
-                <Pills items={["English", "Twi", "Dagbani", "Dagaare"]} size="S" />
+                <LangList />
               </div>
               <div className="grid gap-3 md:grid-cols-2">
                 <Button href={R.shop} variant="lime" arrow full>Shop fresh</Button>

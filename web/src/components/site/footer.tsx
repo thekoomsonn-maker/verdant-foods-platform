@@ -1,8 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FOOTER, R } from "@/lib/routes";
+import { PLATFORM } from "@/lib/platform";
 import { Icon } from "../icon";
+import { cx } from "../tokens";
 import { Container } from "../ui";
+
+// Footer strip: the same products as the nav switcher, with the business portal shown as its sign-in door.
+const STRIP = [
+  ...PLATFORM.filter((p) => !["b2b", "team"].includes(p.key)),
+  { key: "b2b", name: "Business sign in", line: "Orders, bids and invoices", icon: "building-2", href: R.b2bSignIn, staff: false },
+  ...PLATFORM.filter((p) => p.key === "team"),
+];
 
 export function Footer() {
   return (
@@ -33,7 +42,24 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <div className="mt-16 flex flex-col gap-6 border-t border-white/10 pt-8 text-[14px] text-white/70 md:flex-row md:items-center md:justify-between">
+        <nav aria-label="Verdant products" className="mt-16 flex flex-col gap-4">
+          <div className="text-[14px] font-semibold text-lime">Verdant products</div>
+          <div className="grid grid-cols-2 gap-2.5 md:grid-cols-3 xl:grid-cols-6">
+            {STRIP.map((p) => (
+              <Link key={p.key} href={p.href} className={cx("group/pr flex flex-col gap-4 rounded-2xl p-4 transition-[background-color,transform] duration-300 ease-[var(--ease-out)] hover:-translate-y-0.5", p.staff ? "bg-night hover:bg-night/80" : "bg-forest/55 hover:bg-forest")}>
+                <span className="flex items-center justify-between">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-night/40 text-lime transition-colors duration-200 group-hover/pr:bg-lime group-hover/pr:text-night"><Icon name={p.icon} size={19} /></span>
+                  <Icon name="arrow-up-right" size={16} className="text-white/40 transition-[color,transform] duration-200 group-hover/pr:-translate-y-0.5 group-hover/pr:translate-x-0.5 group-hover/pr:text-lime" />
+                </span>
+                <span className="flex flex-col gap-0.5">
+                  <span className="text-[15px] font-semibold text-white">{p.name}</span>
+                  <span className="text-[13px] leading-snug text-white/65">{p.line}</span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </nav>
+        <div className="mt-12 flex flex-col gap-6 border-t border-white/10 pt-8 text-[14px] text-white/70 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap gap-x-6 gap-y-2"><span>© 2026 Verdant Foods Ltd. Tamale, Ghana</span><Link href={R.legal} className="hover:text-white">Privacy</Link><Link href={R.legal} className="hover:text-white">Terms</Link><Link href={R.legal} className="hover:text-white">Cookies</Link></div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3"><span>MTN MoMo · Telecel Cash · AT Money · Visa · Mastercard</span>
             <span className="flex gap-2">{(["instagram", "facebook", "linkedin", "youtube"] as const).map((s) => <a key={s} href="#" aria-label={s} className="flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-forest hover:text-lime"><Icon name={s} size={18} /></a>)}</span>

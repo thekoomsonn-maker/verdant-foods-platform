@@ -9,6 +9,7 @@ import { cx } from "@/components/tokens";
 import { useToast } from "@/components/toast";
 import { Button } from "@/components/ui";
 import { USER } from "@/lib/data-account";
+import { LANGS } from "@/lib/langs";
 
 const ALERTS: [string, string, string, boolean][] = [
   ["orders", "Order updates", "Packed, on the way, delivered", true],
@@ -16,7 +17,6 @@ const ALERTS: [string, string, string, boolean][] = [
   ["safety", "Safety alerts", "If a batch you bought is recalled", true],
   ["offers", "Offers and new harvests", "About once a week", false],
 ];
-const LANGS = ["English", "Twi", "Ga", "Ewe", "Dagbani"];
 
 export function Settings() {
   const toast = useToast();

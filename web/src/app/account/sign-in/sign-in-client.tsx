@@ -60,7 +60,7 @@ export function SignInForm() {
         <Button type="submit" full arrow>{busy ? "Sending…" : "Send me a code"}</Button>
       </form>
       <div className="flex items-center gap-4 text-[13px] text-muted"><span className="h-px flex-1 bg-line" />or<span className="h-px flex-1 bg-line" /></div>
-      <Button href={R.b2b} variant="secondary" full>Continue as a business buyer</Button>
+      <Button href={R.b2bSignIn} variant="secondary" full>Continue as a business buyer</Button>
       <Link href={R.signUp} className="text-center text-[15px] font-semibold text-leaf hover:text-deep">New to Verdant? Create an account</Link>
     </>
   );

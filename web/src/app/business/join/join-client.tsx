@@ -139,7 +139,7 @@ export function JoinForm() {
         <div className="mt-7 flex flex-col gap-3">
           <Button type="submit" full arrow>{step < 2 ? "Continue" : "Send application"}</Button>
           {step > 0 ? <button type="button" onClick={() => go(step - 1)} className="h-11 rounded-full text-[15px] font-semibold text-deep hover:bg-mist">Back</button>
-            : <Link href={R.b2b} className="text-center text-[15px] font-semibold text-leaf hover:text-deep">Already have an account? Sign in</Link>}
+            : <Link href={R.b2bSignIn} className="text-center text-[15px] font-semibold text-leaf hover:text-deep">Already have an account? Sign in</Link>}
         </div>
       </form>
     </div>

@@ -13,6 +13,7 @@ import { Button, Chip, Container, Pills, Section, Tabs } from "@/components/ui";
 import { cx, T } from "@/components/tokens";
 import { cedi, FARMS, JOURNEY, PLACES, plotAround, STORIES } from "@/lib/data";
 import { LEGAL, ROLES } from "@/lib/data-corporate";
+import { LANGS } from "@/lib/langs";
 import { R } from "@/lib/routes";
 
 /** SplitWords that starts when the heading scrolls into view (section titles). */
@@ -88,7 +89,6 @@ export function WhereWeWork() {
 }
 
 /* ---------- Farmers: app demo with language pills ---------- */
-const LANGS = ["English", "Twi", "Dagbani", "Dagaare", "Gonja", "Waale", "Ewe", "Ga"];
 export function FarmerApp() {
   const [lang, setLang] = useState("Dagbani");
   return (
@@ -97,7 +97,7 @@ export function FarmerApp() {
         <Reveal><span className="inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.08em] text-leaf"><span className="h-1.5 w-1.5 rounded-full bg-leaf" />The farmer app</span></Reveal>
         <SplitIn text="Works without internet, in your language" className={cx(T.h2, "text-deep")} />
         <Reveal delay={0.1}><p className={cx(T.lead, "max-w-[640px] text-muted")}>Record harvests, see offers and check payments even with no signal. Everything syncs when you are back online.</p></Reveal>
-        <Reveal delay={0.2}><Pills items={LANGS} value={lang} onChange={setLang} size="S" className="flex-wrap" /></Reveal>
+        <Reveal delay={0.2}><Pills items={[...LANGS]} value={lang} onChange={setLang} size="S" className="flex-wrap" /></Reveal>
       </div>
       <Reveal delay={0.15} y={32} className="flex justify-center">
         <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="w-[300px] rounded-[44px] bg-night p-2.5 shadow-[var(--shadow-3)] md:w-[320px]">

@@ -10,16 +10,16 @@ import { CountUp, EASE } from "../motion";
 import { Spark } from "../charts";
 
 type Item = [IconName, string, string, string?];
-type Cfg = { tag: string; dark: boolean; search: string; initials: string; user: string; org: string; syncT: string; syncS: string; home: string; menu: [string, Item[]][] };
+type Cfg = { tag: string; name: string; icon: IconName; other?: [string, IconName, string]; dark: boolean; search: string; initials: string; user: string; org: string; syncT: string; syncS: string; home: string; menu: [string, Item[]][] };
 
 export const B2B: Cfg = {
-  tag: "Business", dark: false, search: "Search produce, farms, orders", initials: "OK", user: "Osu Kitchen Group", org: "Business account · Accra", syncT: "Account verified", syncS: "Credit limit GH₵ 60,000", home: R.b2b,
+  tag: "Business", name: "Business portal", icon: "building-2", other: ["Shop for home", "shopping-basket", R.shop], dark: false, search: "Search produce, farms, orders", initials: "OK", user: "Osu Kitchen Group", org: "Business account · Accra", syncT: "Account verified", syncS: "Credit limit GH₵ 60,000", home: R.b2b,
   menu: [["", [["layout-dashboard", "Overview", R.b2b], ["store", "Source produce", R.b2bSource], ["gavel", "Bids", R.b2bBids, "2"], ["handshake", "Supply agreements", R.b2bAgreements], ["truck", "Orders and deliveries", R.b2bOrders], ["receipt", "Invoices", R.b2bInvoices]]],
     ["Traceability", [["file-check", "Trace reports", R.b2bReports], ["siren", "Quality claims", R.b2bClaims]]],
     ["Account", [["calendar", "Supply calendar", R.b2bCalendar], ["file-text", "Request a quote", R.b2bQuote], ["users", "Team and roles", R.b2bTeam]]]],
 };
 export const ADM: Cfg = {
-  tag: "Admin", dark: true, search: "Search orders, farms, people, batches or codes", initials: "AD", user: "Akosua Darko", org: "Operations, Verdant Foods", syncT: "Field apps live", syncS: "86 records synced today", home: R.admin,
+  tag: "Admin", name: "Operations console", icon: "layout-dashboard", other: ["Business portal", "building-2", R.b2b], dark: true, search: "Search orders, farms, people, batches or codes", initials: "AD", user: "Akosua Darko", org: "Operations, Verdant Foods", syncT: "Field apps live", syncS: "86 records synced today", home: R.admin,
   menu: [["Overview", [["layout-dashboard", "Dashboard", R.admin], ["map", "Live supply map", R.adminMap]]],
     ["Sales", [["package", "Orders", R.adminOrders, "12"], ["leaf", "Products and harvests", R.adminProducts], ["building-2", "Buyers", R.adminBuyers], ["tag", "Pricing", R.adminPricing]]],
     ["Supply", [["tractor", "Farmers and farms", R.adminFarmers], ["users", "Savings groups", R.adminGroups], ["badge-check", "Farm checks", R.adminChecks, "7"], ["truck", "Deliveries", R.adminDeliveries]]],
@@ -52,6 +52,85 @@ function Menu({ cfg, active, onNav }: { cfg: Cfg; active: string; onNav?: () => 
   );
 }
 
+/** Ends the session (clears the signed cookie) and returns to the public website. */
+function useSignOut() {
+  const [busy, setBusy] = useState(false);
+  const out = async () => {
+    if (busy) return;
+    setBusy(true);
+    try { await fetch("/api/auth/sign-out", { method: "POST" }); } catch {}
+    window.location.assign(R.home);
+  };
+  return { busy, out };
+}
+
+/** "Back to the website" and "Sign out", at the foot of the sidebar and the mobile menu. */
+function ExitLinks({ cfg, onNav }: { cfg: Cfg; onNav?: () => void }) {
+  const d = cfg.dark;
+  const { busy, out } = useSignOut();
+  const row = cx("group/x flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[14px] font-semibold transition-colors", d ? "text-white/80 hover:bg-white/5 hover:text-white" : "text-ink hover:bg-mist");
+  return (
+    <div className="flex flex-col gap-0.5">
+      <Link href={R.home} onClick={onNav} className={row}>
+        <Icon name="house" size={20} className={d ? "text-white/70" : "text-muted"} /><span className="flex-1">Verdant website</span>
+        <Icon name="arrow-up-right" size={16} className={cx("transition-transform group-hover/x:-translate-y-0.5 group-hover/x:translate-x-0.5", d ? "text-lime" : "text-leaf")} />
+      </Link>
+      <button type="button" onClick={out} disabled={busy} className={row}>
+        <Icon name="log-out" size={20} className={d ? "text-white/70" : "text-muted"} /><span className="flex-1 text-left">{busy ? "Signing out…" : "Sign out"}</span>
+      </button>
+    </div>
+  );
+}
+
+/** Which Verdant product this is, under the logo. */
+function ProductLine({ cfg }: { cfg: Cfg }) {
+  return (
+    <div className={cx("-mt-3 flex items-center gap-2 px-2 text-[13px] font-semibold", cfg.dark ? "text-white/60" : "text-muted")}>
+      <span className={cx("h-1.5 w-1.5 rounded-full", cfg.dark ? "bg-lime" : "bg-leaf")} aria-hidden />Verdant {cfg.name.toLowerCase()}
+    </div>
+  );
+}
+
+/** Avatar menu in the top bar: who you are, which product you are in, the way out. */
+function UserMenu({ cfg }: { cfg: Cfg }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const { busy, out } = useSignOut();
+  const d = cfg.dark;
+  useEffect(() => {
+    if (!open) return;
+    const down = (e: MouseEvent) => { if (!ref.current?.contains(e.target as Node)) setOpen(false); };
+    const key = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    document.addEventListener("mousedown", down); window.addEventListener("keydown", key);
+    return () => { document.removeEventListener("mousedown", down); window.removeEventListener("keydown", key); };
+  }, [open]);
+  const item = "group/u flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[14px] font-semibold text-ink transition-colors hover:bg-mist";
+  return (
+    <div ref={ref} className="relative">
+      <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-haspopup="menu" aria-label="Account menu" className="flex items-center gap-3 rounded-full p-0.5 pr-1 transition-colors hover:bg-paper md:pr-3">
+        <span className={cx("flex h-10 w-10 items-center justify-center rounded-full text-[13px] font-semibold", d ? "bg-plum text-blush" : "bg-deep text-white")}>{cfg.initials}</span>
+        <span className="hidden flex-col text-left md:flex"><span className="text-[14px] font-semibold">{cfg.user}</span><span className="text-[12px] text-muted">{cfg.org}</span></span>
+        <Icon name="chevron-down" size={16} className={cx("hidden text-muted transition-transform duration-200 md:block", open && "rotate-180")} />
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div role="menu" initial={{ opacity: 0, y: -6, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -4, scale: 0.98 }} transition={{ duration: 0.2, ease: EASE }} style={{ transformOrigin: "top right" }}
+            className="absolute right-0 top-[calc(100%+10px)] z-40 flex w-[280px] flex-col gap-1 rounded-3xl bg-white p-2 shadow-[var(--shadow-3)]">
+            <div className={cx("flex items-center gap-3 rounded-2xl p-3", d ? "bg-night text-white" : "bg-deep text-white")}>
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 text-lime"><Icon name={cfg.icon} size={20} /></span>
+              <span className="flex min-w-0 flex-col"><span className="text-[12px] text-white/65">You are in</span><span className="truncate text-[15px] font-semibold">{cfg.name}</span></span>
+            </div>
+            <Link role="menuitem" href={R.home} onClick={() => setOpen(false)} className={item}><Icon name="house" size={18} className="text-muted" /><span className="flex-1">Verdant website</span><Icon name="arrow-up-right" size={16} className="text-leaf transition-transform group-hover/u:-translate-y-0.5 group-hover/u:translate-x-0.5" /></Link>
+            {cfg.other && <Link role="menuitem" href={cfg.other[2]} onClick={() => setOpen(false)} className={item}><Icon name={cfg.other[1]} size={18} className="text-muted" /><span className="flex-1">{cfg.other[0]}</span><Icon name="arrow-up-right" size={16} className="text-leaf transition-transform group-hover/u:-translate-y-0.5 group-hover/u:translate-x-0.5" /></Link>}
+            <span className="mx-3 my-1 h-px bg-line" aria-hidden />
+            <button role="menuitem" type="button" onClick={out} disabled={busy} className={item}><Icon name="log-out" size={18} className="text-muted" /><span className="flex-1">{busy ? "Signing out…" : "Sign out"}</span></button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export function PortalShell({ cfg, active, title, sub, actions, children }: { cfg: Cfg; active: string; title: string; sub?: string; actions?: ReactNode; children: ReactNode }) {
   const [sheet, setSheet] = useState(false);
   const tabs = useRef<HTMLDivElement>(null);
@@ -65,17 +144,20 @@ export function PortalShell({ cfg, active, title, sub, actions, children }: { cf
           <span className="relative block h-10 w-[112px]"><Image src={d ? "/brand/logo-cream.png" : "/brand/logo-green.png"} alt="Verdant" fill sizes="112px" className="object-contain object-left" /></span>
           <span className={cx("rounded-md px-2 py-1 text-[12px] font-semibold", d ? "bg-forest text-lime" : "bg-mist text-deep")}>{cfg.tag}</span>
         </Link>
+        <ProductLine cfg={cfg} />
         <Menu cfg={cfg} active={active} />
         <div className={cx("mt-auto rounded-2xl p-4", d ? "bg-forest" : "bg-mist")}>
           <div className={cx("flex items-center gap-2 text-[14px] font-semibold", d ? "text-white" : "text-deep")}><span className="h-2 w-2 animate-breathe rounded-full bg-lime" />{cfg.syncT}</div>
           <div className={cx("mt-1 text-[13px]", d ? "text-white/70" : "text-muted")}>{cfg.syncS}</div>
         </div>
+        <div className={cx("-mt-2 border-t pt-3", d ? "border-white/10" : "border-line")}><ExitLinks cfg={cfg} /></div>
       </aside>
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-4 border-b border-line bg-white/90 px-5 backdrop-blur md:h-[72px] md:px-8 lg:px-10">
           <div className="flex items-center gap-3 lg:hidden">
             <button onClick={() => setSheet(true)} aria-label="Open menu" className="flex h-11 w-11 items-center justify-center rounded-full hover:bg-mist"><Icon name="menu" size={22} /></button>
             <span className="relative block h-8 w-[92px]"><Image src="/brand/logo-green.png" alt="Verdant" fill sizes="92px" className="object-contain object-left" /></span>
+            <span className={cx("hidden rounded-md px-2 py-1 text-[12px] font-semibold min-[400px]:inline", d ? "bg-night text-lime" : "bg-mist text-deep")}>{cfg.tag}</span>
           </div>
           <label className="hidden h-11 w-[420px] items-center gap-2.5 rounded-full bg-paper px-4 text-muted ring-1 ring-transparent transition focus-within:bg-white focus-within:ring-deep lg:flex">
             <Icon name="search" size={18} /><input placeholder={cfg.search} className="w-full bg-transparent text-[14px] text-ink outline-none placeholder:text-muted" />
@@ -83,8 +165,7 @@ export function PortalShell({ cfg, active, title, sub, actions, children }: { cf
           </label>
           <div className="flex items-center gap-3">
             <button aria-label="Notifications" className="relative flex h-10 w-10 items-center justify-center rounded-full bg-paper hover:bg-mist"><Icon name="bell" size={20} /><span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-tomato ring-2 ring-white" /></button>
-            <span className={cx("flex h-10 w-10 items-center justify-center rounded-full text-[13px] font-semibold", d ? "bg-plum text-blush" : "bg-deep text-white")}>{cfg.initials}</span>
-            <span className="hidden flex-col md:flex"><span className="text-[14px] font-semibold">{cfg.user}</span><span className="text-[12px] text-muted">{cfg.org}</span></span>
+            <UserMenu cfg={cfg} />
           </div>
         </header>
         <main className="flex flex-col gap-4 px-5 pb-12 pt-5 md:gap-6 md:px-8 md:pb-14 md:pt-8 lg:px-10">
@@ -104,7 +185,9 @@ export function PortalShell({ cfg, active, title, sub, actions, children }: { cf
             <motion.div className="fixed inset-0 z-40 bg-night/40 lg:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSheet(false)} />
             <motion.aside className={cx("fixed inset-y-0 left-0 z-50 flex w-[300px] flex-col gap-6 overflow-y-auto px-4 py-5 lg:hidden", d ? "bg-night" : "bg-white")} initial={{ x: "-100%" }} animate={{ x: 0 }} exit={{ x: "-100%" }} transition={{ duration: 0.35, ease: EASE }}>
               <div className="flex items-center justify-between px-2"><span className="relative block h-9 w-[104px]"><Image src={d ? "/brand/logo-cream.png" : "/brand/logo-green.png"} alt="Verdant" fill sizes="104px" className="object-contain object-left" /></span><button onClick={() => setSheet(false)} aria-label="Close menu" className={cx("flex h-10 w-10 items-center justify-center rounded-full", d ? "bg-forest text-white" : "bg-mist text-deep")}><Icon name="x" /></button></div>
+              <ProductLine cfg={cfg} />
               <Menu cfg={cfg} active={active} onNav={() => setSheet(false)} />
+              <div className={cx("mt-auto border-t pt-3", d ? "border-white/10" : "border-line")}><ExitLinks cfg={cfg} onNav={() => setSheet(false)} /></div>
             </motion.aside>
           </>
         )}

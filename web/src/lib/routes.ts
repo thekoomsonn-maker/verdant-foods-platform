@@ -12,7 +12,7 @@ export const R = {
   myBox: "/account/weekly-box", report: "/account/report", settings: "/account/settings",
   b2b: "/b2b", b2bSource: "/b2b/source", b2bBids: "/b2b/bids", b2bAgreements: "/b2b/agreements", b2bOrders: "/b2b/orders",
   b2bInvoices: "/b2b/invoices", b2bJoin: "/business/join", b2bQuote: "/b2b/quote", b2bTeam: "/b2b/team", b2bClaims: "/b2b/claims",
-  b2bCalendar: "/b2b/calendar", b2bReports: "/b2b/reports",
+  b2bCalendar: "/b2b/calendar", b2bReports: "/b2b/reports", b2bSignIn: "/b2b/sign-in",
   admin: "/admin", adminOrders: "/admin/orders", adminProducts: "/admin/products", adminBuyers: "/admin/buyers",
   adminFarmers: "/admin/farmers", adminGroups: "/admin/groups", adminChecks: "/admin/checks", adminCodes: "/admin/codes",
   adminPayments: "/admin/payments", adminMap: "/admin/map", adminBatches: "/admin/batches", adminWeights: "/admin/weights",
@@ -20,6 +20,7 @@ export const R = {
   adminUsers: "/admin/users", adminReports: "/admin/reports", adminSettings: "/admin/settings", adminProblems: "/admin/problems",
   traceSearch: "/t", trace: (code = "VF-TOM-00048") => `/t/${code}`, traceFarm: (code = "VF-TOM-00048") => `/t/${code}/farm`,
   traceSpray: (code = "VF-TOM-00048") => `/t/${code}/spray`,
+  team: "/team",
 } as const;
 
 export const MAIN_NAV = [
@@ -32,7 +33,7 @@ export const MAIN_NAV = [
 
 export const FOOTER = [
   { title: "Shop", links: [["Vegetables", R.shop], ["Fruits", R.category("fruits")], ["Roots and tubers", R.category("roots-and-tubers")], ["Grains and legumes", R.category("grains")], ["Stock-up packs", R.packs], ["Weekly box", R.weeklyBox]] },
-  { title: "Business", links: [["Buy for your business", R.business], ["Bids and bulk orders", R.b2bJoin], ["Repeat deliveries", R.b2bJoin], ["Business sign in", R.b2b]] },
+  { title: "Business", links: [["Buy for your business", R.business], ["Bids and bulk orders", R.b2bJoin], ["Repeat deliveries", R.b2bJoin], ["Business sign in", R.b2bSignIn]] },
   { title: "Farmers", links: [["Sell with Verdant", R.farmers], ["Savings groups", R.farmers], ["Get the farmer app", R.farmers]] },
   { title: "Company", links: [["About Verdant", R.about], ["Impact", R.impact], ["Stories", R.stories], ["Trace your food", R.traceInfo], ["Careers", R.careers], ["Help centre", R.help], ["Contact us", R.contact]] },
 ] as const;
