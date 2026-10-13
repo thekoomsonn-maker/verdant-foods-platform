@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  --color-night: #01261f;
+  --color-deep: #024639;
+  --color-forest: #0b5b49;
+  --color-leaf: #5f9f0d;
+  --color-leaf-light: #8cc63f;
+  --color-mint: #e4efe8;
+  --color-mist: #f2f7f4;
+  --color-paper: #f7f8f7;
+  --color-line: #e2e8e4;
+  --color-line-strong: #c9d3ce;
+  --color-muted: #5a6a63;
+  --color-ink: #0f1f1a;
+
+  --color-lime: #bbea70;
+  --color-lime-soft: #eef8de;
+  --color-orange: #ff7006;
+  --color-orange-soft: #ffe8d6;
+  --color-tomato: #e5412b;
+  --color-tomato-soft: #fde4df;
+  --color-sun: #f7c33c;
+  --color-sun-soft: #fdf2d4;
+  --color-plum: #6c1144;
+  --color-plum-soft: #f3e3ec;
+  --color-blush: #f4c4cf;
+
+  --color-success: #1e7b4f;
+  --color-success-bg: #e3f3ea;
+  --color-warning: #8a5300;
+  --color-warning-bg: #fdf0d5;
+  --color-danger: #b42318;
+  --color-danger-bg: #fde7e4;
+  --color-info: #1d5fa8;
+  --color-info-bg: #e3eefb;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --shadow-1: 0 1px 2px rgb(1 38 31 / 0.06), 0 4px 12px rgb(1 38 31 / 0.06);
+  --shadow-2: 0 8px 28px rgb(1 38 31 / 0.14);
+  --shadow-3: 0 24px 60px rgb(1 38 31 / 0.22);
+
+  --animate-pulse-ring: pulse-ring 2s var(--ease-out) infinite;
+  --animate-breathe: breathe 2.4s ease-in-out infinite;
+  --animate-shimmer: shimmer 1.2s linear infinite;
+  --animate-scan: scan 1.8s var(--ease-in-out) infinite;
+  --animate-dash: dash 1.2s linear infinite;
+
+  @keyframes pulse-ring {
+    0% { transform: scale(0.8); opacity: 0.7; }
+    100% { transform: scale(2.4); opacity: 0; }
+  }
+  @keyframes breathe {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.8); }
+  }
+  @keyframes shimmer {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+  }
+  @keyframes scan {
+    0% { transform: translateY(0); opacity: 0; }
+    10%, 90% { opacity: 1; }
+    100% { transform: translateY(220px); opacity: 0; }
+  }
+  @keyframes dash {
+    to { stroke-dashoffset: -24; }
+  }
+}
+
+:root {
+  --nav-h: 84px;
+}
+
+html {
+  color: var(--color-ink);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: #fff;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-night);
+}
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Glass */
+.glass {
+  background: rgb(255 255 255 / 0.16);
+  backdrop-filter: blur(32px) saturate(140%);
+  -webkit-backdrop-filter: blur(32px) saturate(140%);
+  border: 1px solid rgb(255 255 255 / 0.3);
+  transition: border-color 250ms var(--ease-out), background-color 250ms var(--ease-out);
+}
+.glass:hover { border-color: rgb(255 255 255 / 0.45); }
+.glass-dark {
+  background: rgb(1 38 31 / 0.42);
+  backdrop-filter: blur(32px) saturate(140%);
+  -webkit-backdrop-filter: blur(32px) saturate(140%);
+  border: 1px solid rgb(255 255 255 / 0.14);
+  transition: border-color 250ms var(--ease-out);
+}
+.glass-dark:hover { border-color: rgb(255 255 255 / 0.28); }
+.glass-light {
+  background: rgb(255 255 255 / 0.82);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgb(226 232 228 / 0.8);
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--color-mist) 25%, #fff 50%, var(--color-mist) 75%);
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+}
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+:focus-visible {
+  outline: 2px solid var(--color-deep);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px rgb(187 234 112 / 0.4);
+  border-radius: 10px;
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* MapLibre */
+.maplibregl-ctrl-attrib { font-size: 10px !important; background: rgb(255 255 255 / 0.6) !important; border-radius: 8px 0 0 0; }
+.maplibregl-map { font-family: var(--font-sans); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
