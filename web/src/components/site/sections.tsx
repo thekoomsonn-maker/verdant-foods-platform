@@ -81,7 +81,7 @@ export function CtaBleed({ img, title, sub, actions }: { img: string; title: str
 /* ---------- Image card with glass caption ---------- */
 export function ImageCard({ img, title, sub, href, h = "h-[360px] lg:h-[480px]" }: { img: string; title: string; sub?: string; href?: string; h?: string }) {
   const inner = (
-    <ClipReveal className={cx("group/ic relative flex overflow-hidden rounded-3xl", h)}>
+    <ClipReveal className={cx("group/ic relative flex flex-col justify-end overflow-hidden rounded-3xl", h)}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={img} alt="" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[600ms] ease-[var(--ease-out)] group-hover/ic:scale-105" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgb(1_31_26/.75))]" />

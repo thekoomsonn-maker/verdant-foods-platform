@@ -114,13 +114,17 @@ export function ParallaxImage({ src, alt = "", speed = 0.2, className, overlay, 
   );
 }
 
-/** Image reveal: clip-path wipe from the bottom. The observer sits on an unclipped wrapper (a clipped target never intersects). */
+/** Image reveal: clip-path wipe from the bottom. The observer sits on an unclipped wrapper (a clipped target never intersects);
+ *  the layout classes go on the inner, clipped element so flex/absolute children behave exactly as written. */
 export function ClipReveal({ children, className }: { children: ReactNode; className?: string }) {
   const reduce = useReducedMotion();
+  const all = (className ?? "").split(/\s+/).filter(Boolean);
+  const outer = all.filter((c) => /(^|:)(order-|col-span|row-span|self-)/.test(c)).join(" ");
+  const inner = all.filter((c) => !/(^|:)(order-|col-span|row-span|self-)/.test(c)).join(" ");
   return (
-    <motion.div className={className} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} style={{ display: undefined }}>
+    <motion.div className={outer} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
       <motion.div
-        className="h-full w-full [display:inherit] [flex-direction:inherit] [align-items:inherit] [justify-content:inherit] [gap:inherit]"
+        className={inner}
         variants={{ hidden: reduce ? { opacity: 0 } : { clipPath: "inset(100% 0% 0% 0%)" }, show: reduce ? { opacity: 1 } : { clipPath: "inset(0% 0% 0% 0%)" } }}
         transition={{ duration: 0.9, ease: EASE }}
       >

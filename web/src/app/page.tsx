@@ -100,7 +100,7 @@ export default function Home() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={img} alt="" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover/bf:scale-105" />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_35%,rgb(1_31_26/.85))]" />
-              <div className="glass-dark relative m-4 mt-auto flex w-full flex-col gap-3 rounded-2xl p-5 md:m-6 md:p-6">
+              <div className="glass-dark relative m-4 mt-auto flex w-[calc(100%-2rem)] flex-col gap-3 rounded-2xl p-5 md:m-6 md:w-[calc(100%-3rem)] md:p-6">
                 <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-lime">{e}</span>
                 <div className="text-[22px] font-semibold leading-tight md:text-[26px]">{t}</div>
                 <p className="text-[15px] text-white/80">{d}</p>
