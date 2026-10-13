@@ -45,7 +45,8 @@ Source of truth: Figma file `gVlIXT1BH4YD5NR5wC97An`, page **00 · Design System
   - B2B Procurement Engine (6)
   - Admin Interface (9)
   - Traceability Matrix: QR Journey Page (1)
-- The website file has one page per part (W1–W6), each with Desktop 1440, Tablet 834 and Mobile 390 sections.
+- **Website — All pages:** every UI is on one page. Each part (W1–W6) has its own labelled section, and inside it are its Desktop 1440, Tablet 834 and Mobile 390 boards.
+- **App file, Client Application — All screens:** the same layout on one page, with a labelled section for each of A1–A4.
 - **Client Application** now has its own Figma file, `mJEq4xwX3X2lhYSTiG2vUU`, with its own App Design System page and one page per space. Every section is *Android 360* (Flutter):
   - A1 · Getting started, offline and languages: screens 01–08
   - A2 · Farm space: screens 09–20
