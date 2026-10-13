@@ -39,14 +39,14 @@ One ecosystem, eight experiences. Shared design system, shared entities, separat
 
 | PRS | Requirement | Where it lives |
 |---|---|---|
-| FR-1.1 | Vendor onboarding: location, arable area, regenerative methods | Farmer onboarding, `/farmer/farm`, admin farmer verification |
-| FR-1.2 | Mobile batch logging, auto-assigned permanent Traceability ID | `/farmer/harvests/new` → confirmation shows ID |
+| FR-1.1 | Vendor onboarding: location, arable area, regenerative methods | App: farm onboarding; website: Admin verification queue |
+| FR-1.2 | Mobile batch logging, auto-assigned permanent Traceability ID | App: Log harvest → trace number shown |
 | FR-1.3 | Ecological indicators per batch: soil organic matter, tCO₂ sequestered, GPS | Batch detail, trace page (verified only) |
 | FR-1.4 | Dynamic QR, print-ready + digital, chronological journey page | Admin/farmer traceability, `/trace/[batchId]` |
 | FR-1.5 | B2B: browse live inventory, filter by soil-health/carbon, wholesale bids, recurring agreements | `/b2b/marketplace`, `/b2b/rfqs`, `/b2b/contracts` |
 | FR-2.1 | VSLA: member registration, bylaws (share price, lending rate), weekly contributions ledger, cash position | `| FR-2.2 | Alternative credit score (VSLA + sales history) | Phase 3 — farmer finance card, admin |
 | FR-2.3 | Weather-indexed micro-insurance | Phase 3 |
-| FR-2.4 | Payments: B2B wires/cards/invoice financing; B2C cards/wallets; MoMo payouts | Checkout, `/b2b/invoices`, `/farmer/payments` |
+| FR-2.4 | Payments: B2B wires/cards/invoice financing; B2C cards/wallets; MoMo payouts | Website: checkout, `/b2b/invoices`; App: Money tab |
 | NFR-1.1 | Offline-first farmer/VSLA, background sync | SyncStatus component, optimistic saves |
 
 **Proposed (in master brief, not in PRS) — confirm with client:** consumer subscriptions, stock-up packages / farm boxes, saved items.
