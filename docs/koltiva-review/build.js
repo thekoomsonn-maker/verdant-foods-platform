@@ -1,0 +1,6 @@
+const path=require('path'),{chromium}=require(require.resolve('playwright',{paths:['/workspace/verdant-foods-platform/docs/planning/plan-web','/workspace/verdant-foods-platform','/usr/lib/node_modules']}));
+(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage({viewport:{width:900,height:1200}});
+await p.goto('file://'+path.join(__dirname,'index.html'));await p.evaluate(()=>document.fonts.ready);
+const qa=await p.evaluate(()=>{const o=[];document.querySelectorAll('.page').forEach((pg,i)=>{const pr=pg.getBoundingClientRect();const f=pg.querySelector('.foot');const ft=f?f.getBoundingClientRect().top:pr.bottom;pg.querySelectorAll('*').forEach(el=>{if(el.closest('.foot'))return;const r=el.getBoundingClientRect();if(!r.height)return;const t=[...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim());if(t&&r.bottom>ft-14)o.push(`p${i+1} into footer: ${el.textContent.trim().slice(0,40)} (${Math.round(r.bottom-ft)})`);});});return o;});
+console.log(qa);const ps=await p.$$('.page');for(let i=0;i<ps.length;i++)await ps[i].screenshot({path:`/tmp/vf/shots/k${i+1}.png`});
+await p.pdf({path:path.join(__dirname,'Verdant_Foods_Koltiva_Partnership_Decision_Paper.pdf'),width:'210mm',height:'297mm',printBackground:true,preferCSSPageSize:true});await b.close();})();
