@@ -25,6 +25,7 @@ fs.writeFileSync(path.join(dir, 'index.html'), html);
         const r = el.getBoundingClientRect(); if (!r.width || !r.height) return;
         const hasText = [...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim());
         if (!hasText) return;
+        if (parseFloat(getComputedStyle(el).fontSize) < 12 && !el.closest('.phone')) out.push(`p${i + 1}: small text ${getComputedStyle(el).fontSize} "${el.textContent.trim().slice(0, 30)}"`);
         if (r.bottom > footTop - 4 && !p.hasAttribute('data-nofoot')) out.push(`p${i + 1}: text into footer: "${el.textContent.trim().slice(0, 40)}" (${Math.round(r.bottom - footTop)}px)`);
         if (r.right > pr.right - 20 || r.left < pr.left + 20) out.push(`p${i + 1}: text near/over page edge: "${el.textContent.trim().slice(0, 40)}"`);
         // clipped text: scroll bigger than client
@@ -49,7 +50,7 @@ fs.writeFileSync(path.join(dir, 'index.html'), html);
     if (only && !only.includes(i + 1)) continue;
     await pages[i].screenshot({ path: path.join(dir, 'preview', `p${String(i + 1).padStart(2, '0')}.png`) });
   }
-  await pg.pdf({ path: path.join(dir, 'Verdant_Foods_Product_Architecture_UX_Plan_v2.pdf'), width: '297mm', height: '210mm', printBackground: true, preferCSSPageSize: true });
+  await pg.pdf({ path: path.join(dir, 'Verdant_Foods_Product_Plan_v2.1.pdf'), width: '297mm', height: '210mm', printBackground: true, preferCSSPageSize: true });
   console.log('pages:', pages.length);
   await b.close();
 })();
