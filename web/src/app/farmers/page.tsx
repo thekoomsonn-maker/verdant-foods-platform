@@ -17,7 +17,7 @@ const APP = `${R.farmers}#app`;
 export default function Farmers() {
   return (
     <PublicPage>
-      <PageHero img="/img/hands-tomato.jpg" eyebrow="For farmers and savings groups" title="Sell your harvest. Get paid on time."
+      <PageHero img="/video/farmers-poster.jpg" video="/video/farmers" eyebrow="For farmers and savings groups" title="Sell your harvest. Get paid on time."
         sub="Over 500 farmers sell through Verdant at prices agreed before harvest."
         actions={<><Button href={APP} variant="lime" arrow>Get the farmer app</Button><Button href={R.contact} variant="glass">Talk to a field officer</Button></>}
         side={

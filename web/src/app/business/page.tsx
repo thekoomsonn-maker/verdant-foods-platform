@@ -18,7 +18,7 @@ const STOCK: [string, string, number][] = [["vine-tomatoes", "2,200 kg", 9.5], [
 export default function Business() {
   return (
     <PublicPage>
-      <PageHero img="/img/hotel-kitchen.jpg" eyebrow="For business buyers" title="Fresh produce for your kitchen, at farm prices."
+      <PageHero img="/video/business-poster.jpg" video="/video/business" eyebrow="For business buyers" title="Fresh produce for your kitchen, at farm prices."
         sub="Restaurants, hotels, caterers and shops buy straight from verified Ghanaian farms."
         actions={<><Button href={R.b2bJoin} variant="lime" arrow>Open a business account</Button><Button href={R.contact} variant="glass">Talk to our team</Button></>}
         side={

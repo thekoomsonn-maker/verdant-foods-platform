@@ -13,7 +13,8 @@ export default function Home() {
   return (
     <PublicPage>
       <PageHero
-        img="/img/hero-aerial.jpg"
+        img="/video/home-poster.jpg"
+        video="/video/home"
         eyebrow="Live · 38 farms harvesting today"
         title="Fresh from the farm. Traced to your table."
         sub="Vegetables and fruit from smallholder farmers in Northern Ghana."

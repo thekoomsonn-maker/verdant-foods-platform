@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { CATEGORIES, farmBySlug, productImg, TINT, cedi, type Product } from "@/lib/data";
 import { R } from "@/lib/routes";
 import { Icon, type IconName } from "../icon";
@@ -11,6 +11,30 @@ import { useBag } from "./bag";
 import { useToast } from "../toast";
 
 const SHADE = "linear-gradient(180deg, rgb(1 31 26 / .5) 0%, rgb(1 31 26 / .1) 35%, rgb(1 26 20 / .88) 100%)";
+
+/* ---------- Hero video: small file on phones, full HD on desktop, poster until it can play, still image for reduced motion ---------- */
+function HeroVideo({ base, poster }: { base: string; poster: string }) {
+  const [src, setSrc] = useState<string | null>(null);
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (conn?.saveData) return;
+    setSrc(`${base}-${window.innerWidth < 768 ? "sd" : "hd"}.mp4`);
+  }, [base]);
+  return (
+    <>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={poster} alt="" className="absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
+      {src && (
+        <video
+          className={cx("absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms]", ready ? "opacity-100" : "opacity-0")}
+          src={src} autoPlay muted loop playsInline preload="auto" aria-hidden onCanPlay={() => setReady(true)}
+        />
+      )}
+    </>
+  );
+}
 
 /* ---------- Full-bleed hero (image or video), parallax + scale-in ---------- */
 export function PageHero({ img, video, title, sub, eyebrow, actions, side, height = "tall", children, crumbs }: {
@@ -27,7 +51,7 @@ export function PageHero({ img, video, title, sub, eyebrow, actions, side, heigh
       <motion.div style={{ y }} className="absolute inset-0">
         <motion.div className="absolute inset-0" initial={{ scale: reduce ? 1 : 1.08 }} animate={{ scale: 1 }} transition={{ duration: 1.4, ease: EASE }}>
           {video ? (
-            <video className="h-full w-full object-cover" src={video} poster={img} autoPlay muted loop playsInline />
+            <HeroVideo base={video} poster={img} />
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={img} alt="" className="h-full w-full object-cover" fetchPriority="high" />
