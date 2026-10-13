@@ -109,7 +109,7 @@ export default function LiveMap({ className, styleName = "satellite", focus, int
   const visible = (k: PinKind) => !layers || on[k === "farm" ? "Farms" : k === "handover" ? "Collection points" : k === "van" ? "Vans" : k === "problem" ? "Problems" : "Buyers"] !== false;
 
   return (
-    <div className={cx("relative isolate overflow-hidden bg-night", rounded, className)}>
+    <div className={cx("absolute inset-0 isolate overflow-hidden bg-night", rounded, className)}>
       <MapGL
         ref={ref}
         mapLib={maplibregl}

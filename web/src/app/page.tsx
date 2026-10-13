@@ -97,14 +97,14 @@ export default function Home() {
         </Stagger>
         <div className="grid gap-4 lg:grid-cols-2">
           {[["/img/hotel-kitchen.jpg", "For business", "Reliable supply for kitchens and shops", "Farm prices, bids and weekly deliveries with trace reports.", "Open a business account", R.b2bJoin], ["/img/vsla-meeting.jpg", "For farmers", "Fair prices. Stronger savings groups.", "Sell without middlemen, get paid to mobile money, save as a group.", "Sell with Verdant", R.farmers]].map(([img, e, t, d, b, h]) => (
-            <ClipReveal key={t} className="group/bf relative flex h-[440px] overflow-hidden rounded-3xl text-white md:h-[520px]">
+            <ClipReveal key={t} className="group/bf relative flex flex-col justify-end h-[440px] overflow-hidden rounded-3xl text-white md:h-[520px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={img} alt="" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover/bf:scale-105" />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_35%,rgb(1_31_26/.85))]" />
-              <div className="glass-dark relative m-4 mt-auto flex w-[calc(100%-2rem)] flex-col gap-3 rounded-2xl p-5 md:m-6 md:w-[calc(100%-3rem)] md:p-6">
-                <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-lime">{e}</span>
-                <div className="text-[22px] font-semibold leading-tight md:text-[26px]">{t}</div>
-                <p className="text-[15px] text-white/80">{d}</p>
+              <div className="glass-dark relative m-4 mt-auto flex w-[calc(100%-2rem)] flex-col gap-2 rounded-2xl p-4 md:m-6 md:w-[calc(100%-3rem)] md:gap-3 md:p-6">
+                <span className="text-[12px] font-semibold uppercase tracking-[0.08em] text-lime md:text-[13px]">{e}</span>
+                <div className="text-[19px] font-semibold leading-tight md:text-[26px]">{t}</div>
+                <p className="hidden text-[15px] text-white/80 md:block">{d}</p>
                 <div><Button href={h} variant="lime" size="M" arrow>{b}</Button></div>
               </div>
             </ClipReveal>

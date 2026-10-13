@@ -52,7 +52,7 @@ export default async function FarmStory({ params }: Props) {
         <div className="flex flex-col gap-5">
           <Reveal><Eyebrow>Checked</Eyebrow></Reveal>
           <Reveal delay={0.05}><h2 className={cx(T.h2, "text-deep")}>Every visit, on record</h2></Reveal>
-          <ClipReveal className="relative flex h-[300px] overflow-hidden rounded-3xl md:h-[340px]">
+          <ClipReveal className="relative flex flex-col justify-end h-[300px] overflow-hidden rounded-3xl md:h-[340px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/img/officer-tablet.jpg" alt="Officer Yaw Appiah on a farm visit" className="absolute inset-0 h-full w-full object-cover" />
             <div className="glass-dark relative m-4 mt-auto w-[calc(100%-2rem)] rounded-2xl px-5 py-4 text-white">

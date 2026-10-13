@@ -64,7 +64,7 @@ export default async function TracePage({ params }: Props) {
 
       {/* The farm */}
       <Section bg="bg-paper" className="grid items-center gap-8 lg:grid-cols-[minmax(0,520px)_1fr] lg:gap-16">
-        <ClipReveal className="relative flex h-[420px] overflow-hidden rounded-3xl md:h-[520px]">
+        <ClipReveal className="relative flex flex-col justify-end h-[420px] overflow-hidden rounded-3xl md:h-[520px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={farm.photo} alt={`${t.farmer} on the farm`} className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,rgb(1_31_26/.7))]" />
