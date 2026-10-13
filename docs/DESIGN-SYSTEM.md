@@ -38,21 +38,28 @@ Source of truth: Figma file `gVlIXT1BH4YD5NR5wC97An`, page **00 · Design System
 - **Icons:** Lucide, stroke 1.75, about 89 components (`Icon/*`).
 
 ## 5. Boards
-- **Website — All pages:** three sections, *Desktop 1440*, *Tablet 834* and *Mobile 390*, with rows named after the Verdant document:
-  - Corporate Website (6)
-  - AgTech Marketplace (7)
-  - Consumer Accounts (5)
-  - B2B Procurement Engine (6)
-  - Admin Interface (9)
-  - Traceability Matrix: QR Journey Page (1)
-- **Website — All pages:** every UI is on one page. Each part (W1–W6) has its own labelled section, and inside it are its Desktop 1440, Tablet 834 and Mobile 390 boards.
-- **App file, Client Application — All screens:** the same layout on one page, with a labelled section for each of A1–A4.
-- **Client Application** now has its own Figma file, `mJEq4xwX3X2lhYSTiG2vUU`, with its own App Design System page and one page per space. Every section is *Android 360* (Flutter):
-  - A1 · Getting started, offline and languages: screens 01–08
-  - A2 · Farm space: screens 09–20
-  - A3 · Savings group space (VSLA): screens 21–29
-  - A4 · Field officer: screens 30–36
-- The old combined app board was moved to the website file's Archive page.
+- **Website — All pages** (file `gVlIXT1BH4YD5NR5wC97An`): every UI on one page. Each part (W1–W6) is a labelled section holding its *Desktop 1440*, *Tablet 834* and *Mobile 390* boards, stacked top to bottom. Pages are numbered and sorted left to right.
+  - **W1 Corporate website (13):** 01 Home, 02 About, 03 For farmers, 04 For business, 05 Trace your food, 06 Contact, 35 Impact, 36 Stories, 37 Story article, 38 Careers, 39 Help centre, 40 Privacy and terms, 41 Page not found.
+  - **W2 AgTech marketplace (12):** 07 Shop, 08 Product, 09 Farm, 10 Stock-up packs, 11 Bag, 12 Checkout, 13 Order confirmed, 42 Category, 43 Search results, 44 Weekly box, 45 Delivery areas, 46 Reviews.
+  - **W3 Consumer accounts (11):** 14 Sign in, 15 Overview, 16 Orders, 17 Order tracking, 18 Addresses and payment, 47 Sign up, 48 Enter code (sign-in and account recovery; there are no passwords), 49 Saved items, 50 Weekly box, 51 Report a problem, 52 Settings.
+  - **W4 B2B procurement engine (12):** 19 Overview, 20 Source produce, 21 Bids, 22 Supply agreements, 23 Orders and deliveries, 24 Invoices, 53 Company sign-up, 54 Request a quote, 55 Team and roles, 56 Quality claims, 57 Supply calendar, 58 Trace reports.
+  - **W5 Admin interface (20):** 25 Dashboard, 26 Orders, 27 Products and harvests, 28 Buyers, 29 Farmers and farms, 30 Savings groups, 31 Farm checks, 32 Trace codes, 33 Payments and payouts, 59 Live supply map, 60 Batches and handovers, 61 Weight checks, 62 Recalls, 63 Deliveries, 64 Pricing, 65 Website content, 66 Users and roles, 67 Reports, 68 Settings, 69 Problems.
+  - **W6 Traceability matrix (5):** 34 QR journey page, 70 Farm story, 71 Spray record, 72 Code not found, 73 Trace search.
+- **Client Application — All screens** (file `mJEq4xwX3X2lhYSTiG2vUU`): the same layout, one labelled section for each of A1–A4, all *Android 360* (Flutter).
+  - A1 · Getting started, offline and languages: 01–08
+  - A2 · Farm space: 09–20, plus 37 Log a spray and 38 Not safe to pick yet
+  - A3 · Savings group space (VSLA): 21–29
+  - A4 · Field officer: 30–36, plus 39 Map a plot, 40 Scan handover, 41 Merge batches, 42 Weight does not match and 43 Check spray records
+- The old combined app board is on the website file's Archive page.
+- **— Build scripts** (website file): the generator code for every page, stored as text. It is internal and should be deleted before the file is handed to anyone outside the team.
+
+## 5a. v2 visual rules (marketplace and traceability)
+- **Full-bleed media:** heroes are edge-to-edge photographs with a dark-green gradient. The navigation sits over them in its Overlay version.
+- **Glass:** white or night fill at 14–45% opacity, background blur 32, and a 1 px white edge at 14–30%. Use dark glass on light photographs so text stays readable.
+- **Marketplace colour:** each category has its own soft ground and accent (tomato, sun, orange, plum, lime). Use them on category tiles, promotions and photo tints only. Brand green still leads.
+- **Charts:** smooth area lines with a soft gradient, a dashed comparison line, an end dot with a tooltip, donuts for shares, and bars with one highlighted bar. No gridline clutter.
+- **Live maps:** aerial photograph, lime plot outlines, a dashed route, white handover pins, orange vans, tomato problem pins, glass controls, a legend and a "live" chip.
+- **Proof levels:** Weighed and photographed (success), Checked by officer (info), Logged by farmer (neutral). These are used the same way on every page that shows a batch.
 
 ## 6. Imagery
 - **Marketing scenes:** art-directed photographs of Ghanaian farms, people, the packhouse and deliveries.
