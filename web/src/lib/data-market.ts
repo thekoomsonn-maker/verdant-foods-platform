@@ -56,7 +56,7 @@ export const SHOP_CATS = CATEGORIES.filter((c) => c.slug !== "all" && c.slug !==
 export type Pack = { slug: string; name: string; desc: string; price: number; people: string; photo: string; img: string; tint: string; popular?: boolean };
 export const PACKS: Pack[] = [
   { slug: "home-essentials", name: "Home essentials", desc: "Tomatoes, onions, pepper, garden eggs, yam", price: 180, people: "2 to 3 people", photo: "/products/box.jpg", img: "box", tint: "bg-lime-soft" },
-  { slug: "family-weekly", name: "Family weekly", desc: "14 items for a family of five", price: 320, people: "4 to 5 people", photo: "/img/family-unbox.jpg", img: "box", tint: "bg-sun-soft", popular: true },
+  { slug: "family-weekly", name: "Family weekly", desc: "14 items for a family of five", price: 320, people: "4 to 5 people", photo: "/img/box-flatlay.jpg", img: "box", tint: "bg-sun-soft", popular: true },
   { slug: "soup-and-stew", name: "Soup and stew", desc: "Everything for light soup and stew", price: 145, people: "Serves 6", photo: "/products/tomatoes.jpg", img: "tomatoes", tint: "bg-tomato-soft" },
   { slug: "fruit-basket", name: "Fruit basket", desc: "Pawpaw, pineapple, oranges, bananas", price: 125, people: "2 to 3 people", photo: "/products/pawpaw.jpg", img: "pawpaw", tint: "bg-orange-soft" },
   { slug: "jollof-night", name: "Jollof night", desc: "Tomatoes, pepper, onions, spices", price: 110, people: "Serves 8", photo: "/products/pepper.jpg", img: "pepper", tint: "bg-blush/40" },
@@ -70,17 +70,19 @@ export const SIZES: Record<string, { label: string; mult: number }[]> = {
 };
 export function galleryOf(p: Product) {
   const f = farmBySlug(p.farm);
-  return [`/products/${p.img}.jpg`, f.photo === "/img/farmer-amina.jpg" ? "/img/hands-tomato.jpg" : f.photo, "/img/packhouse.jpg", "/img/aerial-plots.jpg"];
+  return [`/products/${p.img}.jpg`, f.photo === "/img/farmer-amina.jpg" ? "/img/hands-tomato.jpg" : f.photo, f.lat < 8 ? "/img/sorting-hands.jpg" : "/img/packhouse.jpg", "/img/qr-scan-crate.jpg"];
 }
-/** A traced route for any product: farm, collection point, Tamale packhouse, Accra. */
+/** A traced route for any product: farm, collection point, the nearest packhouse (Tamale or Somanya), Accra. */
 export function journeyOf(p: Product) {
   const f = farmBySlug(p.farm);
   if (p.slug === "vine-tomatoes") return JOURNEY.steps.map((s) => ({ title: s.title, lat: s.lat, lng: s.lng }));
-  const point = f.region === "Upper West" ? PLACES.wa : PLACES.tolon;
+  const south = f.lat < 8;
+  const point = f.region === "Upper West" ? PLACES.wa : south ? { lat: f.lat + 0.03, lng: f.lng + 0.03 } : PLACES.tolon;
+  const pack = south ? PLACES.somanya : PLACES.tamale;
   return [
     { title: "Harvested", lat: f.lat, lng: f.lng },
     { title: "Collected", lat: point.lat, lng: point.lng },
-    { title: "Sorted and packed", lat: PLACES.tamale.lat, lng: PLACES.tamale.lng },
+    { title: "Sorted and packed", lat: pack.lat, lng: pack.lng },
     { title: "Delivered to you", lat: PLACES.accra.lat, lng: PLACES.accra.lng },
   ];
 }
@@ -126,8 +128,8 @@ export const ORDER = {
   next: [["circle-check", "Order confirmed", "Today, 14:32"], ["sprout", "Farms harvest your food", "Wednesday evening"], ["warehouse", "Packed and weighed", "Thursday, 6 am"], ["truck", "Out for delivery", "Thursday, 9 am"]] as [string, string, string][],
   farms: [
     { farm: "nyankpala-women-farmers", items: "Vine tomatoes, pepper", code: "VF-TOM-00048", tint: "bg-tomato-soft", photo: "/img/farmer-amina.jpg" },
-    { farm: "wa-green-growers", items: "Fresh okra", code: "VF-OKR-00021", tint: "bg-lime-soft", photo: "/img/officer-tablet.jpg" },
-    { farm: "lawra-yam-collective", items: "Puna yam", code: "VF-YAM-00107", tint: "bg-sun-soft", photo: "/img/vsla-meeting.jpg" },
+    { farm: "wa-green-growers", items: "Fresh okra", code: "VF-OKR-00021", tint: "bg-lime-soft", photo: "/img/okra-harvest.jpg" },
+    { farm: "lawra-yam-collective", items: "Puna yam", code: "VF-YAM-00107", tint: "bg-sun-soft", photo: "/img/yam-farmer.jpg" },
   ],
 };
 export const FREE_DELIVERY_AT = 200;

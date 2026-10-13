@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PublicPage } from "@/components/site/page";
 import { CtaBleed, ImageCard, PageHero, ProductGrid, PromiseBand } from "@/components/site/sections";
 import { HomeLiveCard, HomeTrace, HomeFreshTabs } from "./home-client";
+import { DroneFarmSection } from "@/components/drone";
 import { Button, Container, Eyebrow, Head, Section } from "@/components/ui";
 import { cx, T } from "@/components/tokens";
 import { ClipReveal, CountUp, Reveal, ScrollSkew, Stagger } from "@/components/motion";
@@ -50,7 +51,7 @@ export default function Home() {
               <div className="relative flex items-end justify-between"><div><div className="text-[20px] font-semibold">Trace every crate</div><div className="text-[14px] text-white/75">Farm, harvest, checks and route on every order</div></div><span className="flex h-10 w-10 items-center justify-center rounded-full bg-lime text-night transition-transform group-hover/tc:rotate-45"><Icon name="arrow-up-right" size={18} /></span></div>
             </Link>
             <div className="grid grid-cols-2 gap-4">
-              <ImageCard img="/img/chef-kitchen.jpg" title="For business" sub="Bids and repeat orders" href={R.business} h="h-[300px]" />
+              <ImageCard img="/img/shop-owner.jpg" title="For business" sub="Bids and repeat orders" href={R.business} h="h-[300px]" />
               <Link href={R.farmers} className="group/vs flex h-[300px] flex-col justify-between rounded-3xl bg-lime p-5 transition-transform hover:-translate-y-1">
                 <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-deep transition-transform group-hover/vs:rotate-[-8deg]"><Icon name="piggy-bank" /></span>
                 <div><CountUp value="1,400" className="text-[40px] font-medium leading-none tracking-[-0.03em] text-night" /><div className="mt-2 text-[14px] text-night/75">savings group members keep their records on Verdant</div></div>
@@ -83,10 +84,12 @@ export default function Home() {
 
       <HomeTrace />
 
+      <DroneFarmSection />
+
       <Section className="flex flex-col gap-10">
         <Head title="From the farm to your door in four steps" sub="Logged, checked, packed and delivered within 48 hours." />
         <Stagger className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {[["/img/hands-tomato.jpg", "01", "Grown", "Farmers log each harvest, even offline."], ["/img/officer-tablet.jpg", "02", "Checked", "Field officers visit and verify every farm."], ["/img/packhouse.jpg", "03", "Packed", "Sorted and packed in Tamale with a QR code."], ["/img/delivery.jpg", "04", "Delivered", "At your door with the farm on the label."]].map(([img, n, t, d]) => (
+          {[["/img/greenhouse-tomatoes.jpg", "01", "Grown", "Farmers log each harvest, even offline."], ["/img/soil-testing.jpg", "02", "Checked", "Field officers visit and verify every farm."], ["/img/sorting-hands.jpg", "03", "Packed", "Sorted and packed in Tamale with a QR code."], ["/img/rider-accra.jpg", "04", "Delivered", "At your door with the farm on the label."]].map(([img, n, t, d]) => (
             <div key={t} className="group/st flex flex-col gap-4 transition-[translate] duration-500 ease-[var(--ease-out)] hover:-translate-y-1">
               <ClipReveal className="relative h-[220px] overflow-hidden rounded-3xl md:h-[300px]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -98,7 +101,7 @@ export default function Home() {
           ))}
         </Stagger>
         <div className="grid gap-4 lg:grid-cols-2">
-          {[["/img/hotel-kitchen.jpg", "For business", "Reliable supply for kitchens and shops", "Farm prices, bids and weekly deliveries with trace reports.", "Open a business account", R.b2bJoin], ["/img/vsla-meeting.jpg", "For farmers", "Fair prices. Stronger savings groups.", "Sell without middlemen, get paid to mobile money, save as a group.", "Sell with Verdant", R.farmers]].map(([img, e, t, d, b, h]) => (
+          {[["/img/hotel-kitchen.jpg", "For business", "Reliable supply for kitchens and shops", "Farm prices, bids and weekly deliveries with trace reports.", "Open a business account", R.b2bJoin], ["/img/momo-farmer.jpg", "For farmers", "Fair prices. Stronger savings groups.", "Sell without middlemen, get paid to mobile money, save as a group.", "Sell with Verdant", R.farmers]].map(([img, e, t, d, b, h]) => (
             <ClipReveal key={t} className="group/bf relative flex flex-col justify-end h-[440px] overflow-hidden rounded-3xl text-white md:h-[520px]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={img} alt="" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover/bf:scale-105" />
@@ -126,7 +129,7 @@ export default function Home() {
       </section>
 
       <PromiseBand />
-      <CtaBleed img="/img/packhouse.jpg" title="Fresh food you can trace." actions={<><Button href={R.shop} variant="lime" arrow>Shop fresh produce</Button><Button href={R.contact} variant="glass">Talk to our team</Button></>} />
+      <CtaBleed img="/img/pepper-harvest.jpg" title="Fresh food you can trace." actions={<><Button href={R.shop} variant="lime" arrow>Shop fresh produce</Button><Button href={R.contact} variant="glass">Talk to our team</Button></>} />
     </PublicPage>
   );
 }

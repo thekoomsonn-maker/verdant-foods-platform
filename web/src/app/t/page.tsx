@@ -17,7 +17,7 @@ export default function TraceSearch() {
   return (
     <PublicPage nav="overlay">
       <section className="relative flex min-h-[560px] overflow-hidden bg-night text-white h-[72svh] max-h-[720px]">
-        <ParallaxImage src="/img/packhouse.jpg" speed={0.2} priority overlay="linear-gradient(180deg, rgb(1 31 26 / .55) 0%, rgb(1 31 26 / .2) 40%, rgb(1 26 20 / .88) 100%)" />
+        <ParallaxImage src="/img/qr-scan-crate.jpg" speed={0.2} priority overlay="linear-gradient(180deg, rgb(1 31 26 / .55) 0%, rgb(1 31 26 / .2) 40%, rgb(1 26 20 / .88) 100%)" />
         <div className="relative mx-auto mt-auto flex w-full max-w-[1440px] flex-col gap-5 px-5 pb-10 pt-32 md:px-8 md:pb-14 lg:px-16 lg:pb-16">
           <Reveal delay={0.05}><GlassChip icon="qr-code">Trace your food</GlassChip></Reveal>
           <SplitWords text="Where did your food come from?" className={cx(T.display, "max-w-[820px]")} />
@@ -49,10 +49,10 @@ export default function TraceSearch() {
       <Section bg="bg-deep" className="flex flex-col gap-10 text-white">
         <Reveal><h2 className={T.h2}>What you will see</h2></Reveal>
         <Tiles dark items={[
-          ["sprout", "The farmer", "Name, farm and photo.", R.traceFarm()],
-          ["map", "The plot", "Mapped by GPS.", R.traceFarm()],
-          ["spray-can", "Spray record", "And the safe gap.", R.traceSpray()],
-          ["waypoints", "Every handover", "With weights at each step.", R.trace()],
+          ["sprout", "The farmer", "Name, farm and photo.", R.traceFarm(), "/img/elder-woman-farmer.jpg"],
+          ["map", "The plot", "Mapped by GPS.", R.traceFarm(), "/img/eastern-farm-aerial.jpg"],
+          ["spray-can", "Spray record", "And the safe gap.", R.traceSpray(), "/img/farm-store.jpg"],
+          ["waypoints", "Every handover", "With weights at each step.", R.trace(), "/img/weighing-collection.jpg"],
         ]} />
       </Section>
     </PublicPage>

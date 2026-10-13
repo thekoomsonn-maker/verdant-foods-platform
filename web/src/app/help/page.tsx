@@ -21,26 +21,26 @@ const TALK: [IconName, string, string, string, string, string][] = [
 export default function Help() {
   return (
     <PublicPage>
-      <PageHero img="/img/family-unbox.jpg" height="mid" eyebrow="Help centre" title="How can we help?">
+      <PageHero img="/img/support-agent.jpg" height="mid" eyebrow="Help centre" title="How can we help?">
         <SiteSearch popular={[["Track my order", R.orders], ["Report a problem", R.report], ["Delivery areas", R.delivery], ["Trace a code", R.traceSearch]]} />
       </PageHero>
 
       <Section className="flex flex-col gap-10">
         <Title text="Browse by topic" />
         <Tiles cols={3} items={[
-          ["truck", "Orders and delivery", "Track, change or cancel.", R.orders],
-          ["wallet", "Payments", "Mobile money, card, refunds.", R.addresses],
-          ["repeat", "Weekly box", "Pause, skip or change.", R.myBox],
-          ["qr-code", "Trace codes", "What your code shows.", R.traceInfo],
-          ["building-2", "Business accounts", "Credit, invoices, team.", R.business],
-          ["sprout", "Selling your harvest", "For farmers and groups.", R.farmers],
+          ["truck", "Orders and delivery", "Track, change or cancel.", R.orders, "/illustrations/orders-delivery.jpg"],
+          ["wallet", "Payments", "Mobile money, card, refunds.", R.addresses, "/illustrations/payments.jpg"],
+          ["repeat", "Weekly box", "Pause, skip or change.", R.myBox, "/illustrations/weekly-box-art.jpg"],
+          ["qr-code", "Trace codes", "What your code shows.", R.traceInfo, "/illustrations/trace-codes.jpg"],
+          ["building-2", "Business accounts", "Credit, invoices, team.", R.business, "/illustrations/business-accounts.jpg"],
+          ["sprout", "Selling your harvest", "For farmers and groups.", R.farmers, "/illustrations/selling-harvest.jpg"],
         ]} />
       </Section>
 
       <Faq qs={HELP_FAQ} bg="bg-paper" />
 
       <Section className="flex flex-col gap-10">
-        <Title text="Still need help?" sub="Real people in Accra and Tamale." />
+        <Title text="Still need help?" sub="Real people in Accra, Somanya and Tamale." />
         <Stagger className="grid gap-3 md:grid-cols-3 md:gap-4">
           {TALK.map(([i, l, v, d, href, bg]) => (
             <a key={l} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className={cx("group/tk flex h-full flex-col gap-2 rounded-3xl p-7 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-1)]", bg)}>

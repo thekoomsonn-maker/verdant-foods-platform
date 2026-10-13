@@ -37,7 +37,7 @@ export function HomeTrace() {
   const s = JOURNEY.steps;
   return (
     <section className="relative overflow-hidden bg-night text-white">
-      <ParallaxImage src="/img/aerial-plots.jpg" speed={0.25} overlay="linear-gradient(90deg, rgb(1 31 26 / .85), rgb(1 31 26 / .45))" />
+      <ParallaxImage src="/img/qr-scan-crate.jpg" speed={0.25} overlay="linear-gradient(90deg, rgb(1 31 26 / .85), rgb(1 31 26 / .45))" />
       <Container className="relative grid gap-10 py-20 lg:grid-cols-[1fr_520px] lg:items-center lg:py-28">
         <div className="flex flex-col gap-6">
           <Reveal><GlassChip icon="qr-code">Every crate has a code</GlassChip></Reveal>

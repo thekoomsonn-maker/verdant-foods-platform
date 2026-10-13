@@ -33,7 +33,7 @@ export default async function FarmPage({ params }: P) {
   return (
     <PublicPage>
       <PageHero
-        img="/img/hero-aerial.jpg" height="mid" title={f.name}
+        img={f.photo} height="mid" title={f.name}
         crumbs={[["Shop", R.shop], ["Farms", R.farmers], [f.name]]}
         eyebrow={
           <span className="flex items-center gap-3">
@@ -57,7 +57,7 @@ export default async function FarmPage({ params }: P) {
       <Section bg="bg-paper" className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
         <ClipReveal className="relative h-[320px] overflow-hidden rounded-3xl md:h-[460px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/img/vsla-meeting.jpg" alt="" className="h-full w-full object-cover" />
+          <img src="/img/vsla-savings-box.jpg" alt="" className="h-full w-full object-cover" />
         </ClipReveal>
         <Reveal className="flex flex-col gap-5">
           <Eyebrow>About the farm</Eyebrow>

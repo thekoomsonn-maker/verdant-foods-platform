@@ -31,7 +31,7 @@ export default async function TracePage({ params }: Props) {
     <PublicPage nav="overlay">
       <ScrollProgress />
       <PageHero
-        img="/img/hands-tomato.jpg"
+        img="/img/greenhouse-tomatoes.jpg"
         height="mid"
         eyebrow={<div className="flex flex-wrap gap-2"><GlassChip icon="qr-code">{t.code}</GlassChip><GlassChip icon="circle-check">Verified journey</GlassChip></div>}
         title="Your vine tomatoes came from Nyankpala"

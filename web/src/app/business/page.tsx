@@ -54,10 +54,10 @@ export default function Business() {
       <Section className="flex flex-col gap-10">
         <Title text="Everything your buying team needs" sub="One account for ordering, bidding, deliveries and payment." />
         <Tiles items={[
-          ["layout-grid", "Live farm stock", "See what each farm has ready this week.", R.b2bSource],
-          ["gavel", "Bids for large volumes", "Name your price; farmers reply within 48 hours.", R.b2bBids],
-          ["repeat", "Repeat deliveries", "Set a weekly order and get it the same day each week.", R.b2bAgreements],
-          ["receipt", "Invoices and credit terms", "Pay by invoice, bank transfer, card or MoMo.", R.b2bInvoices],
+          ["layout-grid", "Live farm stock", "See what each farm has ready this week.", R.b2bSource, "/illustrations/live-stock.jpg"],
+          ["gavel", "Bids for large volumes", "Name your price; farmers reply within 48 hours.", R.b2bBids, "/illustrations/bids.jpg"],
+          ["repeat", "Repeat deliveries", "Set a weekly order and get it the same day each week.", R.b2bAgreements, "/illustrations/repeat-deliveries.jpg"],
+          ["receipt", "Invoices and credit terms", "Pay by invoice, bank transfer, card or MoMo.", R.b2bInvoices, "/illustrations/invoices.jpg"],
         ]} />
       </Section>
 
@@ -93,7 +93,7 @@ export default function Business() {
         </Container>
       </section>
 
-      <CtaBleed img="/img/packhouse.jpg" title="Start buying from Ghanaian farms"
+      <CtaBleed img="/img/procurement-manager.jpg" title="Start buying from Ghanaian farms"
         actions={<><Button href={R.b2bJoin} variant="lime" arrow>Open a business account</Button><Button href={R.contact} variant="glass">Talk to our team</Button></>} />
     </PublicPage>
   );

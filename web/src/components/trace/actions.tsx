@@ -130,7 +130,7 @@ function ScanSheet({ open, onClose, onFound }: { open: boolean; onClose: () => v
             <div className="flex items-center justify-between"><span className="text-[17px] font-semibold">Point at the square on your bag</span><button onClick={onClose} aria-label="Close" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"><Icon name="x" size={18} /></button></div>
             <div className="relative mt-4 overflow-hidden rounded-2xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/img/family-unbox.jpg" alt="" className="h-[340px] w-full scale-110 object-cover opacity-70 blur-[2px]" />
+              <img src="/img/family-cooking.jpg" alt="" className="h-[340px] w-full scale-110 object-cover opacity-70 blur-[2px]" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <Viewfinder className="flex h-[200px] w-[200px] items-center justify-center rounded-xl bg-white/90">
                   <QrGlyph size={128} className="text-night" />

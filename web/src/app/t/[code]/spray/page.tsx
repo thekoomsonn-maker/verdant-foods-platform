@@ -54,7 +54,7 @@ export default async function SprayRecord({ params }: Props) {
         <div className="flex flex-col gap-4">
           <ClipReveal className="relative flex flex-col justify-end h-[260px] overflow-hidden rounded-[20px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/img/officer-tablet.jpg" alt="Officer Yaw checking the farm store" className="absolute inset-0 h-full w-full object-cover" />
+            <img src="/img/farm-store.jpg" alt="Officer Yaw checking the farm store" className="absolute inset-0 h-full w-full object-cover" />
             <div className="glass-dark relative m-3 mt-auto w-[calc(100%-1.5rem)] rounded-2xl px-4 py-3.5 text-white">
               <div className="text-[17px] font-semibold">Checked 6 Oct</div>
               <div className="text-[14px] text-white/80">Officer Yaw compared this record with the farm store.</div>

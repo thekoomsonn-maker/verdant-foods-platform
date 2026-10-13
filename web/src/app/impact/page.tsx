@@ -16,7 +16,7 @@ const PROMISES: [string, number][] = [["Every plot mapped", 92], ["Farmers paid 
 export default function Impact() {
   return (
     <PublicPage>
-      <PageHero img="/img/vsla-meeting.jpg" eyebrow="Impact · 2026 season" title="More money stays with the farmer." sub="What changed for our farmers this season." />
+      <PageHero img="/img/solar-pump.jpg" eyebrow="Impact · 2026 season" title="More money stays with the farmer." sub="What changed for our farmers this season." />
 
       <Section className="flex flex-col gap-10">
         <Title text="This season in numbers" />
@@ -34,8 +34,8 @@ export default function Impact() {
         <Title text="Behind the numbers" sub="Three people, one season." />
         <Stagger className="grid gap-4 md:grid-cols-3">
           <ImageCard img="/img/farmer-amina.jpg" title="Amina doubled her tomato plot" sub="Nyankpala" href={R.story("amina-doubled-her-tomato-plot")} h="h-[420px] lg:h-[520px]" />
-          <ImageCard img="/img/officer-tablet.jpg" title="Every plot now on the map" sub="Tolon District" href={R.story("every-plot-is-now-on-the-map")} h="h-[420px] lg:h-[520px]" />
-          <ImageCard img="/img/vsla-meeting.jpg" title="Savings that pay for irrigation" sub="Kumbungu" href={R.story("savings-that-pay-for-irrigation")} h="h-[420px] lg:h-[520px]" />
+          <ImageCard img="/img/soil-testing.jpg" title="Every plot now on the map" sub="Tolon District" href={R.story("every-plot-is-now-on-the-map")} h="h-[420px] lg:h-[520px]" />
+          <ImageCard img="/img/vsla-savings-box.jpg" title="Savings that pay for irrigation" sub="Kumbungu" href={R.story("savings-that-pay-for-irrigation")} h="h-[420px] lg:h-[520px]" />
         </Stagger>
       </Section>
 
@@ -57,7 +57,7 @@ export default function Impact() {
         </Container>
       </section>
 
-      <CtaBleed img="/img/aerial-plots.jpg" title="Grow with us"
+      <CtaBleed img="/img/vea-irrigation.jpg" title="Grow with us"
         actions={<><Button href={R.farmers} variant="lime" arrow>Sell your harvest</Button><Button href={R.business} variant="glass">Buy for your business</Button></>} />
     </PublicPage>
   );

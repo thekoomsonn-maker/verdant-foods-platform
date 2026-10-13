@@ -27,7 +27,7 @@ export default async function FarmStory({ params }: Props) {
   return (
     <PublicPage nav="overlay">
       <PageHero
-        img="/img/vsla-meeting.jpg"
+        img="/img/farmer-amina.jpg"
         height="mid"
         crumbs={[["Your food", R.trace(t.code)], ["Farm story"]]}
         eyebrow={<GlassChip icon="qr-code">Farm story · from code {t.code}</GlassChip>}
@@ -54,7 +54,7 @@ export default async function FarmStory({ params }: Props) {
           <Reveal delay={0.05}><h2 className={cx(T.h2, "text-deep")}>Every visit, on record</h2></Reveal>
           <ClipReveal className="relative flex flex-col justify-end h-[300px] overflow-hidden rounded-3xl md:h-[340px]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/img/officer-tablet.jpg" alt="Officer Yaw Appiah on a farm visit" className="absolute inset-0 h-full w-full object-cover" />
+            <img src="/img/soil-testing.jpg" alt="Officer Yaw Appiah on a farm visit" className="absolute inset-0 h-full w-full object-cover" />
             <div className="glass-dark relative m-4 mt-auto w-[calc(100%-2rem)] rounded-2xl px-5 py-4 text-white">
               <div className="text-[17px] font-semibold">Officer Yaw Appiah</div><div className="text-[14px] text-white/80">Visits every two weeks</div>
             </div>
@@ -79,7 +79,7 @@ export default async function FarmStory({ params }: Props) {
       </Section>
 
       <div id="thanks">
-        <CtaBleed img="/img/hands-tomato.jpg" title={`Say thank you to ${t.farmer.split(" ")[0]}`} sub="Messages are read out at the next group meeting." actions={<ThankYou farmer={t.farmer} variant="lime" center />} />
+        <CtaBleed img="/img/momo-farmer.jpg" title={`Say thank you to ${t.farmer.split(" ")[0]}`} sub="Messages are read out at the next group meeting." actions={<ThankYou farmer={t.farmer} variant="lime" center />} />
       </div>
     </PublicPage>
   );

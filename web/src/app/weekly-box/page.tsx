@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Weekly box", description: "A box of 
 export default function WeeklyBoxPage() {
   return (
     <PublicPage>
-      <PageHero img="/img/family-unbox.jpg" height="mid" eyebrow="Weekly box" title="A week of fresh food, every week."
+      <PageHero img="/img/box-flatlay.jpg" height="mid" eyebrow="Weekly box" title="A week of fresh food, every week."
         sub="Picked on Monday, at your door by Wednesday." actions={<BoxHeroActions />} side={<BoxPrice />} />
       <BoxBuilder />
       <section className="bg-deep py-[72px] text-white md:py-24">

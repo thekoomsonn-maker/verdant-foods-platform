@@ -20,7 +20,7 @@ export function AccountShell({ active, title, sub, children }: { active: string;
       <div className="bg-paper pt-[68px] lg:pt-[72px]">
         <section className="relative overflow-hidden bg-deep text-white">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/img/hero-aerial.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-[0.12]" />
+          <img src="/img/cabbage-field.jpg" alt="" className="absolute inset-0 h-full w-full object-cover opacity-[0.12]" />
           <Container className="relative flex flex-col gap-5 py-7 md:flex-row md:items-center md:justify-between md:py-9">
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: EASE }} className="flex items-center gap-4">
               <Avatar initials="AO" size={56} className="bg-lime text-night" />

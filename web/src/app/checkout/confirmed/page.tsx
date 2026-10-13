@@ -18,7 +18,7 @@ export default function ConfirmedPage() {
   return (
     <PublicPage>
       <PageHero
-        img="/img/family-unbox.jpg" height="mid"
+        img="/img/family-cooking.jpg" height="mid"
         eyebrow={<DrawCheck size={56} />}
         title={`Thank you, ${ORDER.buyer.split(" ")[0]}. Your order is confirmed.`}
         sub={`Order #${ORDER.id} · paid with MTN MoMo · arriving Thursday, 9 am to 1 pm`}

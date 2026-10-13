@@ -60,7 +60,7 @@ export function Footer() {
           </div>
         </nav>
         <div className="mt-12 flex flex-col gap-6 border-t border-white/10 pt-8 text-[14px] text-white/70 md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-wrap gap-x-6 gap-y-2"><span>© 2026 Verdant Foods Ltd. Tamale, Ghana</span><Link href={R.legal} className="hover:text-white">Privacy</Link><Link href={R.legal} className="hover:text-white">Terms</Link><Link href={R.legal} className="hover:text-white">Cookies</Link></div>
+          <div className="flex flex-wrap gap-x-6 gap-y-2"><span>© 2026 Verdant Foods Ltd. Accra, Ghana</span><Link href={R.legal} className="hover:text-white">Privacy</Link><Link href={R.legal} className="hover:text-white">Terms</Link><Link href={R.legal} className="hover:text-white">Cookies</Link></div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3"><span>MTN MoMo · Telecel Cash · AT Money · Visa · Mastercard</span>
             <span className="flex gap-2">{(["instagram", "facebook", "linkedin", "youtube"] as const).map((s) => <a key={s} href="#" aria-label={s} className="flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-forest hover:text-lime"><Icon name={s} size={18} /></a>)}</span>
           </div>

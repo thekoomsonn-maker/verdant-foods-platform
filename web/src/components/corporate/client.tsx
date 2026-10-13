@@ -50,38 +50,41 @@ function DrawnCheck({ size = 56, className }: { size?: number; className?: strin
 }
 
 /* ---------- About: where we work (list + live map) ---------- */
-const REGIONS: { id: string; name: string; places: string; lat: number; lng: number }[] = [
-  { id: "tamale", name: "Northern Region", places: "Tamale, Tolon, Kumbungu, Savelugu", lat: PLACES.tamale.lat, lng: PLACES.tamale.lng },
-  { id: "wa", name: "Upper West Region", places: "Wa, Lawra, Nadowli", lat: PLACES.wa.lat, lng: PLACES.wa.lng },
-  { id: "", name: "We deliver to", places: "Accra, Kumasi, Tamale", lat: PLACES.accra.lat, lng: PLACES.accra.lng },
+const ZONES: { id: string; name: string; places: string; lat: number; lng: number; zoom: number }[] = [
+  { id: "south", name: "Head office and Verdant Farm", places: "Accra · Somanya, Eastern", lat: 5.85, lng: -0.1, zoom: 8.6 },
+  { id: "coast", name: "Coast and forest belt", places: "Greater Accra, Central, Western, Western North, Volta", lat: 5.9, lng: -1.0, zoom: 7.4 },
+  { id: "middle", name: "Middle belt", places: "Ashanti, Bono, Bono East, Ahafo, Oti", lat: 7.4, lng: -1.4, zoom: 7.3 },
+  { id: "north", name: "The north", places: "Northern, Savannah, North East, Upper East, Upper West", lat: 9.9, lng: -1.2, zoom: 7.2 },
 ];
 export function WhereWeWork() {
   const [active, setActive] = useState<string | undefined>();
+  const zone = ZONES.find((z) => z.id === active);
   return (
     <section className="bg-deep text-white">
-      <Container className="grid gap-10 py-[72px] md:py-24 lg:grid-cols-[420px_1fr] lg:items-center lg:gap-16 lg:py-[120px]">
+      <Container className="grid gap-10 py-[72px] md:py-24 lg:grid-cols-[440px_1fr] lg:items-center lg:gap-16 lg:py-[120px]">
         <div className="flex flex-col gap-5">
           <Reveal><span className="inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.08em] text-lime"><span className="h-1.5 w-1.5 rounded-full bg-lime" />Where we work</span></Reveal>
-          <SplitIn text="Northern and Upper West regions" className={T.h2} />
-          <Reveal delay={0.1}><p className="text-[17px] text-white/75">Our farmers are in seven districts. We deliver to three cities.</p></Reveal>
+          <SplitIn text="Farms in all 16 regions of Ghana" className={T.h2} />
+          <Reveal delay={0.1}><p className="text-[17px] text-white/75">Our head office is in Accra and our own farm is at Somanya in the Eastern Region. Partner farms grow across every region, with packhouses in Somanya and Tamale.</p></Reveal>
           <Reveal delay={0.2} className="flex flex-col">
-            {REGIONS.map((r) => (
-              <button key={r.name} disabled={!r.id} onClick={() => r.id && setActive(r.id)} className={cx("group/rg disabled:cursor-default flex items-center justify-between gap-4 border-t border-white/10 py-3 text-left transition-colors", active === r.id ? "text-white" : "text-white/80 hover:text-white")}>
+            {ZONES.map((r) => (
+              <button key={r.id} onClick={() => setActive(active === r.id ? undefined : r.id)} className={cx("group/rg flex items-center justify-between gap-4 border-t border-white/10 py-3.5 text-left transition-colors", active === r.id ? "text-white" : "text-white/80 hover:text-white")}>
                 <span className="text-[15px] font-semibold text-lime">{r.name}</span>
-                <span className="inline-flex items-center gap-2 text-right text-[14px]">{r.places}<Icon name="locate-fixed" size={15} className={cx("transition-opacity", active === r.id ? "opacity-100 text-lime" : "opacity-0 group-hover/rg:opacity-60")} /></span>
+                <span className="inline-flex items-center gap-2 text-right text-[14px]">{r.places}<Icon name="locate-fixed" size={15} className={cx("shrink-0 transition-opacity", active === r.id ? "opacity-100 text-lime" : "opacity-0 group-hover/rg:opacity-60")} /></span>
               </button>
             ))}
           </Reveal>
         </div>
         <Reveal delay={0.1}>
-          <LiveMap height="h-[340px] md:h-[440px] lg:h-[480px]" focus={{ lat: 9.85, lng: -1.7, zoom: 7.3 }} live="Field sites" legend={[["#BBEA70", "Farming districts"]]}
+          <LiveMap height="h-[420px] md:h-[520px] lg:h-[600px]" focus={zone ? { lat: zone.lat, lng: zone.lng, zoom: zone.zoom } : { lat: 7.95, lng: -1.03, zoom: 6.35 }} live="Partner farms" legend={[["#BBEA70", "Partner farms"], ["#FFFFFF", "Head office and packhouses"]]}
             plots={FARMS.map((f) => ({ id: f.slug, name: f.name, coords: plotAround(f.lat, f.lng, 0.05, 0.012) }))}
             pins={[
-              { id: "wa", lat: PLACES.wa.lat, lng: PLACES.wa.lng, kind: "farm", label: "Wa" },
-              { id: "tamale", lat: PLACES.tamale.lat, lng: PLACES.tamale.lng, kind: "handover", icon: "warehouse", label: "Tamale" },
-              { id: "tolon", lat: PLACES.tolon.lat, lng: PLACES.tolon.lng, kind: "farm", label: "Tolon" },
+              { id: "hq", lat: PLACES.hq.lat, lng: PLACES.hq.lng, kind: "handover", icon: "building-2", label: "Head office, Accra" },
+              { id: "somanya", lat: PLACES.somanya.lat, lng: PLACES.somanya.lng, kind: "farm", label: "Verdant Farm" },
+              { id: "tamale", lat: PLACES.tamale.lat, lng: PLACES.tamale.lng, kind: "handover", icon: "warehouse", label: "Tamale packhouse" },
+              ...FARMS.filter((f) => f.slug !== "verdant-farm-somanya").map((f) => ({ id: f.slug, lat: f.lat, lng: f.lng, kind: "farm" as const, label: f.region })),
             ]}
-            active={active} />
+            />
         </Reveal>
       </Container>
     </section>
@@ -250,8 +253,8 @@ export function ContactForm() {
 }
 export function ContactMap() {
   return (
-    <LiveMap height="h-[220px]" rounded="rounded-3xl" controls={false} focus={{ lat: PLACES.tamale.lat, lng: PLACES.tamale.lng, zoom: 11.5 }}
-      pins={[{ id: "hq", lat: PLACES.tamale.lat, lng: PLACES.tamale.lng, kind: "handover", icon: "building-2", label: "Tamale head office" }]} />
+    <LiveMap height="h-[220px]" rounded="rounded-3xl" controls={false} focus={{ lat: PLACES.hq.lat, lng: PLACES.hq.lng, zoom: 12.5 }}
+      pins={[{ id: "hq", lat: PLACES.hq.lat, lng: PLACES.hq.lng, kind: "handover", icon: "building-2", label: "Head office, Accra" }]} />
   );
 }
 

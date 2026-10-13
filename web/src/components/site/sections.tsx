@@ -114,7 +114,7 @@ export function ImageCard({ img, title, sub, href, h = "h-[360px] lg:h-[480px]" 
  * Item: [icon, title, description, href?, img?, fit?]
  * With an image, the picture sits in the top of the card (about 4:3, never tinted) and the tint stays on the body below.
  * fit "cover" (photos) fills the frame; fit "art" (flat illustrations) sits on a lighter well with padding.
- * When fit is left out, paths under /illustrations/ are treated as art. */
+ * Illustrations fill the frame like photos; pass "art" to inset one. */
 const TILE_BG = ["bg-lime-soft", "bg-sun-soft", "bg-tomato-soft", "bg-mint", "bg-orange-soft", "bg-plum-soft"];
 export type TileFit = "cover" | "art";
 export type TileItem = [IconName, string, string, string?, string?, TileFit?];
@@ -127,7 +127,7 @@ export function Tiles({ items, cols = 4, dark }: { items: TileItem[]; cols?: 2 |
 }
 function Tile({ item, n, dark }: { item: TileItem; n: number; dark?: boolean }) {
   const [icon, t, d, href, img, fitIn] = item;
-  const art = img ? (fitIn ?? (img.startsWith("/illustrations/") ? "art" : "cover")) === "art" : false;
+  const art = img ? (fitIn ?? "cover") === "art" : false;
   const tint = dark ? "bg-forest text-white" : TILE_BG[n % TILE_BG.length];
   const chip = cx(
     "flex shrink-0 items-center justify-center rounded-2xl transition-[translate,rotate,scale] duration-500 ease-[cubic-bezier(.34,1.56,.64,1)] group-hover/t:-translate-y-1 group-hover/t:-rotate-[8deg] group-hover/t:scale-110",

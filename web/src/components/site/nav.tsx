@@ -118,7 +118,7 @@ export function Nav({ theme = "overlay" }: { theme?: "overlay" | "light" }) {
             role="dialog" aria-label="Menu"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/img/hero-aerial.jpg" alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.12]" />
+            <img src="/img/box-flatlay.jpg" alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.12]" />
             <div className="relative flex items-center justify-between">
               <div className="relative h-9 w-[104px]"><Image src="/brand/logo-cream.png" alt="Verdant Foods" fill className="object-contain object-left" /></div>
               <button onClick={() => setSheet(false)} aria-label="Close menu" className="flex h-11 w-11 items-center justify-center rounded-full bg-forest"><Icon name="x" /></button>

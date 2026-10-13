@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "Stories", description: "Short reads 
 export default function Stories() {
   return (
     <PublicPage>
-      <PageHero img="/img/hands-tomato.jpg" height="mid" eyebrow="Stories" title="From the farm, in their own words."
+      <PageHero img="/img/okra-harvest.jpg" height="mid" eyebrow="Stories" title="From the farm, in their own words."
         actions={<Button href={R.story(STORIES[0].slug)} variant="lime" arrow>Read the latest</Button>} />
       <StoriesGrid />
       <Newsletter title="One story a week" sub="Short reads from the farms. No spam." />

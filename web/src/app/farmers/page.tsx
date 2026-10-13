@@ -32,10 +32,10 @@ export default function Farmers() {
       <Section className="flex flex-col gap-10">
         <Title text="Why farmers choose Verdant" />
         <Tiles items={[
-          ["hand-coins", "Fair, agreed prices", "Know your price before you harvest."],
-          ["wallet", "Paid to mobile money", "MTN MoMo, Telecel Cash or AT Money within 48 hours."],
-          ["truck", "Collection near you", "Drop your harvest at a collection point near your farm."],
-          ["sprout", "Free farm advice", "Field officers visit and help you grow more."],
+          ["hand-coins", "Fair, agreed prices", "Know your price before you harvest.", undefined, "/illustrations/fair-prices.jpg"],
+          ["wallet", "Paid to mobile money", "MTN MoMo, Telecel Cash or AT Money within 48 hours.", undefined, "/illustrations/momo-paid.jpg"],
+          ["truck", "Collection near you", "Drop your harvest at a collection point near your farm.", undefined, "/illustrations/collection-point.jpg"],
+          ["sprout", "Free farm advice", "Field officers visit and help you grow more.", undefined, "/illustrations/farm-advice.jpg"],
         ]} />
       </Section>
 
@@ -53,7 +53,7 @@ export default function Farmers() {
 
       <FarmerApp />
 
-      <PhotoSplit img="/img/vsla-meeting.jpg" eyebrow="Savings groups" title="Run your savings group on your phone" flip bg="bg-paper">
+      <PhotoSplit img="/img/vsla-savings-box.jpg" eyebrow="Savings groups" title="Run your savings group on your phone" flip bg="bg-paper">
         <Reveal delay={0.1}><p className={T.lead + " text-muted"}>Village savings and loan groups keep their weekly records in the Verdant app. No more lost books.</p></Reveal>
         <Reveal delay={0.2}><Checks items={["Record savings at the meeting", "Track loans and repayments", "See the group box total any time", "Records stay safe, even if the phone is lost"]} /></Reveal>
         <Reveal delay={0.3}><Button href={R.contact} arrow>Register your group</Button></Reveal>
@@ -61,7 +61,7 @@ export default function Farmers() {
 
       <Faq qs={FARMER_FAQ} />
 
-      <CtaBleed img="/img/truck-loading.jpg" title="Ready to sell with Verdant?"
+      <CtaBleed img="/img/young-farmer-app.jpg" title="Ready to sell with Verdant?"
         actions={<><Button href={APP} variant="lime" arrow>Get the farmer app</Button><Button href="tel:+233245550100" variant="glass" icon="phone">Call the farmer line</Button></>} />
     </PublicPage>
   );

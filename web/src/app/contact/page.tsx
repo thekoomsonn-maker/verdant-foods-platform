@@ -12,14 +12,14 @@ export const metadata: Metadata = { title: "Contact", description: "Questions ab
 const REACH: [IconName, string, string, string, string][] = [
   ["message-circle", "Call or WhatsApp", "Monday to Saturday, 8 am to 6 pm", "https://wa.me/233245550100", "bg-lime-soft"],
   ["mail", "Email", "hello@verdantfoods.com.gh", "mailto:hello@verdantfoods.com.gh", "bg-mint"],
-  ["map-pin", "Head office", "Tamale, Northern Region", "https://www.google.com/maps/search/?api=1&query=9.4008,-0.8393", "bg-sun-soft"],
-  ["building-2", "Accra hub", "Spintex Road, Accra", "https://www.google.com/maps/search/?api=1&query=Spintex+Road+Accra", "bg-orange-soft"],
+  ["map-pin", "Head office", "Airport Residential Area, Accra", "https://www.google.com/maps/search/?api=1&query=5.6052,-0.1718", "bg-sun-soft"],
+  ["sprout", "Verdant Farm", "Somanya, Eastern Region", "https://www.google.com/maps/search/?api=1&query=6.1043,-0.0151", "bg-orange-soft"],
 ];
 
 export default function Contact() {
   return (
     <PublicPage>
-      <PageHero img="/img/delivery.jpg" height="short" eyebrow="Contact Verdant" title="Talk to us"
+      <PageHero img="/img/support-agent.jpg" height="short" eyebrow="Contact Verdant" title="Talk to us"
         sub="Questions about an order, buying for your business or selling your harvest? We reply within one working day." />
       <Section bg="bg-paper" className="grid gap-6 lg:grid-cols-[1fr_440px] lg:gap-10">
         <Reveal y={24}><ContactForm /></Reveal>

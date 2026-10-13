@@ -41,7 +41,7 @@ export default async function ProductPage({ params }: P) {
         <ProductRecord p={p} />
       </Section>
 
-      <Bleed img="/img/farmer-amina.jpg" align="end" overlay="linear-gradient(90deg, rgb(1 31 26 / .7), rgb(1 31 26 / .15) 70%)">
+      <Bleed img={farmBySlug(p.farm).photo} align="end" overlay="linear-gradient(90deg, rgb(1 31 26 / .7), rgb(1 31 26 / .15) 70%)">
         <Reveal className="glass-dark flex max-w-[520px] flex-col gap-4 rounded-3xl p-6 md:p-8">
           <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-lime">Meet the farmer</span>
           <h2 className={cx(T.h3, "text-white")}>{farm.leader}, {farm.name}</h2>
