@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import { useMemo, useState } from "react";
-import { A1Swap } from "@/components/admin/a1-ui";
+import { SwapIn } from "@/components/admin/table-kit";
 import { Icon } from "@/components/icon";
 import { LiveMap, type Pin, type RouteLine } from "@/components/map";
 import { CountUp, EASE } from "@/components/motion";
@@ -11,7 +11,7 @@ import { useToast } from "@/components/toast";
 import { cx } from "@/components/tokens";
 import { Button, KV } from "@/components/ui";
 import { FARMS, PLACES, plotAround } from "@/lib/data";
-import { TRACE_CODES } from "@/lib/data-admin1";
+import { TRACE_CODES } from "@/lib/data-admin";
 import { R } from "@/lib/routes";
 
 const STEP_PIN = ["farm", "tolon", "tamale", "buyers"];
@@ -77,13 +77,13 @@ export function CodesClient() {
       <div className="grid gap-4 md:gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:items-start">
         <Panel>
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <A1Swap k={code}><h2 className="text-[18px] font-semibold">{code} · {t.product} · {t.kg} kg</h2></A1Swap>
+            <SwapIn k={code}><h2 className="text-[18px] font-semibold">{code} · {t.product} · {t.kg} kg</h2></SwapIn>
             <Link href={R.trace(code)} className="text-[14px] font-semibold text-leaf hover:text-deep">Open public page</Link>
           </div>
           <LiveMap key={code} height="h-[260px] md:h-[300px]" rounded="rounded-2xl" styleName="satellite" controls={false}
             focus={{ lat: 7.7, lng: -1.0, zoom: 6.3 }} plots={map.plots} routes={map.routes} pins={map.pins}
             active={step !== null ? STEP_PIN[Math.min(step, sold ? 3 : 2)] : undefined} onPin={(id) => setStep(STEP_PIN.indexOf(id === "kumasi" ? "buyers" : id))} />
-          <LayoutGroup id="a1-steps">
+          <LayoutGroup id="admin-steps">
             <div className="flex flex-col">
               {t.steps.map((s, i) => {
                 const on = step === i;
@@ -91,7 +91,7 @@ export function CodesClient() {
                   <motion.button key={code + s.title} type="button" onClick={() => setStep(on ? null : i)}
                     initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 + i * 0.06, duration: 0.35, ease: EASE }}
                     className="relative flex items-center gap-3 rounded-2xl p-2.5 text-left">
-                    {on && <motion.span layoutId="a1-step-on" className="absolute inset-0 rounded-2xl bg-mist" transition={{ type: "spring", stiffness: 380, damping: 34 }} />}
+                    {on && <motion.span layoutId="adm-step-on" className="absolute inset-0 rounded-2xl bg-mist" transition={{ type: "spring", stiffness: 380, damping: 34 }} />}
                     <span className={cx("relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full", s.icon === "siren" ? "bg-danger text-white" : "bg-deep text-lime")}><Icon name={s.icon} size={18} /></span>
                     <span className="relative min-w-0 flex-1"><span className="block text-[15px] font-semibold">{s.title}</span><span className="block truncate text-[13px] text-muted">{s.sub}</span></span>
                     <span className="relative inline-flex shrink-0 items-center gap-1.5 rounded-full bg-paper px-3 py-1.5 text-[13px] font-semibold text-deep"><Icon name="scale" size={14} />{s.kg}</span>
@@ -108,14 +108,14 @@ export function CodesClient() {
               <Icon name="qr-code" size={84} strokeWidth={1.4} />
               <span className="absolute inset-x-3 top-0 h-[2px] animate-scan bg-lime" />
             </motion.span>
-            <A1Swap k={code} className="flex flex-col gap-1">
+            <SwapIn k={code} className="flex flex-col gap-1">
               <span className="text-[20px] font-semibold tracking-[0.02em]">{code}</span>
               <span className="text-[14px] text-white/75">{t.scans ? <>Scanned <CountUp value={String(t.scans)} /> times</> : "Not scanned yet"}</span>
-            </A1Swap>
+            </SwapIn>
           </section>
 
           <Panel title="Who received it" link={[sold ? "6 orders" : "Not sold", R.adminOrders]}>
-            <A1Swap k={code} className="flex flex-col gap-3">
+            <SwapIn k={code} className="flex flex-col gap-3">
               {sold ? (
                 <>
                   {t.buyers.map(([n, kg]) => <KV key={n} k={n} v={kg} />)}
@@ -124,7 +124,7 @@ export function CodesClient() {
               ) : (
                 <p className="text-[14px] text-muted">This lot is held at the Tamale packhouse and has not gone to any buyer. Nothing to recall.</p>
               )}
-            </A1Swap>
+            </SwapIn>
           </Panel>
         </div>
       </div>

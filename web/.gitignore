@@ -42,3 +42,5 @@ next-env.d.ts
 
 # Dev-only auth defaults (see ACCESS.md). Never put real secrets here.
 !.env.development
+
+!.env.example

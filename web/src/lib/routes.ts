@@ -1,4 +1,4 @@
-// Every page in the Figma file, by its board number, mapped to a route.
+// Every page of the website, numbered as in the Figma file, mapped to its route.
 export const R = {
   home: "/", about: "/about", farmers: "/farmers", business: "/business", traceInfo: "/trace-your-food", contact: "/contact",
   impact: "/impact", stories: "/stories", story: (slug = "amina-doubled-her-tomato-plot") => `/stories/${slug}`, careers: "/careers",

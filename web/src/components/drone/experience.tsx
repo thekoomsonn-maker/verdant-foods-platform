@@ -33,11 +33,6 @@ export default function DroneExperience({ mode, backHref }: { mode: "section" | 
   }), [tier, touch]);
   const dpr: [number, number] = tier === "high" ? [1, touch ? 1.5 : 1.75] : [1, 1.2];
 
-  // QA hook: /fly?debug exposes the game state on window for automated checks.
-  useEffect(() => {
-    if (new URLSearchParams(window.location.search).has("debug")) (window as unknown as { __drone: typeof game }).__drone = game;
-  }, [game]);
-
   useEffect(() => {
     game.reduceMotion = !!reduce;
     if (reduce && game.phase === "intro") game.setPhase("ready");
@@ -187,15 +182,10 @@ export default function DroneExperience({ mode, backHref }: { mode: "section" | 
           frameloop={active ? "always" : "demand"}
           camera={{ fov: 50, near: 0.3, far: 2600, position: [-340, 175, 430] }}
           gl={{ antialias: true, powerPreference: "high-performance", alpha: false }}
-          onCreated={({ gl, scene, camera }) => {
+          onCreated={({ gl }) => {
             gl.toneMapping = THREE.ACESFilmicToneMapping;
             gl.toneMappingExposure = 1.12;
             requestAnimationFrame(() => requestAnimationFrame(() => setShown(true)));
-            const qa = new URLSearchParams(window.location.search).get("debug");
-            if (qa !== null) {
-              Object.assign(window, { __gl: gl, __scene: scene, __cam: camera });
-              if (qa) game.maxDt = Number(qa) || game.maxDt;
-            }
           }}
           style={{ pointerEvents: controlling ? "auto" : "none" }}
         >

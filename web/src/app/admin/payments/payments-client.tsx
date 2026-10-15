@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { A1Table, A1Under } from "@/components/admin/a1-ui";
+import { AdminTable, UnderlineTabs } from "@/components/admin/table-kit";
 import { Donut, Legend } from "@/components/charts";
 import { Icon } from "@/components/icon";
 import { EASE } from "@/components/motion";
@@ -10,7 +10,7 @@ import { ADM, DataTable, Kpi, KpiRow, Panel, PortalShell } from "@/components/po
 import { useToast } from "@/components/toast";
 import { cx } from "@/components/tokens";
 import { Avatar, Button, Status } from "@/components/ui";
-import { PAYMENTS_IN, PAYOUTS, type Payout } from "@/lib/data-admin1";
+import { PAYMENTS_IN, PAYOUTS, type Payout } from "@/lib/data-admin";
 import { R } from "@/lib/routes";
 
 const ced = (n: number) => `GH₵ ${n.toLocaleString("en-GH")}`;
@@ -85,11 +85,11 @@ export function PaymentsClient() {
         </Panel>
 
         <Panel>
-          <A1Under items={["Payouts", "Payments in"]} value={tab} onChange={setTab} />
+          <UnderlineTabs items={["Payouts", "Payments in"]} value={tab} onChange={setTab} />
           <AnimatePresence mode="wait" initial={false}>
             <motion.div key={tab} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
               {tab === "Payouts" ? (
-                <A1Table sel={sel} onSel={setSel}
+                <AdminTable sel={sel} onSel={setSel}
                   cols={[["Payee", "2fr"], ["Type", "1fr"], ["Method", "1.2fr"], ["Amount", "1fr"], ["Status", "0.9fr"]]}
                   rows={rows.map((r) => ({ key: r.name, cells: [
                     <span key="n" className="flex items-center gap-2.5"><Avatar initials={r.init} size={32} className={cx(r.kind === "Farmer" ? "bg-mist text-deep" : r.kind === "Driver" ? "bg-orange-soft text-orange" : "bg-lime-soft text-deep")} /><span className="truncate">{r.name}</span></span>,

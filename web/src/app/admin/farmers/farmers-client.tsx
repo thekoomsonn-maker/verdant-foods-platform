@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { LayoutGroup, motion } from "motion/react";
 import { useMemo, useState } from "react";
-import { A1Tag } from "@/components/admin/a1-ui";
+import { AdminTag } from "@/components/admin/table-kit";
 import { Icon } from "@/components/icon";
 import { LiveMap, type Pin } from "@/components/map";
 import { EASE } from "@/components/motion";
@@ -11,7 +11,7 @@ import { useToast } from "@/components/toast";
 import { cx } from "@/components/tokens";
 import { Avatar, Button, ProofChip, Status } from "@/components/ui";
 import { FARMS } from "@/lib/data";
-import { FARM_ROWS, farmPlots, PLOT_COLOR } from "@/lib/data-admin1";
+import { FARM_ROWS, farmPlots, PLOT_COLOR } from "@/lib/data-admin";
 import { R } from "@/lib/routes";
 
 export function FarmersClient() {
@@ -44,7 +44,7 @@ export function FarmersClient() {
           />
         </div>
 
-        <LayoutGroup id="a1-farms">
+        <LayoutGroup id="admin-farms">
           <div className="flex flex-col gap-3">
             {FARM_ROWS.map((r, i) => {
               const f = FARMS.find((x) => x.slug === r.slug)!;
@@ -53,7 +53,7 @@ export function FarmersClient() {
                 <motion.div key={r.slug} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE, delay: Math.min(i, 8) * 0.05 }}
                   role="button" tabIndex={0} onClick={() => setSel(r.slug)} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSel(r.slug); } }}
                   className="relative flex cursor-pointer flex-col gap-3 rounded-[20px] bg-white p-4 outline-none transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-deep">
-                  {on && <motion.span layoutId="a1-farm-on" className="absolute inset-0 rounded-[20px] ring-2 ring-leaf" transition={{ type: "spring", stiffness: 380, damping: 34 }} />}
+                  {on && <motion.span layoutId="adm-farm-on" className="absolute inset-0 rounded-[20px] ring-2 ring-leaf" transition={{ type: "spring", stiffness: 380, damping: 34 }} />}
                   <div className="relative flex items-start gap-3">
                     <Avatar initials={r.init} className={on ? "bg-lime text-night" : "bg-mist text-deep"} />
                     <div className="min-w-0 flex-1">
@@ -63,7 +63,7 @@ export function FarmersClient() {
                     <Status tone={r.tone}>{r.status}</Status>
                   </div>
                   <div className="relative flex flex-wrap items-center gap-2">
-                    <A1Tag icon="map">{r.mapped ? `${r.plots} plot${r.plots === 1 ? "" : "s"} mapped` : "Not mapped"}</A1Tag>
+                    <AdminTag icon="map">{r.mapped ? `${r.plots} plot${r.plots === 1 ? "" : "s"} mapped` : "Not mapped"}</AdminTag>
                     <ProofChip level={r.proof} />
                     {!r.mapped && <button onClick={(e) => { e.stopPropagation(); toast(`Officer Kwame Dery assigned to map ${f.name}`); }} className="text-[13px] font-semibold text-leaf hover:text-deep">Assign officer</button>}
                     <Link href={R.farm(r.slug)} onClick={(e) => e.stopPropagation()} className={cx("ml-auto inline-flex items-center gap-1 text-[13px] font-semibold text-deep hover:text-leaf")}>Profile<Icon name="arrow-up-right" size={14} /></Link>

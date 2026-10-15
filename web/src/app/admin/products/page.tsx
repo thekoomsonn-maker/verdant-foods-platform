@@ -3,6 +3,6 @@ import { ProductsClient } from "./products-client";
 
 export const metadata: Metadata = { title: "Products and harvests · Admin" };
 
-export default function AdminProducts() {
+export default function AdminProductsPage() {
   return <ProductsClient />;
 }

@@ -11,13 +11,13 @@ export const useToast = () => useContext(Ctx);
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<Toast[]>([]);
   const timers = useRef(new Map<number, ReturnType<typeof setTimeout>>());
-  const drop = (id: number) => setItems((t) => t.filter((x) => x.id !== id));
-  const arm = (id: number) => timers.current.set(id, setTimeout(() => drop(id), 4000));
+  const drop = useCallback((id: number) => setItems((t) => t.filter((x) => x.id !== id)), []);
+  const arm = useCallback((id: number) => timers.current.set(id, setTimeout(() => drop(id), 4000)), [drop]);
   const push = useCallback((text: string, tone: Toast["tone"] = "success") => {
     const id = Date.now() + Math.random();
     setItems((t) => [...t.slice(-2), { id, text, tone }]);
     arm(id);
-  }, []);
+  }, [arm]);
   return (
     <Ctx.Provider value={push}>
       {children}

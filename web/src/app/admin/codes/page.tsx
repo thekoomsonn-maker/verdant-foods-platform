@@ -3,6 +3,6 @@ import { CodesClient } from "./codes-client";
 
 export const metadata: Metadata = { title: "Trace codes · Admin" };
 
-export default function AdminCodes() {
+export default function AdminCodesPage() {
   return <CodesClient />;
 }

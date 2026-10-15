@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { A2Reports } from "@/components/admin/a2-reports";
+import { AdminReports } from "@/components/admin/reports";
 
 export const metadata: Metadata = { title: "Reports · Admin" };
 
 export default function AdminReportsPage() {
-  return <A2Reports />;
+  return <AdminReports />;
 }

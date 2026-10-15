@@ -3,6 +3,6 @@ import { GroupsClient } from "./groups-client";
 
 export const metadata: Metadata = { title: "Savings groups · Admin" };
 
-export default function AdminGroups() {
+export default function AdminGroupsPage() {
   return <GroupsClient />;
 }

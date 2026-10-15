@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import { useMemo, useState } from "react";
-import { A1Swap, A1Tabs } from "@/components/admin/a1-ui";
+import { SwapIn, AdminTabs } from "@/components/admin/table-kit";
 import { Icon } from "@/components/icon";
 import { LiveMap } from "@/components/map";
 import { EASE } from "@/components/motion";
@@ -11,7 +11,7 @@ import { useToast } from "@/components/toast";
 import { cx } from "@/components/tokens";
 import { Button, Status } from "@/components/ui";
 import { FARMS, plotAround } from "@/lib/data";
-import { CHECKS } from "@/lib/data-admin1";
+import { CHECKS } from "@/lib/data-admin";
 import { R } from "@/lib/routes";
 
 type State = "open" | "approved" | "revisit";
@@ -47,10 +47,10 @@ export function ChecksClient() {
         <Kpi l="Passed first time" v="92%" d="Spray gaps are the top issue" icon="shield-check" tone="muted" />
       </KpiRow>
 
-      <A1Tabs items={[["Overdue"], ["Due today"], ["All"]]} value={tab} onChange={pick} />
+      <AdminTabs items={[["Overdue"], ["Due today"], ["All"]]} value={tab} onChange={pick} />
 
       <div className="grid gap-4 md:gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:items-start">
-        <LayoutGroup id="a1-checks">
+        <LayoutGroup id="admin-checks">
           <div className="flex flex-col gap-3">
             <AnimatePresence mode="popLayout" initial={false}>
               {list.map((x, i) => {
@@ -60,7 +60,7 @@ export function ChecksClient() {
                   <motion.button key={x.id} layout="position" type="button" onClick={() => setSel(x.id)}
                     initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, transition: { duration: 0.15 } }} transition={{ duration: 0.35, ease: EASE, delay: Math.min(i, 8) * 0.04 }}
                     className="relative flex items-center gap-3 rounded-[20px] bg-white p-4 text-left transition-transform duration-300 hover:-translate-y-0.5">
-                    {on && <motion.span layoutId="a1-check-on" className="absolute inset-0 rounded-[20px] bg-lime-soft" transition={{ type: "spring", stiffness: 380, damping: 34 }} />}
+                    {on && <motion.span layoutId="adm-check-on" className="absolute inset-0 rounded-[20px] bg-lime-soft" transition={{ type: "spring", stiffness: 380, damping: 34 }} />}
                     <span className={cx("relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl", s === "approved" ? "bg-success-bg text-success" : x.overdue ? "bg-danger-bg text-danger" : "bg-mist text-deep")}>
                       <Icon name={s === "approved" ? "circle-check" : x.kind.startsWith("New") ? "map-pin" : x.kind.startsWith("Spray") ? "spray-can" : "badge-check"} size={18} />
                     </span>
@@ -79,7 +79,7 @@ export function ChecksClient() {
         </LayoutGroup>
 
         <Panel className="lg:sticky lg:top-24">
-          <A1Swap k={c.id} className="flex flex-col gap-5">
+          <SwapIn k={c.id} className="flex flex-col gap-5">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
                 <div className="text-[13px] font-medium text-muted">{c.id} · {c.kind}</div>
@@ -88,7 +88,7 @@ export function ChecksClient() {
               </div>
               <Link href={R.farm(farm.slug)} className="inline-flex items-center gap-1 text-[14px] font-semibold text-leaf hover:text-deep">Farm profile<Icon name="arrow-up-right" size={16} /></Link>
             </div>
-          </A1Swap>
+          </SwapIn>
 
           <LiveMap
             height="h-[240px] md:h-[280px]" rounded="rounded-2xl" styleName="satellite" controls={false}
@@ -98,7 +98,7 @@ export function ChecksClient() {
             live={mapped ? `${c.photos} photos · GPS walked` : "Waiting for the officer"}
           />
 
-          <A1Swap k={c.id + "-body"} className="flex flex-col gap-5">
+          <SwapIn k={c.id + "-body"} className="flex flex-col gap-5">
             <ul className="flex flex-col">
               {c.items.map(([t, ok], i) => (
                 <motion.li key={t} initial={{ opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 + i * 0.05, duration: 0.3, ease: EASE }} className="flex items-center gap-3 border-b border-line py-3 last:border-0">
@@ -126,7 +126,7 @@ export function ChecksClient() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </A1Swap>
+          </SwapIn>
         </Panel>
       </div>
     </PortalShell>

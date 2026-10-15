@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { A2Content } from "@/components/admin/a2-content";
+import { AdminContent } from "@/components/admin/content";
 
 export const metadata: Metadata = { title: "Website content · Admin" };
 
 export default function AdminContentPage() {
-  return <A2Content />;
+  return <AdminContent />;
 }

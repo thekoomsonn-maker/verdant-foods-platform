@@ -1,13 +1,13 @@
 "use client";
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
-import { A1Table } from "@/components/admin/a1-ui";
+import { AdminTable } from "@/components/admin/table-kit";
 import { Icon } from "@/components/icon";
 import { EASE } from "@/components/motion";
 import { ADM, Kpi, KpiRow, Panel, PortalShell } from "@/components/portal/shell";
 import { useToast } from "@/components/toast";
 import { Button, Pills, ProofChip, Status } from "@/components/ui";
-import { LOTS } from "@/lib/data-admin1";
+import { LOTS } from "@/lib/data-admin";
 
 const FILTERS = ["All lots", "Safe to sell", "Blocked", "Needs a record"];
 
@@ -43,7 +43,7 @@ export function ProductsClient() {
             </motion.div>
           )}
         </AnimatePresence>
-        <A1Table sel={sel} onSel={setSel} empty="No lots match this filter"
+        <AdminTable sel={sel} onSel={setSel} empty="No lots match this filter"
           cols={[["Lot", "1.3fr"], ["Product", "1.2fr"], ["Farm", "1.8fr"], ["Weight", "0.8fr"], ["Proof", "1.9fr"], ["Spray gap", "1.3fr"]]}
           rows={rows.map((l) => ({ key: l.code, cells: [l.code, l.product, l.farm, `${l.kg} kg`, <ProofChip key="p" level={l.proof} />, <Status key="g" tone={l.code === "VF-PEP-00052" && held ? "warning" : l.gapTone}>{l.code === "VF-PEP-00052" && held ? "Held · 18 Oct" : l.gap}</Status>] }))} />
       </Panel>

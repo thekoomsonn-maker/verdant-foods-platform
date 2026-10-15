@@ -3,6 +3,6 @@ import { ChecksClient } from "./checks-client";
 
 export const metadata: Metadata = { title: "Farm checks · Admin" };
 
-export default function AdminChecks() {
+export default function AdminChecksPage() {
   return <ChecksClient />;
 }

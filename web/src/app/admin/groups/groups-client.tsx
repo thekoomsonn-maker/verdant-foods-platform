@@ -6,7 +6,7 @@ import { EASE } from "@/components/motion";
 import { ADM, DataTable, Kpi, KpiRow, Panel, PortalShell } from "@/components/portal/shell";
 import { useToast } from "@/components/toast";
 import { Avatar, Button, Status } from "@/components/ui";
-import { GROUPS, WEEKLY_SAVINGS } from "@/lib/data-admin1";
+import { GROUPS, WEEKLY_SAVINGS } from "@/lib/data-admin";
 
 export function GroupsClient() {
   const toast = useToast();

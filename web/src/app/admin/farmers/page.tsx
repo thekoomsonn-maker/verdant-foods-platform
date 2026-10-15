@@ -3,6 +3,6 @@ import { FarmersClient } from "./farmers-client";
 
 export const metadata: Metadata = { title: "Farmers and farms · Admin" };
 
-export default function AdminFarmers() {
+export default function AdminFarmersPage() {
   return <FarmersClient />;
 }

@@ -41,7 +41,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <motion.div key="curtain" aria-hidden className="pointer-events-none fixed inset-0 z-[95]" initial={false}>
             <motion.div className="absolute inset-0 bg-lime" exit={{ clipPath: "inset(0% 0% 100% 0%)" }} transition={{ duration: 0.75, ease: EASE_IO, delay: 0.08 }} style={{ clipPath: "inset(0% 0% 0% 0%)" }} />
             <motion.div className="absolute inset-0 flex items-center justify-center bg-deep" exit={{ clipPath: "inset(0% 0% 100% 0%)" }} transition={{ duration: 0.7, ease: EASE_IO }} style={{ clipPath: "inset(0% 0% 0% 0%)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <motion.img src="/brand/logo-green.png" alt="" className="h-auto w-[180px] brightness-0 invert md:w-[220px]" exit={{ opacity: 0, y: -24 }} transition={{ duration: 0.35, ease: EASE }} />
             </motion.div>
           </motion.div>

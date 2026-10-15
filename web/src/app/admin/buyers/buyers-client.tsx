@@ -1,13 +1,13 @@
 "use client";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { A1Swap, A1Table, A1Under } from "@/components/admin/a1-ui";
+import { SwapIn, AdminTable, UnderlineTabs } from "@/components/admin/table-kit";
 import { AreaChart } from "@/components/charts";
 import { EASE } from "@/components/motion";
 import { ADM, Panel, PortalShell } from "@/components/portal/shell";
 import { useToast } from "@/components/toast";
 import { Avatar, Button, KV, Status } from "@/components/ui";
-import { BUYERS, SHOPPERS, WAITING_BUYERS } from "@/lib/data-admin1";
+import { BUYERS, SHOPPERS, WAITING_BUYERS } from "@/lib/data-admin";
 import { R } from "@/lib/routes";
 
 const TONE = { Active: "success", Review: "warning", "Over limit": "danger" } as const;
@@ -26,19 +26,19 @@ export function BuyersClient() {
   return (
     <PortalShell cfg={ADM} active="Buyers" title="Buyers" sub="214 business buyers · 5,820 shoppers"
       actions={<Button size="M" arrow onClick={() => toast("Invite link copied. It works for 7 days.")}>Invite buyer</Button>}>
-      <A1Under items={["Businesses", "Shoppers", `Waiting for approval ${waiting.length}`]} value={tab.startsWith("Waiting") ? `Waiting for approval ${waiting.length}` : tab} onChange={(v) => setTab(v.startsWith("Waiting") ? "Waiting" : v)} />
+      <UnderlineTabs items={["Businesses", "Shoppers", `Waiting for approval ${waiting.length}`]} value={tab.startsWith("Waiting") ? `Waiting for approval ${waiting.length}` : tab} onChange={(v) => setTab(v.startsWith("Waiting") ? "Waiting" : v)} />
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.div key={tab} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25, ease: EASE }}>
           {tab === "Businesses" && (
             <div className="grid gap-4 md:gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:items-start">
               <Panel className="!p-3 md:!p-4">
-                <A1Table sel={sel} onSel={setSel}
+                <AdminTable sel={sel} onSel={setSel}
                   cols={[["Buyer", "1.5fr"], ["Type", "1fr"], ["This month", "1fr"], ["Credit", "0.9fr"], ["Status", "1fr"]]}
                   rows={BUYERS.map((x) => ({ key: x.name, cells: [x.name, x.type, ced(x.month), x.credit, <Status key="s" tone={TONE[x.status]}>{x.status}</Status>] }))} />
               </Panel>
               <Panel className="lg:sticky lg:top-24">
-                <A1Swap k={b.name} className="flex flex-col gap-5">
+                <SwapIn k={b.name} className="flex flex-col gap-5">
                   <div className="flex items-center gap-3">
                     <Avatar initials={b.init} size={48} className="bg-deep text-white" />
                     <div><h2 className="text-[18px] font-semibold">{b.name}</h2><p className="text-[13px] text-muted">{b.type} · {b.city} · since {b.since}</p></div>
@@ -51,7 +51,7 @@ export function BuyersClient() {
                     <KV k="Quality claims" v={b.claims} />
                   </div>
                   <Button href={R.b2b} arrow full size="M">Open account</Button>
-                </A1Swap>
+                </SwapIn>
               </Panel>
             </div>
           )}
@@ -59,19 +59,19 @@ export function BuyersClient() {
           {tab === "Shoppers" && (
             <div className="grid gap-4 md:gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:items-start">
               <Panel className="!p-3 md:!p-4">
-                <A1Table sel={shop} onSel={setShop}
+                <AdminTable sel={shop} onSel={setShop}
                   cols={[["Shopper", "1.4fr"], ["Area", "1.3fr"], ["Orders", "0.8fr"], ["This month", "1fr"], ["Last order", "1fr"]]}
                   rows={SHOPPERS.map((x) => ({ key: x.name, cells: [x.name, x.area, x.orders, ced(x.month), x.last] }))} />
               </Panel>
               <Panel className="lg:sticky lg:top-24">
-                <A1Swap k={s.name} className="flex flex-col gap-5">
+                <SwapIn k={s.name} className="flex flex-col gap-5">
                   <div className="flex items-center gap-3">
                     <Avatar initials={s.name.split(" ").map((w) => w[0]).join("")} size={48} className="bg-plum-soft text-plum" />
                     <div><h2 className="text-[18px] font-semibold">{s.name}</h2><p className="text-[13px] text-muted">Shopper · {s.area}</p></div>
                   </div>
                   <div className="flex flex-col gap-3"><KV k="Orders" v={s.orders} /><KV k="Spent this month" v={ced(s.month)} /><KV k="Last order" v={s.last} /></div>
                   <Button href={R.adminOrders} variant="secondary" arrow full size="M">See their orders</Button>
-                </A1Swap>
+                </SwapIn>
               </Panel>
             </div>
           )}

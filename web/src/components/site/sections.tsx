@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { CATEGORIES, farmBySlug, productImg, TINT, cedi, type Product } from "@/lib/data";
 import { R } from "@/lib/routes";
 import { Icon, type IconName } from "../icon";

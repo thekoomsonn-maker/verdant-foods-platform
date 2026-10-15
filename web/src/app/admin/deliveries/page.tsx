@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { A2Deliveries } from "@/components/admin/a2-deliveries";
+import { AdminDeliveries } from "@/components/admin/deliveries";
 
 export const metadata: Metadata = { title: "Deliveries · Admin" };
 
 export default function AdminDeliveriesPage() {
-  return <A2Deliveries />;
+  return <AdminDeliveries />;
 }

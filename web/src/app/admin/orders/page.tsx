@@ -3,6 +3,6 @@ import { OrdersClient } from "./orders-client";
 
 export const metadata: Metadata = { title: "Orders · Admin" };
 
-export default function AdminOrders() {
+export default function AdminOrdersPage() {
   return <OrdersClient />;
 }

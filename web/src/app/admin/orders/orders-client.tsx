@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { useMemo, useState } from "react";
-import { A1Swap, A1Table, A1Tabs } from "@/components/admin/a1-ui";
+import { SwapIn, AdminTable, AdminTabs } from "@/components/admin/table-kit";
 import { Icon } from "@/components/icon";
 import { EASE } from "@/components/motion";
 import { ADM, Panel, PortalShell } from "@/components/portal/shell";
@@ -10,7 +10,7 @@ import { useToast } from "@/components/toast";
 import { cx } from "@/components/tokens";
 import { Button, KV, ProofChip, Status } from "@/components/ui";
 import { TINT } from "@/lib/data";
-import { ADMIN_ORDERS, ORDER_TONE, type AdminOrder, type OrderStatus } from "@/lib/data-admin1";
+import { ADMIN_ORDERS, ORDER_TONE, type AdminOrder, type OrderStatus } from "@/lib/data-admin";
 import { R } from "@/lib/routes";
 
 const TABS: [string, number?][] = [["All"], ["To pack", 12], ["On the way", 31], ["Delivered"], ["Problems", 3]];
@@ -66,16 +66,16 @@ export function OrdersClient() {
         <Button variant="light" size="M" onClick={() => toast("Today's orders exported as CSV")}>Export</Button>
         <Button size="M" arrow onClick={() => toast("Draft order #2042 started", "info")}>New order</Button>
       </>}>
-      <A1Tabs items={TABS} value={tab} onChange={pick} />
+      <AdminTabs items={TABS} value={tab} onChange={pick} />
       <div className="grid gap-4 md:gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:items-start">
         <Panel className="!p-3 md:!p-4">
-          <A1Table sel={sel} onSel={setSel} empty="No orders in this view"
+          <AdminTable sel={sel} onSel={setSel} empty="No orders in this view"
             cols={[["Order", "0.9fr"], ["Customer", "2fr"], ["Items", "0.7fr"], ["Total", "1.1fr"], ["Status", "1.3fr"]]}
             rows={rows.map((x) => ({ key: x.id, cells: [`#${x.id}`, x.customer, x.items, `GH₵ ${x.total.toLocaleString("en-GH")}`, <Status key="s" tone={ORDER_TONE[x.status]}>{x.status}</Status>] }))} />
         </Panel>
 
         <Panel className="lg:sticky lg:top-24">
-          <A1Swap k={o.id} className="flex flex-col gap-5">
+          <SwapIn k={o.id} className="flex flex-col gap-5">
             <div className="flex items-center justify-between gap-3">
               <h2 className="text-[18px] font-semibold">#{o.id} · {o.customer}</h2>
               <Link href={R.adminDeliveries} className="shrink-0 text-[14px] font-semibold text-leaf hover:text-deep">Open</Link>
@@ -103,7 +103,7 @@ export function OrdersClient() {
                 : <Button size="M" variant="secondary" href={R.adminDeliveries} arrow className="flex-1">Track delivery</Button>}
               <Button size="M" variant="ghost" icon="printer" onClick={() => toast(`${o.lines.length} labels sent to the packhouse printer`)}>Print labels</Button>
             </div>
-          </A1Swap>
+          </SwapIn>
         </Panel>
       </div>
     </PortalShell>

@@ -2,9 +2,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PLATFORM } from "@/lib/platform";
-import { LANG_CODE as CODE, LANG_FLAG, LANG_SOON, LANGS, type Lang } from "@/lib/langs";
+import { LANG_CODE as CODE, LANG_FLAG, LANG_SOON, LANGS } from "@/lib/langs";
 import { Flag } from "./flag";
 import { Icon } from "../icon";
 import { cx } from "../tokens";

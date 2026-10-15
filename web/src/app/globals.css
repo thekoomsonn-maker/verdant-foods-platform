@@ -162,7 +162,7 @@ html.lenis, html.lenis body { height: auto; }
 :where(.grid) > * { min-width: 0; }
 
 /* =========================================================================
- * v2 motion (see docs/MOTION-AND-INTERACTION.md, "v2 motion")
+ * v2 motion (see docs/design/MOTION-AND-INTERACTION.md, "v2 motion")
  * Kept in the components layer so Tailwind utilities on the same element still win,
  * except where !important is needed to keep scroll-driven transforms un-transitioned.
  * ========================================================================= */
