@@ -1,4 +1,5 @@
 "use client";
+import { useT } from "../i18n/provider";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
@@ -23,6 +24,7 @@ function Gauge({ value, tone = "lime", className }: { value: number; tone?: "lim
 
 /* ---------- Intro / ready / paused overlay ---------- */
 export function StartOverlay({ game, mode, onTake }: { game: Game; mode: "section" | "full"; onTake: () => void }) {
+  const t = useT();
   const s = useGame(game);
   const show = s.phase === "intro" || s.phase === "ready" || s.phase === "paused";
   return (
@@ -46,8 +48,8 @@ export function StartOverlay({ game, mode, onTake }: { game: Game; mode: "sectio
                   className="inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.08em] text-lime">
                   <span className="h-1.5 w-1.5 animate-breathe rounded-full bg-lime" />Our farm near Somanya, Eastern Region
                 </motion.span>
-                <h2 className="max-w-[760px] overflow-hidden text-[44px] font-medium leading-[1.02] tracking-[-0.035em] text-white md:text-[72px] lg:text-[88px]">
-                  {"Fly over our farm".split(" ").map((w, i) => (
+                <h2 data-i18n-skip className="max-w-[760px] overflow-hidden text-[44px] font-medium leading-[1.02] tracking-[-0.035em] text-white md:text-[72px] lg:text-[88px]">
+                  {t("Fly over our farm").split(" ").map((w, i) => (
                     <span key={i} className="inline-block overflow-hidden pb-[0.08em] align-bottom">
                       <motion.span className="inline-block" initial={{ y: "105%" }} animate={{ y: 0 }} transition={{ delay: 0.55 + i * 0.06, duration: 0.8, ease: EASE }}>{w}&nbsp;</motion.span>
                     </span>

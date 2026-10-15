@@ -59,7 +59,7 @@ export function Nav({ theme = "overlay" }: { theme?: "overlay" | "light" }) {
                   key={n.label}
                   href={n.href}
                   onMouseEnter={() => { clearTimeout(timer.current); if (n.label === "Shop") timer.current = setTimeout(() => setMega(true), 120); else setMega(false); }}
-                  className={cx("group/nl relative whitespace-nowrap rounded-full px-3 py-2 text-[15px] xl:px-4 font-medium transition-colors", fg, solid ? "hover:bg-mist" : "hover:bg-white/10")}
+                  className={cx("nav-link group/nl relative whitespace-nowrap rounded-full px-3 py-2 text-[15px] xl:px-4 font-medium transition-colors", fg, solid ? "hover:bg-mist" : "hover:bg-white/10")}
                 >
                   {n.label}
                   <span className={cx("absolute inset-x-3 bottom-1 h-[2px] xl:inset-x-4 origin-left rounded-full transition-transform duration-300 ease-[var(--ease-out)]", solid ? "bg-deep" : "bg-lime", active ? "scale-x-100" : "scale-x-0 group-hover/nl:scale-x-100")} />
@@ -73,7 +73,7 @@ export function Nav({ theme = "overlay" }: { theme?: "overlay" | "light" }) {
             <Link href={R.search()} aria-label="Search" className={cx("hidden h-11 w-11 items-center justify-center rounded-full transition-colors md:flex", fg, solid ? "hover:bg-mist" : "hover:bg-white/10")}><Icon name="search" /></Link>
             <Link href={R.signIn} aria-label="Account" className={cx("hidden h-11 w-11 items-center justify-center rounded-full transition-colors md:flex", fg, solid ? "hover:bg-mist" : "hover:bg-white/10")}><Icon name="user" /></Link>
             <button data-bag-target onClick={() => setOpen(true)} aria-label="Open bag" className={cx("relative flex h-11 w-11 items-center justify-center rounded-full transition-colors", fg, solid ? "hover:bg-mist" : "hover:bg-white/10")}><Icon name="shopping-bag" /><BagCount /></button>
-            <span className="ml-2 hidden xl:inline-flex"><Button href={R.shop} size="M" variant={solid ? "primary" : "light"} className="whitespace-nowrap">Shop fresh</Button></span>
+            <span className="nav-cta ml-2 hidden xl:inline-flex"><Button href={R.shop} size="M" variant={solid ? "primary" : "light"} className="whitespace-nowrap">Shop fresh</Button></span>
             <button onClick={() => setSheet(true)} aria-label="Open menu" className={cx("flex h-11 w-11 items-center justify-center rounded-full lg:hidden", fg)}><Icon name="menu" size={24} /></button>
           </div>
         </div>

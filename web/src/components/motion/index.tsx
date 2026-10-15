@@ -1,6 +1,7 @@
 "use client";
 import { animate, motion, useInView, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform, type HTMLMotionProps } from "motion/react";
 import Lenis from "lenis";
+import { useT } from "../i18n/provider";
 import { usePathname } from "next/navigation";
 import { Children, Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 import { useMediaFX } from "./fx";
@@ -67,9 +68,11 @@ export function Stagger({ children, className, gap = 0.06, y = 24 }: { children:
 export function SplitWords({ text, className, delay = 0.15, as = "h1", inView }: { text: string; className?: string; delay?: number; as?: "h1" | "h2" | "p"; inView?: boolean }) {
   const reduce = useReducedMotion();
   const C = motion[as] as typeof motion.h1;
+  const t = useT();
+  text = t(text);
   const words = text.split(" ");
   return (
-    <C className={className} initial="hidden" {...(inView ?? as !== "h1" ? { whileInView: "show", viewport: { once: true, amount: 0.5 } } : { animate: "show" })} aria-label={text}>
+    <C data-i18n-skip className={className} initial="hidden" {...(inView ?? as !== "h1" ? { whileInView: "show", viewport: { once: true, amount: 0.5 } } : { animate: "show" })} aria-label={text}>
       {words.map((w, i) => (
         <Fragment key={i}>
         {i > 0 && " "}

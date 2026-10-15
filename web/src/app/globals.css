@@ -227,3 +227,10 @@ html.has-cursor :is(a, button, [role=button], [role=switch], [role=tab], summary
 html.has-cursor :is(input, textarea, select, [contenteditable=true]) { cursor: text; }
 html.has-cursor .maplibregl-map, html.has-cursor .maplibregl-map * { cursor: auto; }
 html.has-cursor .maplibregl-canvas-container.maplibregl-interactive { cursor: grab; }
+
+/* Language switch: hide the page for a moment while a saved language loads (never longer than 1.2 s). */
+html.i18n-loading body { opacity: 0; animation: i18n-reveal 0.2s ease 1.2s forwards; }
+@keyframes i18n-reveal { to { opacity: 1; } }
+/* Longer translated menu labels: drop the header "Shop" button until there is room for it. */
+@media (max-width: 1499px) { html:not([lang="en"]):not([lang="fr"]) .nav-cta { display: none !important; } }
+@media (max-width: 1279px) { html:not([lang="en"]):not([lang="fr"]) .nav-link { font-size: 13.5px; padding-left: 7px; padding-right: 7px; } }

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { PLATFORM } from "@/lib/platform";
-import { LANG_CODE as CODE, LANG_FLAG, LANGS, type Lang } from "@/lib/langs";
+import { LANG_CODE as CODE, LANG_FLAG, LANG_SOON, LANGS, type Lang } from "@/lib/langs";
 import { Flag } from "./flag";
 import { Icon } from "../icon";
 import { cx } from "../tokens";
@@ -129,24 +129,8 @@ export function ProductGrid() {
 }
 
 /* ---------- Language ---------- */
-const KEY = "vf-lang";
-const EVT = "vf-lang";
-
-/** The visitor's chosen language, remembered in this browser only. */
-export function useLang() {
-  const [lang, setLangState] = useState<Lang>("English");
-  useEffect(() => {
-    const read = () => { try { const v = localStorage.getItem(KEY); if (v && (LANGS as readonly string[]).includes(v)) setLangState(v as Lang); } catch {} };
-    read(); window.addEventListener(EVT, read);
-    return () => window.removeEventListener(EVT, read);
-  }, []);
-  const setLang = useCallback((l: Lang) => {
-    setLangState(l);
-    try { localStorage.setItem(KEY, l); } catch {}
-    window.dispatchEvent(new Event(EVT));
-  }, []);
-  return [lang, setLang] as const;
-}
+export { useLang } from "../i18n/use-lang";
+import { useLang } from "../i18n/use-lang";
 
 export function LangPicker({ solid }: { solid: boolean }) {
   const { open, setOpen, ref } = usePopover();
@@ -171,7 +155,7 @@ export function LangPicker({ solid }: { solid: boolean }) {
                   className={cx("flex w-full items-center gap-2.5 rounded-lg px-2.5 py-[7px] text-left text-[13px] transition-colors", l === lang ? "bg-mist font-semibold text-deep" : "text-ink/85 hover:bg-paper hover:text-ink")}>
                   <Flag kind={LANG_FLAG(l)} className="h-[12px] w-[17px]" />
                   <span className="flex-1 truncate">{l}</span>
-                  {l === lang && <Icon name="check" size={14} className="text-leaf" />}
+                  {l === lang ? <Icon name="check" size={14} className="text-leaf" /> : LANG_SOON.has(l) && <span data-i18n-skip className="rounded-full bg-mist px-1.5 py-px text-[10px] font-semibold text-muted">Soon</span>}
                 </button>
               </li>
             ))}
