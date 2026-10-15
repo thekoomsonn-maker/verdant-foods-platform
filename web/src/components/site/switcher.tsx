@@ -4,7 +4,8 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { PLATFORM } from "@/lib/platform";
-import { LANGS, type Lang } from "@/lib/langs";
+import { LANG_CODE as CODE, LANG_FLAG, LANGS, type Lang } from "@/lib/langs";
+import { Flag } from "./flag";
 import { Icon } from "../icon";
 import { cx } from "../tokens";
 
@@ -100,7 +101,7 @@ function PanelLangs() {
       <Icon name="globe" size={16} className="mr-1 text-muted" />
       {LANGS.map((l) => (
         <button key={l} type="button" aria-pressed={l === lang} onClick={() => setLang(l)}
-          className={cx("h-8 rounded-full px-3 text-[13px] font-medium transition-colors", l === lang ? "bg-deep text-white" : "bg-mist text-deep hover:bg-mint")}>{l}</button>
+          className={cx("inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[13px] font-medium transition-colors", l === lang ? "bg-deep text-white" : "bg-mist text-deep hover:bg-mint")}><Flag kind={LANG_FLAG(l)} className="h-[10px] w-[15px]" />{CODE[l]}</button>
       ))}
     </div>
   );
@@ -130,7 +131,6 @@ export function ProductGrid() {
 /* ---------- Language ---------- */
 const KEY = "vf-lang";
 const EVT = "vf-lang";
-const CODE: Record<Lang, string> = { English: "EN", "Twi (Asante)": "TW", "Akuapem Twi": "AK", Fante: "FA", Ga: "GA", Ewe: "EE", Dagbani: "DA", Dagaare: "DG", Waale: "WA", Gonja: "GJ" };
 
 /** The visitor's chosen language, remembered in this browser only. */
 export function useLang() {
@@ -154,23 +154,26 @@ export function LangPicker({ solid }: { solid: boolean }) {
   const [lang, setLang] = useLang();
   return (
     <div ref={ref} className="relative">
-      <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-haspopup="listbox" aria-label={`Language: ${lang}`} className={cx(trigger(solid, open), "gap-1.5")}>
-        <Icon name="globe" size={19} />
-        <span className="tabular text-[13px] tracking-wide">{CODE[lang]}</span>
+      <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-haspopup="listbox" aria-label={`Language: ${lang}`} className={cx(trigger(solid, open), "gap-2")}>
+        <Flag kind={LANG_FLAG(lang)} />
+        <span className="tabular text-[13px] font-semibold tracking-wide">{CODE[lang]}</span>
+        <Icon name="chevron-down" size={14} className={cx("opacity-70 transition-transform duration-300", open && "rotate-180")} />
       </button>
       <AnimatePresence>
         {open && (
           <motion.ul role="listbox" aria-label="Language"
-            initial={{ opacity: 0, y: reduce ? 0 : -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: reduce ? 0 : -6 }} transition={{ duration: 0.22, ease: EASE }}
-            className="absolute right-0 top-[calc(100%+12px)] z-10 flex w-[232px] bg-white/[0.94] backdrop-blur-2xl backdrop-saturate-150 flex-col rounded-3xl p-2 text-ink shadow-[var(--shadow-3)]">
+            initial={{ opacity: 0, y: reduce ? 0 : -6, scale: reduce ? 1 : 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: reduce ? 0 : -4, scale: reduce ? 1 : 0.98 }} transition={{ duration: 0.18, ease: EASE }}
+            className="absolute right-0 top-[calc(100%+10px)] z-10 flex w-[188px] origin-top-right flex-col rounded-2xl bg-white/95 p-1.5 text-ink shadow-[var(--shadow-2)] backdrop-blur-2xl backdrop-saturate-150">
             {LANGS.map((l, i) => (
-              <motion.li key={l} initial={{ opacity: 0, x: reduce ? 0 : 6 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: Math.min(i, 8) * 0.025, duration: 0.2 }}>
+              <li key={l}>
+                {i === 2 && <div className="mx-2.5 my-1 h-px bg-line" aria-hidden />}
                 <button type="button" role="option" aria-selected={l === lang} onClick={() => { setLang(l); setOpen(false); }}
-                  className={cx("flex w-full items-center justify-between gap-3 rounded-xl px-3.5 py-2.5 text-left text-[15px] transition-colors", l === lang ? "bg-mist font-semibold text-deep" : "hover:bg-paper")}>
-                  {l}
-                  {l === lang ? <Icon name="check" size={16} className="text-leaf" /> : <span className="text-[12px] text-muted">{CODE[l]}</span>}
+                  className={cx("flex w-full items-center gap-2.5 rounded-lg px-2.5 py-[7px] text-left text-[13px] transition-colors", l === lang ? "bg-mist font-semibold text-deep" : "text-ink/85 hover:bg-paper hover:text-ink")}>
+                  <Flag kind={LANG_FLAG(l)} className="h-[12px] w-[17px]" />
+                  <span className="flex-1 truncate">{l}</span>
+                  {l === lang && <Icon name="check" size={14} className="text-leaf" />}
                 </button>
-              </motion.li>
+              </li>
             ))}
           </motion.ul>
         )}
@@ -186,8 +189,8 @@ export function LangList() {
     <div role="listbox" aria-label="Language" className="flex flex-wrap gap-2">
       {LANGS.map((l) => (
         <button key={l} type="button" role="option" aria-selected={l === lang} onClick={() => setLang(l)}
-          className={cx("h-9 rounded-full px-3.5 text-[14px] font-medium transition-colors", l === lang ? "bg-lime text-night" : "bg-white/10 text-white hover:bg-white/20")}>
-          {l}
+          className={cx("inline-flex h-9 items-center gap-2 rounded-full px-3.5 text-[14px] font-medium transition-colors", l === lang ? "bg-lime text-night" : "bg-white/10 text-white hover:bg-white/20")}>
+          <Flag kind={LANG_FLAG(l)} className="h-[11px] w-[16px]" />{l}
         </button>
       ))}
     </div>
