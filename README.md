@@ -1,13 +1,15 @@
 # Verdant Foods Platform
 
-The Verdant Foods website: a fresh-produce marketplace, farm-to-table traceability, a business (B2B) buying portal and an operations console, in one Next.js app. Live at **https://verdant-foods.vercel.app**.
+Two separate products in one repository:
 
-The farmer and savings-group mobile app (Flutter) is a separate product and is not in this repository.
+- **Website** (`web/`): a fresh-produce marketplace, farm-to-table traceability, a business (B2B) buying portal and an operations console, in one Next.js app. Live at **https://verdant-foods.vercel.app**.
+- **App** (`app/`): the Flutter app for farmers, savings groups and field officers (Android, iPhone and a web preview). See [`app/README.md`](app/README.md).
 
 ## Repository layout
 
 ```
 .
+├── app/                     The Flutter app for farmers, savings groups and field officers
 ├── docs/                    Product and design documentation
 │   ├── product/             Brief, architecture, decisions
 │   ├── design/              Design system, motion and interaction spec, visual references
