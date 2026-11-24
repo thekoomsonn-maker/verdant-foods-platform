@@ -20,7 +20,7 @@ class PreviewFrame extends StatelessWidget {
     if (mq.size.width < 760 || mq.size.height < 640) return child;
     const phone = Size(390, 844);
     final scale = ((mq.size.height - 48) / phone.height).clamp(.6, 1.0);
-    return ColoredBox(
+    return Material(
       color: VC.mist,
       child: Row(children: [
         Expanded(child: _Panel(router: router)),

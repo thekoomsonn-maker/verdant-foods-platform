@@ -53,7 +53,7 @@ class _MapPlotScreenState extends State<MapPlotScreen> {
         body: LayoutBuilder(builder: (context, box) {
           final size = Size(box.maxWidth, box.maxHeight);
           return Stack(fit: StackFit.expand, children: [
-            Positioned.fill(child: Image.asset('assets/images/photos/hero-aerial.jpg', fit: BoxFit.cover)),
+            Positioned.fill(child: Image.asset('assets/images/photos/aerial-plots.jpg', fit: BoxFit.cover)),
             Positioned.fill(
               child: GestureDetector(
                 onTapUp: (d) {
