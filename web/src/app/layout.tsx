@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
 import { BagProvider } from "@/components/site/bag";
@@ -18,8 +19,8 @@ export const viewport: Viewport = { themeColor: "#024639" };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={jakarta.variable} suppressHydrationWarning>
-      <head><script dangerouslySetInnerHTML={{ __html: I18N_BOOT }} /></head>
       <body className="antialiased">
+        <Script id="i18n-boot" strategy="beforeInteractive">{I18N_BOOT}</Script>
         <I18nProvider>
         <ToastProvider>
           <BagProvider>
